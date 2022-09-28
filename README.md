@@ -1,4 +1,4 @@
-# Capstone_Reference_Network
+# Capstone_Reference_Server_UI
 유한대학교 캡스톤 프로젝트 Reference 팀
 
 ## Contributors
