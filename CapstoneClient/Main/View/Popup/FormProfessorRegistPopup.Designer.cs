@@ -101,6 +101,7 @@
             this.btnConnect.TabIndex = 5;
             this.btnConnect.Text = "접속";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // panel1
             // 
