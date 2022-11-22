@@ -33,12 +33,15 @@
             this.lblCode = new System.Windows.Forms.Label();
             this.btnChat = new System.Windows.Forms.Button();
             this.btnGame = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(114, 153);
+            this.lblName.Location = new System.Drawing.Point(3, 10);
+            this.lblName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(46, 15);
             this.lblName.TabIndex = 0;
@@ -47,7 +50,8 @@
             // lblClassName
             // 
             this.lblClassName.AutoSize = true;
-            this.lblClassName.Location = new System.Drawing.Point(114, 185);
+            this.lblClassName.Location = new System.Drawing.Point(3, 45);
+            this.lblClassName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.lblClassName.Name = "lblClassName";
             this.lblClassName.Size = new System.Drawing.Size(46, 15);
             this.lblClassName.TabIndex = 1;
@@ -56,7 +60,8 @@
             // lblCode
             // 
             this.lblCode.AutoSize = true;
-            this.lblCode.Location = new System.Drawing.Point(114, 215);
+            this.lblCode.Location = new System.Drawing.Point(3, 80);
+            this.lblCode.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(58, 15);
             this.lblCode.TabIndex = 2;
@@ -64,36 +69,48 @@
             // 
             // btnChat
             // 
-            this.btnChat.Location = new System.Drawing.Point(136, 279);
+            this.btnChat.Location = new System.Drawing.Point(3, 168);
             this.btnChat.Name = "btnChat";
-            this.btnChat.Size = new System.Drawing.Size(100, 75);
+            this.btnChat.Size = new System.Drawing.Size(206, 50);
             this.btnChat.TabIndex = 3;
             this.btnChat.Text = "채팅";
             this.btnChat.UseVisualStyleBackColor = true;
+            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
             // btnGame
             // 
-            this.btnGame.Location = new System.Drawing.Point(243, 279);
+            this.btnGame.Location = new System.Drawing.Point(3, 114);
             this.btnGame.Name = "btnGame";
-            this.btnGame.Size = new System.Drawing.Size(100, 75);
+            this.btnGame.Size = new System.Drawing.Size(206, 48);
             this.btnGame.TabIndex = 4;
             this.btnGame.Text = "퀴즈";
             this.btnGame.UseVisualStyleBackColor = true;
+            this.btnGame.Click += new System.EventHandler(this.btnGame_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.lblName);
+            this.flowLayoutPanel1.Controls.Add(this.lblClassName);
+            this.flowLayoutPanel1.Controls.Add(this.lblCode);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(204, 105);
+            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // FormProfessor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnGame);
             this.Controls.Add(this.btnChat);
-            this.Controls.Add(this.lblCode);
-            this.Controls.Add(this.lblClassName);
-            this.Controls.Add(this.lblName);
             this.Name = "FormProfessor";
             this.Text = "FormProfessor";
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -104,5 +121,6 @@
         private Label lblCode;
         private Button btnChat;
         private Button btnGame;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

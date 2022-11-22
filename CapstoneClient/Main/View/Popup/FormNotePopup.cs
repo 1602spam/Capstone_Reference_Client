@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Main.View.Popup
 {
-    public partial class FormStudentRegistPopup : Form
+    public partial class FormNotePopup : Form
     {
-        public FormStudentRegistPopup()
+        public FormNotePopup()
         {
             InitializeComponent();
         }

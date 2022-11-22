@@ -1,6 +1,6 @@
 ﻿namespace Main.View.Popup
 {
-    partial class FormProfessorRegistPopup
+    partial class FormRegistPopup
     {
         /// <summary>
         /// Required designer variable.
