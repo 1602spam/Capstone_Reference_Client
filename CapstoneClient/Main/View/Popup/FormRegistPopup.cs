@@ -34,6 +34,7 @@ namespace Main.View.Popup
             }
             else if (CONNECTTYPE.STUDENT == this.connectType)
             {
+                this.Text = "학생으로 접속";
                 lblClass.Text = "과목코드";
                 lblName.Text = "학생명";
             }
