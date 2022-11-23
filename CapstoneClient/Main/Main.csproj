@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Folder Include="UserControl\" />
-    <Folder Include="View\Attach\" />
+    <Folder Include="View\DesignExample\" />
   </ItemGroup>
 
 </Project>
