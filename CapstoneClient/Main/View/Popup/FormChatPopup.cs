@@ -20,6 +20,8 @@ namespace Main.View.Popup
         public List<Lchat> Lchats = new();
         public List<Rchat> Rchats = new();
 
+        public FormChatPopup Instance { get; set; }
+
         public FormChatPopup()
         {
             InitializeComponent();
@@ -90,6 +92,8 @@ namespace Main.View.Popup
             rtbChat.Text = String.Empty;
             //채팅창 포커스
             rtbChat.Focus();
+            //메시지 패널 맨 아래를 표시하도록 함
+            panMessage.AutoScrollPosition = new Point(0, 9999999);
         }
 
         private void btnChatList_Click(object sender, EventArgs e)
@@ -115,8 +119,6 @@ namespace Main.View.Popup
         private void btnSend_Click(object sender, EventArgs e)
         {
             SendChat();
-            //메시지 패널 맨 아래를 표시하도록 함
-            panMessage.AutoScrollPosition = new Point(panMessage.AutoScrollPosition.X, panMessage.Height);
         }
     }
 }

@@ -23,5 +23,10 @@ namespace Main
             FormRegistPopup form = new(CONNECTTYPE.STUDENT);
             form.ShowDialog();
         }
+
+        private void FormRegist_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //로그아웃 프로토콜 전송
+        }
     }
 }

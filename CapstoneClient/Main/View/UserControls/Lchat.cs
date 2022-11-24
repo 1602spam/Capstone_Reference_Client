@@ -75,7 +75,7 @@ namespace Main.View.UserControls
         private void SetChatLocation()
         {
             // 패널의 최대크기
-            lblContext.MaximumSize = new Size(ChatPanelSize / 3 * 2, 0);
+            lblContext.MaximumSize = new Size(ChatPanelSize / 3 * 2 - 50, 0);
 
             // 메시지 내용 레이블의 높이, 넓이 지정
             lblContext.Height = GetTextHeight(lblContext);

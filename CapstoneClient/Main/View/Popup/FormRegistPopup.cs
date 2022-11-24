@@ -124,6 +124,7 @@ namespace Main.View.Popup
 
         private bool SendConnectRequestAndWait()
         {
+            btnConnect.Enabled = false;
             if (CONNECTTYPE.PROFESSOR == this.connectType)
             {
                 //교수 접속 정보 송신(과목명: tbClass.Text, 교수명: tbName.Text)
@@ -133,9 +134,9 @@ namespace Main.View.Popup
                 //학생 접속 정보 송신(과목코드: tbClass.Text, 학생명: tbName.Text)
             }
             //응답 대기
-            Task.Delay(100).Wait();
+            Task.Delay(50);
+            btnConnect.Enabled = true;
             //처리 결과에 따라 true/false 리턴
-
             return true;
         }
     }

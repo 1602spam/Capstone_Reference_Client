@@ -15,7 +15,7 @@ namespace Main.View.Popup
     public partial class FormChatListPopup : Form
     {
 
-        List<ChatMemberListItem> ChatMemberListItems = new();
+        List<ChatListItem> ChatMemberListItems = new();
 
         public FormChatListPopup()
         {
@@ -25,16 +25,16 @@ namespace Main.View.Popup
             //Event += AddMember;
 
             //테스트용 멤버 추가
-            AddMember(new ChatMemberListItem());
-            AddMember(new ChatMemberListItem());
-            AddMember(new ChatMemberListItem());
-            AddMember(new ChatMemberListItem());
+            AddMember(new ChatListItem());
+            AddMember(new ChatListItem());
+            AddMember(new ChatListItem());
+            AddMember(new ChatListItem());
         }
 
         private void OnMemberReceived(object member)
         {
             //멤버 추가 이벤트 발생 시 호출됨
-            ChatMemberListItem newMember = (ChatMemberListItem)member;
+            ChatListItem newMember = (ChatListItem)member;
             //기존 유저를 패널과 리스트에서 찾았다면 ReplaceMemberByIndex를 호출
             int index = ChatMemberListItems.FindIndex(ChatMemberListItem => ChatMemberListItem.Code == newMember.Code);
             //찾지 못했다면 멤버 컴포넌트를 패널과 리스트 말미에 추가함
@@ -49,17 +49,17 @@ namespace Main.View.Popup
             }
         }
 
-        private void ReplaceMemberByIndex(int i, ChatMemberListItem newMember)
+        private void ReplaceMemberByIndex(int i, ChatListItem newMember)
         {
             //멤버 갱신 이벤트 발생 시 동일한 유저 코드를 찾았다면
             //패널과 리스트에서 해당 유저의 인덱스를 삭제하고
             //newMember의 IsDeleted 코드가 false라면 AddMemberByIndex를 호출
         }
 
-        private void AddMember(ChatMemberListItem member)
+        private void AddMember(ChatListItem member)
         {
             //패널과 리스트 말미에 멤버를 추가함
-            ChatMemberListItem item = new();
+            ChatListItem item = new();
             ChatMemberListItems.Add(item);
             panChatMemberList.Controls.Add(item);
             item.BringToFront();

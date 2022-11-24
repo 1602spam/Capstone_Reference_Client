@@ -37,16 +37,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 50);
+            this.panel1.Size = new System.Drawing.Size(250, 25);
             this.panel1.TabIndex = 0;
             // 
             // panChatMemberList
             // 
             this.panChatMemberList.AutoScroll = true;
             this.panChatMemberList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panChatMemberList.Location = new System.Drawing.Point(0, 50);
+            this.panChatMemberList.Location = new System.Drawing.Point(0, 25);
             this.panChatMemberList.Name = "panChatMemberList";
-            this.panChatMemberList.Size = new System.Drawing.Size(250, 411);
+            this.panChatMemberList.Size = new System.Drawing.Size(250, 436);
             this.panChatMemberList.TabIndex = 1;
             // 
             // FormChatListPopup

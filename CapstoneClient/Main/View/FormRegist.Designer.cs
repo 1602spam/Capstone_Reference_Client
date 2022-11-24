@@ -61,6 +61,7 @@
             this.Controls.Add(this.btnLaunchProfessor);
             this.Name = "FormRegist";
             this.Text = "접속 유형 선택";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormRegist_FormClosed);
             this.ResumeLayout(false);
 
         }

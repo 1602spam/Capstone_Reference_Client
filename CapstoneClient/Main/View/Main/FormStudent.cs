@@ -37,6 +37,7 @@ namespace Main.View.Student
         {
             openNote();
         }
+
         private void openGameInvitation(object obj)
         {
             var form = Application.OpenForms["FormGameInvitation"];
@@ -48,6 +49,7 @@ namespace Main.View.Student
             newform.Show();
             newform.Focus();
         }
+
         private void openChat()
         {
             var form = Application.OpenForms["FormChatPopup"];
@@ -59,6 +61,7 @@ namespace Main.View.Student
             form.Show();
             form.Focus();
         }
+
         private void openNote()
         {
             var form = Application.OpenForms["FormNotePopup"];

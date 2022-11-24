@@ -19,5 +19,6 @@ namespace Main.Class
         {
             f.Dock = DockStyle.Fill;
         }
+
     }
 }

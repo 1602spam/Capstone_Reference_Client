@@ -75,7 +75,7 @@ namespace Main.View.UserControls
 
         private void ChatLocation()
         {
-            lblContext.MaximumSize = new Size(ChatPanelSize / 3 * 2, 0);
+            lblContext.MaximumSize = new Size(ChatPanelSize / 3 * 2 - 50, 0);
 
             lblContext.Height = GetTextHeight(lblContext);
             lblContext.Width = GetTextWidth(lblContext);
