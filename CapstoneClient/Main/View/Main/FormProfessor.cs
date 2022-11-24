@@ -21,6 +21,7 @@ namespace Main.View.Professor
         public FormProfessor()
         {
             InitializeComponent();
+
             //레이블의 기본 문자열 설정
             lblNameDef = lblName.Text;
             lblClassNameDef = lblClassName.Text;

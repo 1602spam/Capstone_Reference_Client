@@ -30,10 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnChatList = new System.Windows.Forms.Button();
-            this.flChat = new System.Windows.Forms.FlowLayoutPanel();
+            this.panMessage = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.rtbChat = new System.Windows.Forms.RichTextBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.rtbChat = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -44,12 +44,12 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(227, 50);
+            this.panel1.Size = new System.Drawing.Size(404, 50);
             this.panel1.TabIndex = 0;
             // 
             // btnChatList
             // 
-            this.btnChatList.Location = new System.Drawing.Point(127, 3);
+            this.btnChatList.Location = new System.Drawing.Point(297, 3);
             this.btnChatList.Name = "btnChatList";
             this.btnChatList.Size = new System.Drawing.Size(97, 44);
             this.btnChatList.TabIndex = 0;
@@ -57,52 +57,55 @@
             this.btnChatList.UseVisualStyleBackColor = true;
             this.btnChatList.Click += new System.EventHandler(this.btnChatList_Click);
             // 
-            // flChat
+            // panMessage
             // 
-            this.flChat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flChat.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flChat.Location = new System.Drawing.Point(0, 50);
-            this.flChat.Name = "flChat";
-            this.flChat.Size = new System.Drawing.Size(227, 400);
-            this.flChat.TabIndex = 1;
+            this.panMessage.AutoScroll = true;
+            this.panMessage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panMessage.Location = new System.Drawing.Point(0, 50);
+            this.panMessage.Name = "panMessage";
+            this.panMessage.Size = new System.Drawing.Size(404, 371);
+            this.panMessage.TabIndex = 1;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnSend);
             this.panel2.Controls.Add(this.rtbChat);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 450);
+            this.panel2.Location = new System.Drawing.Point(0, 421);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.panel2.Size = new System.Drawing.Size(227, 87);
-            this.panel2.TabIndex = 2;
-            // 
-            // rtbChat
-            // 
-            this.rtbChat.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rtbChat.Location = new System.Drawing.Point(5, 5);
-            this.rtbChat.Name = "rtbChat";
-            this.rtbChat.Size = new System.Drawing.Size(146, 77);
-            this.rtbChat.TabIndex = 0;
-            this.rtbChat.Text = "";
+            this.panel2.Size = new System.Drawing.Size(404, 116);
+            this.panel2.TabIndex = 3;
             // 
             // btnSend
             // 
             this.btnSend.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSend.Location = new System.Drawing.Point(157, 5);
+            this.btnSend.Location = new System.Drawing.Point(334, 5);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(65, 77);
+            this.btnSend.Size = new System.Drawing.Size(65, 106);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "전송";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // rtbChat
+            // 
+            this.rtbChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbChat.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rtbChat.Location = new System.Drawing.Point(5, 5);
+            this.rtbChat.Name = "rtbChat";
+            this.rtbChat.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.rtbChat.Size = new System.Drawing.Size(318, 106);
+            this.rtbChat.TabIndex = 0;
+            this.rtbChat.Text = "";
             // 
             // FormChatPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 537);
+            this.ClientSize = new System.Drawing.Size(404, 537);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.flChat);
+            this.Controls.Add(this.panMessage);
             this.Controls.Add(this.panel1);
             this.Name = "FormChatPopup";
             this.Text = "FormChatPopup";
@@ -116,7 +119,7 @@
 
         private Panel panel1;
         private Button btnChatList;
-        private FlowLayoutPanel flChat;
+        private Panel panMessage;
         private Panel panel2;
         private Button btnSend;
         private RichTextBox rtbChat;

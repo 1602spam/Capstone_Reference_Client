@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panChatMemberList = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // panel1
@@ -40,21 +40,21 @@
             this.panel1.Size = new System.Drawing.Size(239, 50);
             this.panel1.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // panChatMemberList
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 50);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(239, 410);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.panChatMemberList.AutoScroll = true;
+            this.panChatMemberList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panChatMemberList.Location = new System.Drawing.Point(0, 50);
+            this.panChatMemberList.Name = "panChatMemberList";
+            this.panChatMemberList.Size = new System.Drawing.Size(239, 410);
+            this.panChatMemberList.TabIndex = 1;
             // 
             // FormChatListPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(239, 460);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panChatMemberList);
             this.Controls.Add(this.panel1);
             this.Name = "FormChatListPopup";
             this.Text = "FormChatListPopup";
@@ -65,6 +65,6 @@
         #endregion
 
         private Panel panel1;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panChatMemberList;
     }
 }
