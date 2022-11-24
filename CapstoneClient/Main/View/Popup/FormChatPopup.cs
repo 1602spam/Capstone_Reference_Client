@@ -22,8 +22,12 @@ namespace Main.View.Popup
 
         public FormChatPopup Instance { get; set; }
 
+        private String lblLocationDef = "";
+
         public FormChatPopup()
         {
+            this.Instance = this;
+            lblLocationDef = lblLocation.Text;
             InitializeComponent();
             this.InitializePopup();
             //메시지 추가 이벤트 발생 시 호출할 메서드 등록
@@ -100,6 +104,11 @@ namespace Main.View.Popup
         {
             //채팅 참여자 목록 버튼 클릭 시
             OpenChatList();
+        }
+
+        private void SetLocation()
+        {
+            MessageBox.Show("귓속말 설정해야 됩니당");
         }
 
         private void OpenChatList()

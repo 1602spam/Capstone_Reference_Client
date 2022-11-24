@@ -29,6 +29,7 @@ namespace Main.View.Popup
             dm.TextAlign = ContentAlignment.MiddleLeft;
             dm.Click += delegate (object? s, EventArgs e)
             {
+
                 FocusChat();
                 this.Close();
             };
