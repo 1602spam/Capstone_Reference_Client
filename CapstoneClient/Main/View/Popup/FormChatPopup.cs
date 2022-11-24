@@ -35,7 +35,7 @@ namespace Main.View.Popup
             //객체 속성 중 송신자를 비교해서 다른 사람이면 AddLChat(message,onTop), 나 자신이라면 AddRChat(message,onTop)을 호출함
         }
 
-        private void AddLChat(object message)
+        private void AddLChat(object message, bool onTop)
         {
             /*
             Lchat lchat = new Lchat(panMessage.Width, message);
@@ -45,7 +45,7 @@ namespace Main.View.Popup
             */
         }
 
-        private void AddRChat(object message)
+        private void AddRChat(object message, bool onTop)
         {
             /*
             Rchat rchat = new Rchat(panMessage.Width, rtbChat.Text);
