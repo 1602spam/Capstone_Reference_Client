@@ -5,6 +5,16 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <BaseOutputPath></BaseOutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="ClientToServer">
+      <HintPath>..\..\..\Capstone_Reference_Network\DLL\Debug\net6.0\ClientToServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NetworkLibrary">
+      <HintPath>..\..\..\Capstone_Reference_Network\DLL\Debug\net6.0\NetworkLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>
