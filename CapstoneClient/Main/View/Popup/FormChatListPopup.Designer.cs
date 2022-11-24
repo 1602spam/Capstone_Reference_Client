@@ -37,7 +37,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 50);
+            this.panel1.Size = new System.Drawing.Size(250, 50);
             this.panel1.TabIndex = 0;
             // 
             // panChatMemberList
@@ -46,14 +46,14 @@
             this.panChatMemberList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panChatMemberList.Location = new System.Drawing.Point(0, 50);
             this.panChatMemberList.Name = "panChatMemberList";
-            this.panChatMemberList.Size = new System.Drawing.Size(239, 410);
+            this.panChatMemberList.Size = new System.Drawing.Size(250, 411);
             this.panChatMemberList.TabIndex = 1;
             // 
             // FormChatListPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(239, 460);
+            this.ClientSize = new System.Drawing.Size(250, 461);
             this.Controls.Add(this.panChatMemberList);
             this.Controls.Add(this.panel1);
             this.Name = "FormChatListPopup";

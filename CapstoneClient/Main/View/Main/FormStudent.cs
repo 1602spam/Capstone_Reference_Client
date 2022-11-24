@@ -26,6 +26,8 @@ namespace Main.View.Student
             lblClassNameDef = lblClassName.Text;
             lblCodeDef = lblCode.Text;
             lblProfessorNameDef = lblProfessorName.Text;
+            //게임 초대 이벤트 발생 시 수락 거절 창 띄우는 메서드 등록
+            //Event += openGameInvitation(object obj)
         }
         private void btnChat_Click(object sender, EventArgs e)
         {
@@ -34,6 +36,17 @@ namespace Main.View.Student
         private void btnNote_Click(object sender, EventArgs e)
         {
             openNote();
+        }
+        private void openGameInvitation(object obj)
+        {
+            var form = Application.OpenForms["FormGameInvitation"];
+            if(form!=null)
+                form.Close();
+
+            var newform = new FormGameInvitation();
+            newform.StartPosition = FormStartPosition.CenterScreen;
+            newform.Show();
+            newform.Focus();
         }
         private void openChat()
         {
