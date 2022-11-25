@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChatPopup));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.btnChatList = new System.Windows.Forms.Button();
             this.panMessage = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblLocationToAll = new System.Windows.Forms.Label();
             this.lblLocation = new System.Windows.Forms.Label();
-            this.btnSend = new System.Windows.Forms.Button();
             this.rtbChat = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSend = new Main.View.UserControls.RoundButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -44,40 +46,57 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Controls.Add(this.btnChatList);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(404, 50);
+            this.panel1.Size = new System.Drawing.Size(404, 25);
             this.panel1.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.Location = new System.Drawing.Point(189, 5);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(31, 15);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "채팅";
             // 
             // btnChatList
             // 
-            this.btnChatList.Location = new System.Drawing.Point(297, 3);
+            this.btnChatList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnChatList.BackgroundImage")));
+            this.btnChatList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnChatList.FlatAppearance.BorderSize = 0;
+            this.btnChatList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChatList.Location = new System.Drawing.Point(379, 2);
             this.btnChatList.Name = "btnChatList";
-            this.btnChatList.Size = new System.Drawing.Size(97, 44);
+            this.btnChatList.Size = new System.Drawing.Size(20, 20);
             this.btnChatList.TabIndex = 0;
-            this.btnChatList.Text = "채팅 인원 목록";
             this.btnChatList.UseVisualStyleBackColor = true;
             this.btnChatList.Click += new System.EventHandler(this.btnChatList_Click);
             // 
             // panMessage
             // 
             this.panMessage.AutoScroll = true;
+            this.panMessage.BackColor = System.Drawing.Color.White;
             this.panMessage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panMessage.Location = new System.Drawing.Point(0, 50);
+            this.panMessage.Location = new System.Drawing.Point(0, 25);
             this.panMessage.Name = "panMessage";
-            this.panMessage.Size = new System.Drawing.Size(404, 342);
+            this.panMessage.Size = new System.Drawing.Size(404, 362);
             this.panMessage.TabIndex = 1;
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.lblLocationToAll);
             this.panel2.Controls.Add(this.lblLocation);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 392);
+            this.panel2.Location = new System.Drawing.Point(0, 387);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(404, 21);
+            this.panel2.Size = new System.Drawing.Size(404, 20);
             this.panel2.TabIndex = 2;
             // 
             // lblLocationToAll
@@ -93,45 +112,55 @@
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
-            this.lblLocation.BackColor = System.Drawing.SystemColors.Control;
+            this.lblLocation.BackColor = System.Drawing.Color.GhostWhite;
             this.lblLocation.Location = new System.Drawing.Point(2, 3);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Size = new System.Drawing.Size(62, 15);
             this.lblLocation.TabIndex = 0;
             this.lblLocation.Text = "전송 대상:";
             // 
-            // btnSend
-            // 
-            this.btnSend.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSend.Location = new System.Drawing.Point(334, 5);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(65, 114);
-            this.btnSend.TabIndex = 1;
-            this.btnSend.Text = "전송";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
-            // 
             // rtbChat
             // 
+            this.rtbChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(255)))));
             this.rtbChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbChat.Dock = System.Windows.Forms.DockStyle.Left;
             this.rtbChat.Location = new System.Drawing.Point(5, 5);
             this.rtbChat.Name = "rtbChat";
             this.rtbChat.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.rtbChat.Size = new System.Drawing.Size(318, 114);
+            this.rtbChat.Size = new System.Drawing.Size(318, 120);
             this.rtbChat.TabIndex = 0;
             this.rtbChat.Text = "";
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
             this.panel3.Controls.Add(this.btnSend);
             this.panel3.Controls.Add(this.rtbChat);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 413);
+            this.panel3.Location = new System.Drawing.Point(0, 407);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(404, 124);
+            this.panel3.Size = new System.Drawing.Size(404, 130);
             this.panel3.TabIndex = 5;
+            // 
+            // btnSend
+            // 
+            this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
+            this.btnSend.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
+            this.btnSend.BorderColor = System.Drawing.Color.Black;
+            this.btnSend.BorderRadius = 5;
+            this.btnSend.BorderSize = 0;
+            this.btnSend.FlatAppearance.BorderSize = 0;
+            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSend.ForeColor = System.Drawing.Color.Black;
+            this.btnSend.Location = new System.Drawing.Point(324, 1);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(80, 129);
+            this.btnSend.TabIndex = 1;
+            this.btnSend.Text = "전송";
+            this.btnSend.TextColor = System.Drawing.Color.Black;
+            this.btnSend.UseVisualStyleBackColor = false;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // FormChatPopup
             // 
@@ -145,6 +174,7 @@
             this.Name = "FormChatPopup";
             this.Text = "FormChatPopup";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -159,9 +189,10 @@
         private Panel panMessage;
         private Panel panel2;
         private Label lblLocation;
-        private Button btnSend;
         private RichTextBox rtbChat;
         private Panel panel3;
         private Label lblLocationToAll;
+        private Label lblTitle;
+        private UserControls.RoundButton btnSend;
     }
 }

@@ -57,12 +57,12 @@ namespace Main.View.UserControls
 
         private void ChatListItem_MouseHover(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(240, 240, 240);
+            this.BackColor = Color.FromArgb(245, 245, 245);
         }
 
         private void ChatListItem_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(220, 220, 220);
+            this.BackColor = Color.FromArgb(253, 253, 255);
         }
     }
 }

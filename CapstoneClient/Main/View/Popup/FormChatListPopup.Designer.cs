@@ -29,20 +29,35 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.panChatMemberList = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 25);
             this.panel1.TabIndex = 0;
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.Location = new System.Drawing.Point(102, 5);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(58, 15);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "참가자(4)";
+            // 
             // panChatMemberList
             // 
             this.panChatMemberList.AutoScroll = true;
+            this.panChatMemberList.BackColor = System.Drawing.Color.White;
             this.panChatMemberList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panChatMemberList.Location = new System.Drawing.Point(0, 25);
             this.panChatMemberList.Name = "panChatMemberList";
@@ -58,6 +73,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormChatListPopup";
             this.Text = "FormChatListPopup";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -66,5 +83,6 @@
 
         private Panel panel1;
         private Panel panChatMemberList;
+        private Label lblTitle;
     }
 }

@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatListItem));
             this.rbtnProfile = new Main.View.UserControls.RoundButton();
             this.lblName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // rbtnProfile
             // 
-            this.rbtnProfile.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rbtnProfile.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rbtnProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.rbtnProfile.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.rbtnProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbtnProfile.BackgroundImage")));
+            this.rbtnProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.rbtnProfile.BorderColor = System.Drawing.Color.Black;
             this.rbtnProfile.BorderRadius = 15;
             this.rbtnProfile.BorderSize = 0;
@@ -62,7 +65,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.rbtnProfile);
             this.Name = "ChatListItem";
