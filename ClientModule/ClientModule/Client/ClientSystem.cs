@@ -10,9 +10,9 @@ using ReceiveResult = System.Collections.Generic.KeyValuePair<byte, object?>;
 
 namespace ClientSystem
 {
-	//public delegate void MessageListen(Message message);
+	public delegate void MessageListen(string nick, string content, bool isMe, bool isWhisper);
 
-	public class ClientSystem
+	public partial class ClientSystem
 	{
 		public Server server;
 
@@ -21,9 +21,21 @@ namespace ClientSystem
 		// 객체에 접근하는 객체의 수를 제한(Send)
 		private readonly Semaphore semaphore;
 
-		private int seqNo;
-		private int StudentId;
+		private int seqNo = 0;
+		private int studentID = 0;
+		private string name = "";
+		private string nickName = "";
+		public bool isLogin = false;
 
+		// userCode, nickName
+		public Dictionary<int, string> userList;
+
+		private event MessageListen? messageEvent;
+		public event MessageListen MessageEvent
+		{
+			add		{ messageEvent += value; }
+			remove	{ messageEvent -= value; }
+		}
 
 		public ClientSystem()
 		{
@@ -31,42 +43,26 @@ namespace ClientSystem
 			setAddress();
 			
 			server = Server.Instance;
-			server.receiveEvent += Wakeup;
+
+			server.receiveEvent += WakeUp;
 
 			// 수신 종료 시 이벤트를 등록
 			server.stopEvent += Stop;
 
 			semaphore = new(1, 1);
+
+			userList = new();
+
+			// 연결 설정하는 동안 무조건 대기
+			Thread.Sleep(100);
 		}
 
 		public static void setAddress(string addr = "127.0.0.1")
 		{
-			if (null == Server.setAddress)
-			{
-				Server.setAddress = addr;
-			}
+			Server.setAddress = addr;
 		}
 
-		private void Wakeup()
-		{
-			Console.WriteLine("Wakeup\t: Receive event is occurred.");
-
-			Console.WriteLine("\t: Semaphore Attempt\n");
-			// 세마포어 획득을 시도
-			if (!semaphore.WaitOne(10))
-				return;
-
-			Console.WriteLine("Wakeup\t: Semaphore is assigned.");
-			// Receive 큐가 빌때까지 반복
-			while (!server.IsEmpty())
-			{
-				result = server.Receive();
-			}
-
-			// 세마포어 반환
-			Console.WriteLine("Wakeup\t: Semaphore is returned.\n");
-			semaphore.Release();
-		}
+		private partial void WakeUp();
 
 		// 어떠한 이유에든 수신이 종료되면 발생할 메소드
 		private void Stop()
@@ -74,25 +70,52 @@ namespace ClientSystem
 			Console.WriteLine("\t: Stop Signal Generation");
 
 			// 수신 이벤트를 해제
-			server.receiveEvent -= Wakeup;
+			server.receiveEvent -= WakeUp;
 
 			// 수신 종료 이벤트를 해제
 			server.stopEvent -= Stop;
 
 			Console.WriteLine("Server Disconnect\n");
+			// throw new Exception();
 		}
 
+		public void Login(int studentID, string name, string nickName)
+		{
+			// 이미 로그인 상태라면
+			if (isLogin)
+				return;
 
-		public void Login(int studentID, string name, string nick)
-		{
-			//server.Send(Generater.Generate(new UserProtocol.USER(0,studentID,name,nick)));
-			server.Send(Generater.Generate(new LoginProtocol.LOGIN("201807042","")));
+			this.studentID = studentID;
+			this.name = name;
+			this.nickName = nickName;
+
+			server.Send(Generater.Generate(new LoginProtocol.LOGIN(0, studentID, name, nickName)));
 		}
-		public void SendMessage(int tergetSeq, string content)
+
+		public void Logout()
 		{
-			MessageProtocol.MESSAGE message = new();
+			server.Send(Generater.Generate(new LogoutProtocol.LOGOUT(this.seqNo,studentID)));
+			server.StopReceive();
+		}
+
+		//메시지 보내기
+		public void SendMessage(string content)
+		{
+			if (!isLogin)
+				return;
+			MessageProtocol.MESSAGE message = new(this.studentID, 0, content, this.seqNo);
 
 			server.Send(Generater.Generate(message));
-		} 
+		}
+
+		// 귓속말
+		public void SendWhisperMessage(int targetID,string content)
+		{
+			MessageProtocol.MESSAGE message = new(this.studentID, targetID, content, this.seqNo);
+
+			server.Send(Generater.Generate(message));
+		}
+
+
 	}
 }
