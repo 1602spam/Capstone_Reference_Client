@@ -32,6 +32,7 @@
             this.btnChatList = new System.Windows.Forms.Button();
             this.panMessage = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblLocationToAll = new System.Windows.Forms.Label();
             this.lblLocation = new System.Windows.Forms.Label();
             this.btnSend = new System.Windows.Forms.Button();
             this.rtbChat = new System.Windows.Forms.RichTextBox();
@@ -71,12 +72,23 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblLocationToAll);
             this.panel2.Controls.Add(this.lblLocation);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 392);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(404, 21);
             this.panel2.TabIndex = 2;
+            // 
+            // lblLocationToAll
+            // 
+            this.lblLocationToAll.AutoSize = true;
+            this.lblLocationToAll.Location = new System.Drawing.Point(324, 3);
+            this.lblLocationToAll.Name = "lblLocationToAll";
+            this.lblLocationToAll.Size = new System.Drawing.Size(80, 15);
+            this.lblLocationToAll.TabIndex = 1;
+            this.lblLocationToAll.Text = "-> (전체에게)";
+            this.lblLocationToAll.Click += new System.EventHandler(this.lblLocationToAll_Click);
             // 
             // lblLocation
             // 
@@ -150,5 +162,6 @@
         private Button btnSend;
         private RichTextBox rtbChat;
         private Panel panel3;
+        private Label lblLocationToAll;
     }
 }

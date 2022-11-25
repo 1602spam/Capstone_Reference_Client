@@ -20,5 +20,10 @@ namespace Main.Class
             f.Dock = DockStyle.Fill;
         }
 
+        public static void InitializeMain(this Form f)
+        {
+            f.MaximizeBox = false;
+            f.FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
     }
 }

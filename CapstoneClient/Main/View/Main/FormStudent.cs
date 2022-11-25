@@ -1,4 +1,5 @@
-﻿using Main.View.Popup;
+﻿using Main.Class;
+using Main.View.Popup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace Main.View.Student
         public FormStudent()
         {
             InitializeComponent();
+            this.InitializeMain();
             //레이블의 기본 문자열 설정
             lblNameDef = lblName.Text;
             lblClassNameDef = lblClassName.Text;

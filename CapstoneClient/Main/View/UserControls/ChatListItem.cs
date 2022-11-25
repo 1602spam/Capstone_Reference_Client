@@ -14,7 +14,6 @@ namespace Main.View.UserControls
 {
     public partial class ChatListItem : UserControl
     {
-        public int Code { get; set; }
         public ChatListItem()
         {
             InitializeComponent();
@@ -25,10 +24,12 @@ namespace Main.View.UserControls
             InitializeComponent();
             //this.object = obj;
         }
+
         private void ChatMemberListItem_Load(object sender, EventArgs e)
         {
             Initialize();
         }
+
         public void Initialize()
         {
             this.Dock = DockStyle.Top;

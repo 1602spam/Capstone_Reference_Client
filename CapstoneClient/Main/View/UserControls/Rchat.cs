@@ -32,6 +32,7 @@ namespace Main.View.UserControls
             InitializeComponent();
             this.ChatPanelSize = chatPanelSize;
             Message = str;
+
         }
 
         public Rchat(int chatPanelSize, object obj)
@@ -41,16 +42,28 @@ namespace Main.View.UserControls
             //this.object = obj;
         }
 
+        private void DMCheck()
+        {
+            //if(this.obj.targetSeq!=1)
+            {
+                return;
+                lblName.Text = "(DM)"+"받는 사람 이름" + " <= " + "보낸 사람 이름";
+                lblName.ForeColor = Color.Blue;
+            }
+        }
+
         private void Rchat_Load(object sender, EventArgs e)
         {
             Initialize();
         }
+
 
         public void Initialize()
         {
             this.Dock = DockStyle.Top;
             //object 속성을 기반으로 내용을 채우는 메서드
             this.lblName.Text = "내 이름";
+            DMCheck();
             //this.Message = "메시지";
             this.lblTime.Text = DateTime.Now.ToString("tt hh시 mm분");
         }
@@ -87,7 +100,7 @@ namespace Main.View.UserControls
             rbtnChat.Location = new Point(ChatPanelSize - rbtnChat.Width - 27, rbtnChat.Location.Y);
             lblContext.Location = new Point(ChatPanelSize - lblContext.Width - 35, lblContext.Location.Y);
             lblTime.Location = new Point(rbtnChat.Location.X - GetTextWidth(lblTime) - 5, rbtnChat.Location.Y + rbtnChat.Height - GetTextHeight(lblTime));
-            lblName.Location = new Point(ChatPanelSize - GetTextWidth(lblName) - 37, lblName.Location.Y);
+            lblName.Location = new Point(ChatPanelSize - GetTextWidth(lblName) - 26, lblName.Location.Y);
         }
     }
 }

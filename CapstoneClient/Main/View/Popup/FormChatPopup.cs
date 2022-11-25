@@ -20,15 +20,16 @@ namespace Main.View.Popup
         public List<Lchat> Lchats = new();
         public List<Rchat> Rchats = new();
 
-        public FormChatPopup Instance { get; set; }
+        private int seqLocation = -1;
 
         private String lblLocationDef = "";
 
         public FormChatPopup()
         {
-            this.Instance = this;
-            lblLocationDef = lblLocation.Text;
             InitializeComponent();
+            lblLocationDef = lblLocation.Text;
+            lblLocation.Text += " 전체에게";
+            lblLocationToAll.Visible = false;
             this.InitializePopup();
             //메시지 추가 이벤트 발생 시 호출할 메서드 등록
             //Event += AddChat;
@@ -106,9 +107,22 @@ namespace Main.View.Popup
             OpenChatList();
         }
 
-        private void SetLocation()
+        public void SetLocation(int seq)
         {
-            MessageBox.Show("귓속말 설정해야 됩니당");
+            if (-1 != seq)
+            {
+                this.seqLocation = seq;
+                lblLocationToAll.Visible = true;
+                lblLocation.Text = lblLocationDef + " (DM) " + "유저명";
+                lblLocation.ForeColor = Color.Blue;
+            }
+            else
+            {
+                this.seqLocation = seq;
+                lblLocationToAll.Visible = false;
+                lblLocation.Text = lblLocationDef + " 전체에게";
+                lblLocation.ForeColor = Color.Black;
+            }
         }
 
         private void OpenChatList()
@@ -128,6 +142,11 @@ namespace Main.View.Popup
         private void btnSend_Click(object sender, EventArgs e)
         {
             SendChat();
+        }
+
+        private void lblLocationToAll_Click(object sender, EventArgs e)
+        {
+            SetLocation(-1);
         }
     }
 }

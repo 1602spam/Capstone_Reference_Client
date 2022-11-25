@@ -60,6 +60,7 @@
             this.lblName.Size = new System.Drawing.Size(60, 15);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Username";
+            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // lblTime
             // 

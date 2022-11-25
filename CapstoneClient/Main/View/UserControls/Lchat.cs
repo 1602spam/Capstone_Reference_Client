@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Main.View.Popup;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,6 +41,16 @@ namespace Main.View.UserControls
             //this.object = obj;
         }
 
+        private void DMCheck()
+        {
+            //if(this.obj.targetSeq!=1)
+            return;
+            {
+                lblName.Text = "(DM) " + "보낸 사람 이름";
+                lblName.ForeColor = Color.Blue;
+            }
+        }
+
         private void Lchat_Load(object sender, EventArgs e)
         {
             Initialize();
@@ -50,6 +61,7 @@ namespace Main.View.UserControls
             this.Dock = DockStyle.Top;
             //object 속성을 기반으로 내용을 채우는 메서드
             this.lblName.Text = "보낸 사람 이름";
+            DMCheck();
             //this.Message = "메시지";
             this.lblTime.Text = DateTime.Now.ToString("tt hh시 mm분");
         }
@@ -93,6 +105,15 @@ namespace Main.View.UserControls
             this.Height = lblTime.Bottom + 10;
         }
 
-
+        private void lblName_Click(object sender, EventArgs e)
+        {
+            var form = Application.OpenForms["FormChatPopup"];
+            if (form != null)
+            {
+                FormChatPopup? f = form as FormChatPopup;
+                if (f != null)
+                    f.SetLocation(1);
+            }
+        }
     }
 }

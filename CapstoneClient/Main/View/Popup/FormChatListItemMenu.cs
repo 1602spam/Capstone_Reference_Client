@@ -14,41 +14,43 @@ namespace Main.View.Popup
 {
     public partial class FormChatListItemMenu : Form
     {
+
         public FormChatListItemMenu()
         {
-
             InitializeComponent();
 
-            this.FormBorderStyle = FormBorderStyle.None;
+            if (ConnectInfo.Type == CONNECTTYPE.PROFESSOR)
+            {
+                Button rem = new();
+                rem.Text = "강제 퇴장";
+                panButton.Controls.Add(rem);
+                rem.Dock = DockStyle.Top;
+                rem.FlatStyle = FlatStyle.Flat;
+                rem.FlatAppearance.BorderSize = 0;
+                rem.TextAlign = ContentAlignment.MiddleLeft;
+                rem.Click += RemoveRequest;
+            }
 
             Button dm = new();
             dm.Text = "귓속말 보내기";
+            panButton.Controls.Add(dm);
             dm.Dock = DockStyle.Top;
             dm.FlatStyle = FlatStyle.Flat;
             dm.FlatAppearance.BorderSize = 0;
             dm.TextAlign = ContentAlignment.MiddleLeft;
             dm.Click += delegate (object? s, EventArgs e)
             {
-
+                var form = Application.OpenForms["FormChatPopup"];
+                if (form != null)
+                {
+                    FormChatPopup? f = form as FormChatPopup;
+                    if (f != null)
+                        f.SetLocation(1);
+                }
                 FocusChat();
                 this.Close();
             };
-            dm.BringToFront();
-            panButton.Controls.Add(dm);
 
-
-            if (ConnectInfo.Type == CONNECTTYPE.PROFESSOR)
-            {
-                Button rem = new();
-                rem.Text = "강제 퇴장";
-                rem.Dock = DockStyle.Top;
-                rem.FlatStyle = FlatStyle.Flat;
-                rem.FlatAppearance.BorderSize = 0;
-                rem.TextAlign = ContentAlignment.MiddleLeft;
-                rem.Click += RemoveRequest;
-                rem.BringToFront();
-                panButton.Controls.Add(rem);
-            }
             this.Height = panButton.Height;
         }
 
@@ -58,6 +60,7 @@ namespace Main.View.Popup
             //삭제 요청 시 메시지를 띄우고, OK 클릭 시 이 객체에서 IsDeleted가 true인 객체를 전송함
             if (MessageBox.Show("정말로 퇴장시키시겠습니까?", "알림", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                //유저정보 송신
                 FocusChatList();
                 this.Close();
             }
