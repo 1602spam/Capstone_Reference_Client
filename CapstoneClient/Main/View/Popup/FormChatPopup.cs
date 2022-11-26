@@ -20,7 +20,7 @@ namespace Main.View.Popup
         public List<Lchat> Lchats = new();
         public List<Rchat> Rchats = new();
 
-        private int seqLocation = -1;
+        private int idLocation = 0;
 
         private String lblLocationDef = "";
 
@@ -107,18 +107,18 @@ namespace Main.View.Popup
             OpenChatList();
         }
 
-        public void SetLocation(int seq)
+        public void SetLocation(int id)
         {
-            if (-1 != seq)
+            if (-1 != id)
             {
-                this.seqLocation = seq;
+                this.idLocation = id;
                 lblLocationToAll.Visible = true;
                 lblLocation.Text = lblLocationDef + " (DM) " + "유저명";
                 lblLocation.ForeColor = Color.Blue;
             }
             else
             {
-                this.seqLocation = seq;
+                this.idLocation = id;
                 lblLocationToAll.Visible = false;
                 lblLocation.Text = lblLocationDef + " 전체에게";
                 lblLocation.ForeColor = Color.Black;

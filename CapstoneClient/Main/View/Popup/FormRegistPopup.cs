@@ -18,8 +18,8 @@ namespace Main.View.Popup
         private int connectType = 0;
 
         //connectType은 CONNECTTYPE.PROFESSOR 혹은 CONNECTTYPE.STUDENT
-        //CONNECTTYPE.PROFESSOR일 경우 tbClass는 과목명, tbName은 교수명
-        //CONNECTTYPE.STUDENT일 경우 tbClass는 과목코드, tbName은 학생명
+        //CONNECTTYPE.PROFESSOR일 경우 tbClass는 수업명, tbName은 교수명
+        //CONNECTTYPE.STUDENT일 경우 tbClass는 학번, tbName 학생명, tbIP는 IP
 
         public FormRegistPopup(int connectType)
         {
@@ -30,12 +30,13 @@ namespace Main.View.Popup
 
             if (CONNECTTYPE.PROFESSOR == this.connectType)
             {
-
+                lblIP.Visible = false;
+                panIP.Visible = false;
             }
             else if (CONNECTTYPE.STUDENT == this.connectType)
             {
                 this.Text = "학생으로 접속";
-                lblClass.Text = "과목코드";
+                lblClass.Text = "학번";
                 lblName.Text = "학생명";
             }
 
@@ -127,11 +128,15 @@ namespace Main.View.Popup
             btnConnect.Enabled = false;
             if (CONNECTTYPE.PROFESSOR == this.connectType)
             {
-                //교수 접속 정보 송신(과목명: tbClass.Text, 교수명: tbName.Text)
+                ServerSystem.ServerSystem server = new();
+                //ClientContainer.Instance.setOwner();
+                Task.Delay(50).Wait();
+                ClientSystem.ClientSystem user = new();
+                //user.Login()
             }
             else //(CONNECTTYPE.STUDENT == this.connectType)
             {
-                //학생 접속 정보 송신(과목코드: tbClass.Text, 학생명: tbName.Text)
+                ClientSystem.ClientSystem user = new();
             }
             //응답 대기
             Task.Delay(50);

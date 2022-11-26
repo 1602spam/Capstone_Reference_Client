@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -12,6 +12,21 @@
     <Compile Remove="View\DesignExample\**" />
     <EmbeddedResource Remove="View\DesignExample\**" />
     <None Remove="View\DesignExample\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ClientSystem">
+      <HintPath>..\..\DLL\Debug\net6.0\ClientSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientToServer">
+      <HintPath>..\..\DLL\Debug\net6.0\ClientToServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NetworkLibrary">
+      <HintPath>..\..\DLL\Debug\net6.0\NetworkLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ServerSystem">
+      <HintPath>..\..\Capstone_Reference_Client_UI\DLL\Debug\net6.0\ServerSystem.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

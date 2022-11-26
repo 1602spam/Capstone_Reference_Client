@@ -43,7 +43,7 @@ namespace Main.View.UserControls
 
         private void DMCheck()
         {
-            //if(this.obj.targetSeq!=1)
+            //if(this.obj.targetSeq!=0)
             return;
             {
                 lblName.Text = "(DM) " + "보낸 사람 이름";
