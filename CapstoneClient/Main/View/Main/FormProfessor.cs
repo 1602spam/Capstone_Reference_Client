@@ -61,5 +61,10 @@ namespace Main.View.Professor
             form.Show();
             form.Focus();
         }
+
+        private void FormProfessor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
     }
 }

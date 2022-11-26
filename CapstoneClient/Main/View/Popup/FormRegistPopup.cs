@@ -65,10 +65,6 @@ namespace Main.View.Popup
                     MessageBox.Show("과목명을 입력하세요!", "알림");
                     return;
                 }
-                else if (tbIP.Text.Trim() == "" && ConnectInfo.Type==CONNECTTYPE.STUDENT)
-                {
-                    MessageBox.Show("IP를 입력하세요!", "알림");
-                }
 
                 //테스트용, 접속 정보를 교수로 설정함
                 ConnectInfo.Type = CONNECTTYPE.PROFESSOR;
@@ -95,8 +91,12 @@ namespace Main.View.Popup
                 }
                 else if (tbClass.Text.Trim() == "")
                 {
-                    MessageBox.Show("과목코드를 입력하세요!", "알림");
+                    MessageBox.Show("학번을 입력하세요!", "알림");
                     return;
+                }
+                else if (tbIP.Text.Trim() == "")
+                {
+                    MessageBox.Show("IP를 입력하세요!", "알림");
                 }
 
                 //테스트용, 접속 정보를 교수로 설정함
@@ -136,11 +136,11 @@ namespace Main.View.Popup
                 //ClientContainer.Instance.setOwner();
                 Task.Delay(50).Wait();
                 ClientSystem.ClientSystem user = new();
-                //user.Login()
             }
             else //(CONNECTTYPE.STUDENT == this.connectType)
             {
                 ClientSystem.ClientSystem user = new();
+                user.Login(int.Parse(tbClass.Text), tbName.Text, "닉네임안쓰지롱");
             }
             //응답 대기
             Task.Delay(50);

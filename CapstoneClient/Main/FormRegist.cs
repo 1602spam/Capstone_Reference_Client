@@ -73,8 +73,8 @@ namespace Main
             timer1.Enabled = false;
             timer2.Enabled = false;
             lblLaunchStudent.BackColor = Color.FromArgb(94, 2, 2);
-            lblLaunchStudent.Size = new Size(292, 462);
-            lblLaunchStudent.Location = new Point(0, -35);
+            lblLaunchStudent.Size = new Size(292, 419);
+            lblLaunchStudent.Location = new Point(0, 0);
             FormRegistPopup form = new(CONNECTTYPE.STUDENT);
             form.ShowDialog();
         }
@@ -108,8 +108,8 @@ namespace Main
             timer1.Enabled = false;
             timer2.Enabled = false;
             lblLaunchProfessor.BackColor = Color.FromArgb( 2, 31, 84);
-            lblLaunchProfessor.Size = new Size(292, 462);
-            lblLaunchProfessor.Location = new Point(0, -35);
+            lblLaunchProfessor.Size = new Size(292, 419);
+            lblLaunchProfessor.Location = new Point(0, 0);
             FormRegistPopup form = new(CONNECTTYPE.PROFESSOR);
             form.ShowDialog();
         }
@@ -118,12 +118,12 @@ namespace Main
         //교수lbl size 증가 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (num < 419-41)
+            if (num < 419-82)
             {
 
-                num += (pictureBox1.Height - num) / 15 + 1;
+                num += (pictureBox1.Height - num) / 35 + 1;
                 lblLaunchProfessor.Size = new Size(292, 82 + num);
-                lblLaunchProfessor.Location = new Point(0, 155 - (num / 2));
+                lblLaunchProfessor.Location = new Point(0, 169 - (num / 2));
             }
             else
             {
@@ -133,12 +133,12 @@ namespace Main
         /// 학생lbl size 증가 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (num < 419-41)
+            if (num < 419-82)
             {
-                num += (pictureBox1.Height - num) / 15 + 1;
+                num += (pictureBox1.Height - num) / 35 + 1;
 
                 lblLaunchStudent.Size = new Size(292, 82 + num);
-                lblLaunchStudent.Location = new Point(0, 155 - (num / 2));
+                lblLaunchStudent.Location = new Point(0, 169 - (num / 2));
             }
             else
             {
@@ -153,7 +153,7 @@ namespace Main
             num = 0;
             lblLaunchProfessor.BackColor = Color.FromArgb(120, 2, 31, 84);
             lblLaunchProfessor.Size = new Size(292, 82);
-            lblLaunchProfessor.Location = new Point(0, 155);
+            lblLaunchProfessor.Location = new Point(0, 169);
         }
 
         private void lblProStudent1()//학생lbl 초기화
@@ -161,15 +161,15 @@ namespace Main
             num = 0;
             lblLaunchStudent.BackColor = Color.FromArgb(120, 94, 2, 2);
             lblLaunchStudent.Size = new Size(292, 82);
-            lblLaunchStudent.Location = new Point(0, 155);
+            lblLaunchStudent.Location = new Point(0, 169);
         }
 
         private void FormRegist_Load(object sender, EventArgs e)
         {
-            lblLaunchProfessor.Location = new Point(0, 155);
+            lblLaunchProfessor.Location = new Point(0, 169);
             pictureBox1.Controls.Add(lblLaunchProfessor);
 
-            lblLaunchStudent.Location = new Point(0, 155);
+            lblLaunchStudent.Location = new Point(0, 169);
             pictureBox2.Controls.Add(lblLaunchStudent);
         }
     }

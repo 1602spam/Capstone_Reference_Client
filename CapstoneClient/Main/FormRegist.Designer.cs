@@ -74,12 +74,12 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 30;
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timer2
             // 
-            this.timer2.Interval = 30;
+            this.timer2.Interval = 10;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // lblLaunchStudent
@@ -87,7 +87,7 @@
             this.lblLaunchStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(94)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
             this.lblLaunchStudent.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblLaunchStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblLaunchStudent.Location = new System.Drawing.Point(0, 155);
+            this.lblLaunchStudent.Location = new System.Drawing.Point(0, 169);
             this.lblLaunchStudent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLaunchStudent.Name = "lblLaunchStudent";
             this.lblLaunchStudent.Size = new System.Drawing.Size(292, 82);
@@ -103,7 +103,7 @@
             this.lblLaunchProfessor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(2)))), ((int)(((byte)(31)))), ((int)(((byte)(84)))));
             this.lblLaunchProfessor.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblLaunchProfessor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblLaunchProfessor.Location = new System.Drawing.Point(0, 155);
+            this.lblLaunchProfessor.Location = new System.Drawing.Point(0, 169);
             this.lblLaunchProfessor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLaunchProfessor.Name = "lblLaunchProfessor";
             this.lblLaunchProfessor.Size = new System.Drawing.Size(292, 82);
