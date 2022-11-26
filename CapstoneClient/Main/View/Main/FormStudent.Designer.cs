@@ -30,7 +30,6 @@
         {
             this.lblName = new System.Windows.Forms.Label();
             this.lblClassName = new System.Windows.Forms.Label();
-            this.lblCode = new System.Windows.Forms.Label();
             this.lblProfessorName = new System.Windows.Forms.Label();
             this.btnNote = new System.Windows.Forms.Button();
             this.btnChat = new System.Windows.Forms.Button();
@@ -57,16 +56,6 @@
             this.lblClassName.Size = new System.Drawing.Size(46, 15);
             this.lblClassName.TabIndex = 1;
             this.lblClassName.Text = "수업명:";
-            // 
-            // lblCode
-            // 
-            this.lblCode.AutoSize = true;
-            this.lblCode.Location = new System.Drawing.Point(3, 115);
-            this.lblCode.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(58, 15);
-            this.lblCode.TabIndex = 2;
-            this.lblCode.Text = "수업코드:";
             // 
             // lblProfessorName
             // 
@@ -103,11 +92,10 @@
             this.flPanel1.Controls.Add(this.lblName);
             this.flPanel1.Controls.Add(this.lblClassName);
             this.flPanel1.Controls.Add(this.lblProfessorName);
-            this.flPanel1.Controls.Add(this.lblCode);
             this.flPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flPanel1.Location = new System.Drawing.Point(21, 26);
             this.flPanel1.Name = "flPanel1";
-            this.flPanel1.Size = new System.Drawing.Size(206, 144);
+            this.flPanel1.Size = new System.Drawing.Size(206, 107);
             this.flPanel1.TabIndex = 6;
             // 
             // FormStudent
@@ -130,7 +118,6 @@
 
         private Label lblName;
         private Label lblClassName;
-        private Label lblCode;
         private Label lblProfessorName;
         private Button btnNote;
         private Button btnChat;

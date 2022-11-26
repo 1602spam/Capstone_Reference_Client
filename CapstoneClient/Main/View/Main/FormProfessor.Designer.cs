@@ -63,9 +63,9 @@
             this.lblCode.Location = new System.Drawing.Point(3, 80);
             this.lblCode.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(58, 15);
+            this.lblCode.Size = new System.Drawing.Size(20, 15);
             this.lblCode.TabIndex = 2;
-            this.lblCode.Text = "수업코드:";
+            this.lblCode.Text = "IP:";
             // 
             // btnChat
             // 

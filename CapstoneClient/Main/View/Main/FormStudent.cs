@@ -17,7 +17,6 @@ namespace Main.View.Student
         //레이블의 기본 문자열
         private string lblNameDef = "";             //학생명
         private string lblClassNameDef = "";        //수업명
-        private string lblCodeDef = "";             //수업코드
         private string lblProfessorNameDef = "";    //교수명
         public FormStudent()
         {
@@ -26,7 +25,6 @@ namespace Main.View.Student
             //레이블의 기본 문자열 설정
             lblNameDef = lblName.Text;
             lblClassNameDef = lblClassName.Text;
-            lblCodeDef = lblCode.Text;
             lblProfessorNameDef = lblProfessorName.Text;
             //게임 초대 이벤트 발생 시 수락 거절 창 띄우는 메서드 등록
             //Event += openGameInvitation(object obj)

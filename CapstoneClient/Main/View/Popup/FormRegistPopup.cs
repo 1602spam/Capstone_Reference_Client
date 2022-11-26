@@ -65,6 +65,10 @@ namespace Main.View.Popup
                     MessageBox.Show("과목명을 입력하세요!", "알림");
                     return;
                 }
+                else if (tbIP.Text.Trim() == "" && ConnectInfo.Type==CONNECTTYPE.STUDENT)
+                {
+                    MessageBox.Show("IP를 입력하세요!", "알림");
+                }
 
                 //테스트용, 접속 정보를 교수로 설정함
                 ConnectInfo.Type = CONNECTTYPE.PROFESSOR;

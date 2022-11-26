@@ -21,6 +21,9 @@ namespace Main.View.Attachment
 
         private void btnAddAnswer_Click(object sender, EventArgs e)
         {
+            if (tbAddAnswer.Text.Trim() == null)
+                return;
+
             lbAnswer.Items.Add(tbAddAnswer.Text);
             tbAddAnswer.Clear();
         }

@@ -42,8 +42,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnConnect = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnConnect = new Main.View.UserControls.RoundButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.panIP.SuspendLayout();
@@ -112,7 +112,7 @@
             // 
             this.panIP.Controls.Add(this.label3);
             this.panIP.Controls.Add(this.tbIP);
-            this.panIP.Location = new System.Drawing.Point(16, 114);
+            this.panIP.Location = new System.Drawing.Point(16, 116);
             this.panIP.Name = "panIP";
             this.panIP.Size = new System.Drawing.Size(203, 22);
             this.panIP.TabIndex = 11;
@@ -193,21 +193,6 @@
             this.label1.Size = new System.Drawing.Size(203, 2);
             this.label1.TabIndex = 6;
             // 
-            // btnConnect
-            // 
-            this.btnConnect.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnConnect.FlatAppearance.BorderSize = 0;
-            this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConnect.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnConnect.ForeColor = System.Drawing.Color.White;
-            this.btnConnect.Location = new System.Drawing.Point(16, 9);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(203, 32);
-            this.btnConnect.TabIndex = 5;
-            this.btnConnect.Text = "접속";
-            this.btnConnect.UseVisualStyleBackColor = false;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
@@ -217,6 +202,26 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(240, 53);
             this.panel3.TabIndex = 5;
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnConnect.BackgroundColor = System.Drawing.Color.SteelBlue;
+            this.btnConnect.BorderColor = System.Drawing.Color.Black;
+            this.btnConnect.BorderRadius = 0;
+            this.btnConnect.BorderSize = 0;
+            this.btnConnect.FlatAppearance.BorderSize = 0;
+            this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConnect.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnConnect.ForeColor = System.Drawing.Color.White;
+            this.btnConnect.Location = new System.Drawing.Point(19, 0);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(200, 34);
+            this.btnConnect.TabIndex = 6;
+            this.btnConnect.Text = "접속";
+            this.btnConnect.TextColor = System.Drawing.Color.White;
+            this.btnConnect.UseVisualStyleBackColor = false;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // pictureBox1
             // 
@@ -265,7 +270,6 @@
         private Label lblClass;
         private Panel panel2;
         private Panel panel3;
-        private Button btnConnect;
         private Label label2;
         private Label label1;
         private PictureBox pictureBox1;
@@ -275,5 +279,6 @@
         private Label lblIP;
         private Panel panel4;
         private Panel panel1;
+        private UserControls.RoundButton btnConnect;
     }
 }
