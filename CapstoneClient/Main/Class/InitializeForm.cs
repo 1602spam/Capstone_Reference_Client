@@ -17,7 +17,11 @@ namespace Main.Class
         }
         public static void InitializeAttachment(this Form f)
         {
-            f.Dock = DockStyle.Fill;
+            f.TopLevel = false;
+            f.ShowIcon = false;
+            f.ShowInTaskbar = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Top;
         }
 
         public static void InitializeMain(this Form f)

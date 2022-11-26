@@ -50,9 +50,9 @@
             this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitle.Location = new System.Drawing.Point(102, 5);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(58, 15);
+            this.lblTitle.Size = new System.Drawing.Size(51, 15);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "참가자(4)";
+            this.lblTitle.Text = "참가자()";
             // 
             // panChatMemberList
             // 

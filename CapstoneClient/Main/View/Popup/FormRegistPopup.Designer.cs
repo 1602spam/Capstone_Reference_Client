@@ -36,6 +36,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnConnect = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbCode = new System.Windows.Forms.TextBox();
+            this.lblCode = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -43,7 +45,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(46, 46);
+            this.lblName.Location = new System.Drawing.Point(47, 28);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(43, 15);
             this.lblName.TabIndex = 0;
@@ -51,14 +53,14 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(109, 43);
+            this.tbName.Location = new System.Drawing.Point(110, 25);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(125, 23);
             this.tbName.TabIndex = 1;
             // 
             // tbClass
             // 
-            this.tbClass.Location = new System.Drawing.Point(109, 97);
+            this.tbClass.Location = new System.Drawing.Point(110, 77);
             this.tbClass.Name = "tbClass";
             this.tbClass.Size = new System.Drawing.Size(125, 23);
             this.tbClass.TabIndex = 3;
@@ -66,7 +68,7 @@
             // lblClass
             // 
             this.lblClass.AutoSize = true;
-            this.lblClass.Location = new System.Drawing.Point(46, 100);
+            this.lblClass.Location = new System.Drawing.Point(47, 80);
             this.lblClass.Name = "lblClass";
             this.lblClass.Size = new System.Drawing.Size(43, 15);
             this.lblClass.TabIndex = 2;
@@ -74,6 +76,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.tbCode);
+            this.panel2.Controls.Add(this.lblCode);
             this.panel2.Controls.Add(this.tbClass);
             this.panel2.Controls.Add(this.lblClass);
             this.panel2.Controls.Add(this.tbName);
@@ -111,7 +115,23 @@
             this.panel1.Size = new System.Drawing.Size(284, 50);
             this.panel1.TabIndex = 5;
             // 
-            // FormProfessorRegistPopup
+            // tbCode
+            // 
+            this.tbCode.Location = new System.Drawing.Point(110, 128);
+            this.tbCode.Name = "tbCode";
+            this.tbCode.Size = new System.Drawing.Size(125, 23);
+            this.tbCode.TabIndex = 5;
+            // 
+            // lblCode
+            // 
+            this.lblCode.AutoSize = true;
+            this.lblCode.Location = new System.Drawing.Point(47, 131);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(31, 15);
+            this.lblCode.TabIndex = 4;
+            this.lblCode.Text = "번호";
+            // 
+            // FormRegistPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,7 +139,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "FormProfessorRegistPopup";
+            this.Name = "FormRegistPopup";
             this.Text = "교수자로 접속";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -138,5 +158,7 @@
         private Panel panel3;
         private Button btnConnect;
         private Panel panel1;
+        private TextBox tbCode;
+        private Label lblCode;
     }
 }

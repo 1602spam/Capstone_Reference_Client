@@ -28,7 +28,6 @@ namespace Main.View.Popup
             AddMember(new ChatListItem());
             AddMember(new ChatListItem());
             AddMember(new ChatListItem());
-            AddMember(new ChatListItem());
         }
 
         private void OnMemberReceived(object member)
@@ -65,6 +64,7 @@ namespace Main.View.Popup
             ChatMemberListItems.Add(item);
             panChatMemberList.Controls.Add(item);
             item.BringToFront();
+            lblTitle.Text = "참가자(" + ChatMemberListItems.Count + ")";
         }
     }
 }
