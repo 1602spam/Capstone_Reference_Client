@@ -103,16 +103,6 @@ namespace Main.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap gif_studying {
-            get {
-                object obj = ResourceManager.GetObject("gif_studying", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap Img_professor {
             get {
                 object obj = ResourceManager.GetObject("Img_professor", resourceCulture);
