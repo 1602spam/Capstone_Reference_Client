@@ -97,6 +97,14 @@ namespace Main.View.Popup
                 else if (tbIP.Text.Trim() == "")
                 {
                     MessageBox.Show("IP를 입력하세요!", "알림");
+                    return;
+                }
+
+                int i;
+                if (int.TryParse(tbClass.Text, out i) == false)
+                {
+                    MessageBox.Show("학번에는 숫자만 입력할 수 있습니다.","알림");
+                    return;
                 }
 
                 //테스트용, 접속 정보를 교수로 설정함
@@ -145,7 +153,6 @@ namespace Main.View.Popup
             //응답 대기
             Task.Delay(50);
             btnConnect.Enabled = true;
-            //처리 결과에 따라 true/false 리턴
             return true;
         }
     }

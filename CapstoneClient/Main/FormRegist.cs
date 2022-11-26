@@ -118,7 +118,7 @@ namespace Main
         //교수lbl size 증가 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (num < 419-82)
+            if (num <= 419-82)
             {
 
                 num += (pictureBox1.Height - num) / 35 + 1;
@@ -133,7 +133,7 @@ namespace Main
         /// 학생lbl size 증가 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (num < 419-82)
+            if (num <= 419-82)
             {
                 num += (pictureBox1.Height - num) / 35 + 1;
 
