@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Main.Class;
+using Main.View.Attachments;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,20 @@ namespace Main.View.Popup
         public FormGamePopup()
         {
             InitializeComponent();
+            this.InitializePopup();
+        }
+
+        private void OpenGameSelect()
+        {
+            FormGameSelect form = new FormGameSelect();
+            panMain.Controls.Add(form);
+            form.Show();
+        }
+
+        private void FormGamePopup_Load(object sender, EventArgs e)
+        {
+            if (ConnectInfo.Type == CONNECTTYPE.PROFESSOR)
+            { OpenGameSelect(); }
         }
     }
 }

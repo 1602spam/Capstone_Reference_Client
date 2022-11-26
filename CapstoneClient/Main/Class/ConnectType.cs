@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Main.Class
 {
-    static public class CONNECTTYPE
+    public static class CONNECTTYPE
     {
         public const int PROFESSOR = 1;
         public const int STUDENT = 2;
     }
 
-    public class ConnectType
+    public static class ConnectInfo
     {
+        public static int Type = 0;
     }
 }

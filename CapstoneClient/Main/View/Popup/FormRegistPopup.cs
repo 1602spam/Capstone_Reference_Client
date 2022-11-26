@@ -38,6 +38,15 @@ namespace Main.View.Popup
                 lblClass.Text = "과목코드";
                 lblName.Text = "학생명";
             }
+
+            //접속 정보 수신 시 호출할 이벤트 등록
+            //Event+=OnConnected;
+        }
+
+        private void OnConnected()
+        {
+            //static 클래스인 ConnectInfo의 값을 설정함
+            ConnectInfo.Type = CONNECTTYPE.STUDENT;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -56,6 +65,9 @@ namespace Main.View.Popup
                     return;
                 }
 
+                //테스트용, 접속 정보를 교수로 설정함
+                ConnectInfo.Type = CONNECTTYPE.PROFESSOR;
+
                 //접속 정보를 송신하고 대기, 응답이 오면 새 창을 띄움
                 if (!SendConnectRequestAndWait())
                 {
@@ -66,6 +78,7 @@ namespace Main.View.Popup
                 form.Load += new EventHandler(CloseWindow);
                 form.FormClosed += new FormClosedEventHandler(CloseMainWindow);
                 form.Show();
+                return;
             }
             else //(CONNECTTYPE.STUDENT == this.connectType)
             {
@@ -81,6 +94,9 @@ namespace Main.View.Popup
                     return;
                 }
 
+                //테스트용, 접속 정보를 교수로 설정함
+                ConnectInfo.Type = CONNECTTYPE.STUDENT;
+
                 //접속 정보를 송신하고 대기, 응답이 오면 새 창을 띄움
                 if (!SendConnectRequestAndWait())
                 {
@@ -91,9 +107,8 @@ namespace Main.View.Popup
                 form.Load += new EventHandler(CloseWindow);
                 form.FormClosed += new FormClosedEventHandler(CloseMainWindow);
                 form.Show();
-
+                return;
             }
-            
         }
 
         private void CloseWindow(object? sender, EventArgs e)
@@ -109,6 +124,7 @@ namespace Main.View.Popup
 
         private bool SendConnectRequestAndWait()
         {
+            btnConnect.Enabled = false;
             if (CONNECTTYPE.PROFESSOR == this.connectType)
             {
                 //교수 접속 정보 송신(과목명: tbClass.Text, 교수명: tbName.Text)
@@ -118,9 +134,9 @@ namespace Main.View.Popup
                 //학생 접속 정보 송신(과목코드: tbClass.Text, 학생명: tbName.Text)
             }
             //응답 대기
-            Task.Delay(100).Wait();
-            //처리 결과에 따라 값 설정
-
+            Task.Delay(50);
+            btnConnect.Enabled = true;
+            //처리 결과에 따라 true/false 리턴
             return true;
         }
     }

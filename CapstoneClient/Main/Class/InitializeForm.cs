@@ -15,5 +15,19 @@ namespace Main.Class
             f.FormBorderStyle = FormBorderStyle.FixedDialog;
             f.StartPosition = FormStartPosition.CenterScreen;
         }
+        public static void InitializeAttachment(this Form f)
+        {
+            f.TopLevel = false;
+            f.ShowIcon = false;
+            f.ShowInTaskbar = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Top;
+        }
+
+        public static void InitializeMain(this Form f)
+        {
+            f.MaximizeBox = false;
+            f.FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
     }
 }

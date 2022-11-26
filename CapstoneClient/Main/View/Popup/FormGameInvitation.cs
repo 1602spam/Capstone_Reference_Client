@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Main.View.Popup
 {
-    public partial class FormNotePopup : Form
+    public partial class FormGameInvitation : Form
     {
-        public FormNotePopup()
+        public FormGameInvitation()
         {
             InitializeComponent();
             this.InitializePopup();

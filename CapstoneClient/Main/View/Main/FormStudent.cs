@@ -1,4 +1,5 @@
-﻿using Main.View.Popup;
+﻿using Main.Class;
+using Main.View.Popup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,11 +22,14 @@ namespace Main.View.Student
         public FormStudent()
         {
             InitializeComponent();
+            this.InitializeMain();
             //레이블의 기본 문자열 설정
             lblNameDef = lblName.Text;
             lblClassNameDef = lblClassName.Text;
             lblCodeDef = lblCode.Text;
             lblProfessorNameDef = lblProfessorName.Text;
+            //게임 초대 이벤트 발생 시 수락 거절 창 띄우는 메서드 등록
+            //Event += openGameInvitation(object obj)
         }
         private void btnChat_Click(object sender, EventArgs e)
         {
@@ -35,6 +39,19 @@ namespace Main.View.Student
         {
             openNote();
         }
+
+        private void openGameInvitation(object obj)
+        {
+            var form = Application.OpenForms["FormGameInvitation"];
+            if(form!=null)
+                form.Close();
+
+            var newform = new FormGameInvitation();
+            newform.StartPosition = FormStartPosition.CenterScreen;
+            newform.Show();
+            newform.Focus();
+        }
+
         private void openChat()
         {
             var form = Application.OpenForms["FormChatPopup"];
@@ -46,6 +63,7 @@ namespace Main.View.Student
             form.Show();
             form.Focus();
         }
+
         private void openNote()
         {
             var form = Application.OpenForms["FormNotePopup"];
