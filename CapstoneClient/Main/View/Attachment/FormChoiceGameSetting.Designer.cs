@@ -32,7 +32,7 @@
             this.tbQuestion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.clbAnswer = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.cbAnswerCount = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -79,14 +79,15 @@
             this.clbAnswer.Size = new System.Drawing.Size(568, 94);
             this.clbAnswer.TabIndex = 3;
             // 
-            // button1
+            // btnConfirm
             // 
-            this.button1.Location = new System.Drawing.Point(349, 255);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 50);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "확인";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnConfirm.Location = new System.Drawing.Point(349, 255);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(110, 50);
+            this.btnConfirm.TabIndex = 4;
+            this.btnConfirm.Text = "확인";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // cbAnswerCount
             // 
@@ -179,7 +180,7 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.clbAnswer);
             this.Controls.Add(this.label2);
             this.Name = "FormChoiceGameSetting";
@@ -197,7 +198,7 @@
         private TextBox tbQuestion;
         private Label label2;
         private CheckedListBox clbAnswer;
-        private Button button1;
+        private Button btnConfirm;
         private ComboBox cbAnswerCount;
         private Label label3;
         private Label label4;

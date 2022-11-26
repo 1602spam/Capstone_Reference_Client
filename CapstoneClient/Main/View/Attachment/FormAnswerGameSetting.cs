@@ -27,5 +27,14 @@ namespace Main.View.Attachment
             lbAnswer.Items.Add(tbAddAnswer.Text);
             tbAddAnswer.Clear();
         }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            OpenGame();
+        }
+
+        private void OpenGame()
+        {
+        }
     }
 }

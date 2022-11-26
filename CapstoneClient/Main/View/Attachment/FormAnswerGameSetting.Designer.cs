@@ -30,7 +30,7 @@
         {
             this.label4 = new System.Windows.Forms.Label();
             this.cbTimeLimit = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tbQuestion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,14 +60,15 @@
             this.cbTimeLimit.Size = new System.Drawing.Size(56, 23);
             this.cbTimeLimit.TabIndex = 14;
             // 
-            // button1
+            // btnConfirm
             // 
-            this.button1.Location = new System.Drawing.Point(349, 255);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 50);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "확인";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnConfirm.Location = new System.Drawing.Point(349, 255);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(110, 50);
+            this.btnConfirm.TabIndex = 13;
+            this.btnConfirm.Text = "확인";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // label2
             // 
@@ -159,7 +160,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbAnswer);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.label2);
             this.Name = "FormAnswerGameSetting";
             this.Text = "FormAnswerGameSetting";
@@ -174,7 +175,7 @@
 
         private Label label4;
         private ComboBox cbTimeLimit;
-        private Button button1;
+        private Button btnConfirm;
         private Label label2;
         private TextBox tbQuestion;
         private Label label1;

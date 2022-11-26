@@ -18,14 +18,21 @@ namespace Main.View.Student
         private string lblNameDef = "";             //학생명
         private string lblClassNameDef = "";        //수업명
         private string lblProfessorNameDef = "";    //교수명
+        private string lblIDDef = "";
         public FormStudent()
         {
             InitializeComponent();
             this.InitializeMain();
             //레이블의 기본 문자열 설정
-            lblNameDef = lblName.Text;
-            lblClassNameDef = lblClassName.Text;
-            lblProfessorNameDef = lblProfessorName.Text;
+            lblNameDef = lblName.Text + " ";
+            lblClassNameDef = lblClassName.Text + " ";
+            lblProfessorNameDef = lblProfessorName.Text + " ";
+            lblIDDef = lblID.Text + " ";
+
+            lblName.Text = lblNameDef + ConnectInfo.Name;
+            lblClassName.Text = lblClassNameDef + ConnectInfo.ClassName;
+            lblProfessorName.Text = lblProfessorNameDef + ConnectInfo.ProfessorName;
+            lblID.Text = lblIDDef + ConnectInfo.ID;
             //게임 초대 이벤트 발생 시 수락 거절 창 띄우는 메서드 등록
             //Event += openGameInvitation(object obj)
         }
@@ -72,6 +79,11 @@ namespace Main.View.Student
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
             form.Focus();
+        }
+
+        private void FormStudent_Load(object sender, EventArgs e)
+        {
+            panel2.BackColor = Color.FromArgb(153 - 10, 180 - 10, 209 - 10);
         }
     }
 }

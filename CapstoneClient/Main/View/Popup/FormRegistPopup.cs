@@ -103,7 +103,12 @@ namespace Main.View.Popup
                 int i;
                 if (int.TryParse(tbClass.Text, out i) == false)
                 {
-                    MessageBox.Show("학번에는 숫자만 입력할 수 있습니다.","알림");
+                    MessageBox.Show("학번에는 숫자만 입력할 수 있습니다.", "알림");
+                    return;
+                }
+                else if (i < 0)
+                {
+                    MessageBox.Show("유효한 학번을 입력하세요.", "알림");
                     return;
                 }
 
@@ -143,12 +148,20 @@ namespace Main.View.Popup
                 ServerSystem.ServerSystem server = new();
                 //ClientContainer.Instance.setOwner();
                 Task.Delay(50).Wait();
-                ClientSystem.ClientSystem user = new();
+                ConnectInfo.user = new ClientSystem.ClientSystem();
+                //ConnectInfo.user.Login(-1, tbName.Text, "닉네임안쓰지롱");
+                ConnectInfo.ProfessorName = tbName.Text;
+                ConnectInfo.ClassName = tbClass.Text;
             }
             else //(CONNECTTYPE.STUDENT == this.connectType)
             {
-                ClientSystem.ClientSystem user = new();
-                user.Login(int.Parse(tbClass.Text), tbName.Text, "닉네임안쓰지롱");
+                ConnectInfo.user = new ClientSystem.ClientSystem();
+                Task.Delay(50).Wait();
+                ConnectInfo.user.Login(int.Parse(tbClass.Text), tbName.Text, "닉네임안쓰지롱");
+                ConnectInfo.Name = tbName.Text;
+                int i = 0;
+                if(int.TryParse(tbClass.Text, out i))
+                    ConnectInfo.ID = i;
             }
             //응답 대기
             Task.Delay(50);

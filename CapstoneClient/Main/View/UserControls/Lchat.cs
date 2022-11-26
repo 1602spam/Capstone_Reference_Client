@@ -1,4 +1,5 @@
-﻿using Main.View.Popup;
+﻿using Main.Class.vo;
+using Main.View.Popup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,8 @@ namespace Main.View.UserControls
             }
         }
 
+        public MdlMessage? msg { get; set; }
+
         public Lchat(int chatPanelSize, string str)
         {
             InitializeComponent();
@@ -39,16 +42,17 @@ namespace Main.View.UserControls
             InitializeComponent();
             this.ChatPanelSize = chatPanelSize;
             //this.object = obj;
+            this.msg = obj as MdlMessage;
         }
 
         private void DMCheck()
         {
-            //if(this.obj.targetSeq!=0)
-            return;
-            {
-                lblName.Text = "(DM) " + "보낸 사람 이름";
-                lblName.ForeColor = Color.Blue;
-            }
+            if (this.msg != null)
+                if(this.msg.IsWhisper==true)
+                {
+                    lblName.Text = "(DM) " + "보낸 사람 이름";
+                    lblName.ForeColor = Color.Blue;
+                }
         }
 
         private void Lchat_Load(object sender, EventArgs e)
@@ -59,11 +63,14 @@ namespace Main.View.UserControls
         public void Initialize()
         {
             this.Dock = DockStyle.Top;
+            this.lblTime.Text = DateTime.Now.ToString("tt hh시 mm분");
             //object 속성을 기반으로 내용을 채우는 메서드
-            this.lblName.Text = "보낸 사람 이름";
+            if (this.msg != null)
+                this.lblName.Text = msg.Content;
+            else
+                this.lblName.Text = Message;
             DMCheck();
             //this.Message = "메시지";
-            this.lblTime.Text = DateTime.Now.ToString("tt hh시 mm분");
         }
 
         public static int GetTextHeight(Label lbl)

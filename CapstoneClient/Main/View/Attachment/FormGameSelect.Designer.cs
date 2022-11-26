@@ -32,6 +32,7 @@
             this.btnSelectChoice = new System.Windows.Forms.Button();
             this.btnSelectAnswer = new System.Windows.Forms.Button();
             this.panMain = new System.Windows.Forms.Panel();
+            this.btnSelectOX = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -45,7 +46,7 @@
             // 
             // btnSelectChoice
             // 
-            this.btnSelectChoice.Location = new System.Drawing.Point(279, 12);
+            this.btnSelectChoice.Location = new System.Drawing.Point(223, 12);
             this.btnSelectChoice.Name = "btnSelectChoice";
             this.btnSelectChoice.Size = new System.Drawing.Size(118, 51);
             this.btnSelectChoice.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // btnSelectAnswer
             // 
-            this.btnSelectAnswer.Location = new System.Drawing.Point(403, 12);
+            this.btnSelectAnswer.Location = new System.Drawing.Point(347, 12);
             this.btnSelectAnswer.Name = "btnSelectAnswer";
             this.btnSelectAnswer.Size = new System.Drawing.Size(116, 51);
             this.btnSelectAnswer.TabIndex = 2;
@@ -70,12 +71,23 @@
             this.panMain.Size = new System.Drawing.Size(780, 319);
             this.panMain.TabIndex = 3;
             // 
+            // btnSelectOX
+            // 
+            this.btnSelectOX.Location = new System.Drawing.Point(469, 12);
+            this.btnSelectOX.Name = "btnSelectOX";
+            this.btnSelectOX.Size = new System.Drawing.Size(116, 51);
+            this.btnSelectOX.TabIndex = 4;
+            this.btnSelectOX.Text = "OX";
+            this.btnSelectOX.UseVisualStyleBackColor = true;
+            this.btnSelectOX.Click += new System.EventHandler(this.btnSelectOX_Click);
+            // 
             // FormGameSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 402);
+            this.Controls.Add(this.btnSelectOX);
             this.Controls.Add(this.panMain);
             this.Controls.Add(this.btnSelectAnswer);
             this.Controls.Add(this.btnSelectChoice);
@@ -95,5 +107,6 @@
         private Button btnSelectChoice;
         private Button btnSelectAnswer;
         private Panel panMain;
+        private Button btnSelectOX;
     }
 }

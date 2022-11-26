@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,12 @@ namespace Main.Class
 
     public static class ConnectInfo
     {
-        public static int Type = 0;
+        public static ClientSystem.ClientSystem? user;
+        public static int Type = 0; //CONNECTTYPE을 참조
+        public static int SeqID = 0;
+        public static string Name = "";
+        public static int ID = 0; //학번도 -1이면 교수로 하는 거 어떨까요
+        public static string ClassName = "";
+        public static string ProfessorName = "";
     }
 }

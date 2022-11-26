@@ -1,4 +1,5 @@
 ﻿using Main.Class;
+using Main.Class.vo;
 using Main.View.UserControls;
 using System;
 using System.Collections.Generic;
@@ -31,35 +32,37 @@ namespace Main.View.Popup
             lblLocation.Text += " 전체에게";
             lblLocationToAll.Visible = false;
             this.InitializePopup();
+            if(ConnectInfo.user!=null)
+                ConnectInfo.user.MessageEvent += OnMessageReceived;
             //메시지 추가 이벤트 발생 시 호출할 메서드 등록
             //Event += AddChat;
         }
-
-        private void OnMessageReceived(object message)
+        
+        private void OnMessageReceived(string name, string content, bool isMe, bool isWhisper)
         {
+            MdlMessage msg = new(name, content, isMe, isWhisper);
             //메시지 추가 이벤트 발생 시에
-            //onTop은 받은 메시지와 마지막 메시지의 시간값을 비교해서 이전이라면 true, 아니라면 false
             //객체 속성 중 송신자를 비교해서 다른 사람이면 AddLChat(message,onTop), 나 자신이라면 AddRChat(message,onTop)을 호출함
+            if (isMe)
+                AddRChat(msg, false);
+            else
+                AddLChat(msg, false);
         }
 
         private void AddLChat(object message, bool onTop)
         {
-            /*
             Lchat lchat = new Lchat(panMessage.Width, message);
             Lchats.Add(lchat);
             panMessage.Controls.Add(lchat);
             if(onTop) {lchat.SendToBack();} else {lchat.BringToFront();}
-            */
         }
 
         private void AddRChat(object message, bool onTop)
         {
-            /*
             Rchat rchat = new Rchat(panMessage.Width, rtbChat.Text);
             Rchats.Add(rchat);
             panMessage.Controls.Add(rchat);
             if(onTop) {rchat.SendToBack();} else {rchat.BringToFront();}
-            */
         }
 
         private void AddLChat()
@@ -83,16 +86,15 @@ namespace Main.View.Popup
         private void SendChat()
         {
             //채팅 보내기 버튼 클릭 시
-            if (rtbChat.Text.Length == 0)
+            if (rtbChat.Text.Trim().Length == 0)
                 return;
 
             rtbChat.Text = rtbChat.Text.Trim();
 
             //메시지 객체화해서 전송
+            if(ConnectInfo.user!=null)
+                ConnectInfo.user.SendMessage(rtbChat.Text);
 
-            //테스트용 메시지 표시
-            AddLChat();
-            AddRChat();
             //채팅창 초기화
             rtbChat.Text = String.Empty;
             //채팅창 포커스
@@ -146,7 +148,7 @@ namespace Main.View.Popup
 
         private void lblLocationToAll_Click(object sender, EventArgs e)
         {
-            SetLocation(-1);
+            SetLocation(0);
         }
     }
 }
