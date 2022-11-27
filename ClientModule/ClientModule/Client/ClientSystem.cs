@@ -11,6 +11,7 @@ using ReceiveResult = System.Collections.Generic.KeyValuePair<byte, object?>;
 namespace ClientSystem
 {
 	public delegate void MessageListen(string nick, string content, bool isMe, bool isWhisper);
+	public delegate void ModifyUserListListen(int StudentId, string name, bool delete);
 
 	public partial class ClientSystem
 	{
@@ -35,6 +36,13 @@ namespace ClientSystem
 		{
 			add		{ messageEvent += value; }
 			remove	{ messageEvent -= value; }
+		}
+
+		private event ModifyUserListListen? userListEvent;
+		public event ModifyUserListListen UserListEvent
+		{
+			add { userListEvent += value; }
+			remove { userListEvent -= value; }
 		}
 
 		public ClientSystem()
@@ -75,6 +83,8 @@ namespace ClientSystem
 			// 수신 종료 이벤트를 해제
 			server.stopEvent -= Stop;
 
+			//server.StopReceive();
+
 			Console.WriteLine("Server Disconnect\n");
 			// throw new Exception();
 		}
@@ -88,6 +98,19 @@ namespace ClientSystem
 			this.studentID = studentID;
 			this.name = name;
 			this.nickName = nickName;
+
+			server.Send(Generater.Generate(new LoginProtocol.LOGIN(0, studentID, name, nickName)));
+		}
+
+		public void LoginOwner(string name)
+		{
+			// 이미 로그인 상태라면
+			if (isLogin)
+				return;
+
+			this.studentID = -1;
+			this.name = name;
+			this.nickName = name;
 
 			server.Send(Generater.Generate(new LoginProtocol.LOGIN(0, studentID, name, nickName)));
 		}
@@ -111,11 +134,37 @@ namespace ClientSystem
 		// 귓속말
 		public void SendWhisperMessage(int targetID,string content)
 		{
+			if (!isLogin)
+				return;
 			MessageProtocol.MESSAGE message = new(this.studentID, targetID, content, this.seqNo);
 
 			server.Send(Generater.Generate(message));
 		}
 
+		public void ModifyUser(int targetID, string name)
+		{
+			// 없다면
+			if (!userList.ContainsKey(targetID))
+				userList.Add(targetID, name);
+			else
+				userList[targetID] = name;
 
+			userListEvent?.Invoke(studentID, name, false);
+
+			foreach(var item in userList)
+			{
+				Console.WriteLine(item.Key + "\t" + item.Value);
+			}
+		}
+		public void DeleteUser(int targetID)
+		{
+			// 있다면
+			if (userList.ContainsKey(targetID))
+			{
+				userListEvent?.Invoke(studentID, userList[targetID], true);
+				userList.Remove(targetID);
+			}
+
+		}
 	}
 }
