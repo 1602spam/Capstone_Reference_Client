@@ -24,9 +24,9 @@ namespace ClientSystem
 		private readonly Semaphore semaphore;
 
 		private int seqNo = 0;
-		private int studentID = 0;
-		private string name = "";
-		private string nickName = "";
+		public int studentID = 0;
+		public string name = "";
+		public string nickName = "";
 		public bool isLogin = false;
 
 		// userCode, nickName
