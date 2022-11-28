@@ -41,7 +41,7 @@ namespace ClientSystem
 						UserProcess(result);
 						break;
 					case DataType.GAME_START:
-						GameStart();
+						GameProcess();
 						break;
 					default:
 						break;
@@ -137,6 +137,7 @@ namespace ClientSystem
 			// 유저에 대한 변경 사항이므로 저장 (생성, 수정)
 			ModifyUser(user.studentID, user.name);
 		}
+
 		private void ModifyUser(int targetID, string name)
 		{
 			// 없다면
