@@ -12,6 +12,7 @@ namespace ClientSystem
 {
 	public delegate void MessageListen(string nick, string content, bool isMe, bool isWhisper);
 	public delegate void ModifyUserListListen(int StudentId, string name, bool delete);
+	public delegate void GameStartListen();
 
 	public partial class ClientSystem
 	{
@@ -43,6 +44,13 @@ namespace ClientSystem
 		{
 			add { userListEvent += value; }
 			remove { userListEvent -= value; }
+		}
+
+		private event GameStartListen? gameEvent;
+		public event GameStartListen GameEvent
+		{
+			add { gameEvent += value; }
+			remove { gameEvent -= value; }
 		}
 
 		public ClientSystem()
@@ -139,32 +147,6 @@ namespace ClientSystem
 			MessageProtocol.MESSAGE message = new(this.studentID, targetID, content, this.seqNo);
 
 			server.Send(Generater.Generate(message));
-		}
-
-		public void ModifyUser(int targetID, string name)
-		{
-			// 없다면
-			if (!userList.ContainsKey(targetID))
-				userList.Add(targetID, name);
-			else
-				userList[targetID] = name;
-
-			userListEvent?.Invoke(studentID, name, false);
-
-			foreach(var item in userList)
-			{
-				Console.WriteLine(item.Key + "\t" + item.Value);
-			}
-		}
-		public void DeleteUser(int targetID)
-		{
-			// 있다면
-			if (userList.ContainsKey(targetID))
-			{
-				userListEvent?.Invoke(studentID, userList[targetID], true);
-				userList.Remove(targetID);
-			}
-
 		}
 	}
 }
