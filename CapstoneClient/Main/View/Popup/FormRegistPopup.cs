@@ -72,6 +72,7 @@ namespace Main.View.Popup
                 //접속 정보를 송신하고 대기, 응답이 오면 새 창을 띄움
                 if (!SendConnectRequestAndWait())
                 {
+                    MessageBox.Show("연결에 실패했습니다.", "알림");
                     return;
                 }
 
@@ -118,6 +119,7 @@ namespace Main.View.Popup
                 //접속 정보를 송신하고 대기, 응답이 오면 새 창을 띄움
                 if (!SendConnectRequestAndWait())
                 {
+                    MessageBox.Show("연결에 실패했습니다.", "알림");
                     return;
                 }
 
@@ -149,22 +151,23 @@ namespace Main.View.Popup
                 //ClientContainer.Instance.setOwner();
                 Task.Delay(50).Wait();
                 ConnectInfo.user = new ClientSystem.ClientSystem();
-                //ConnectInfo.user.Login(-1, tbName.Text, "닉네임안쓰지롱");
-                ConnectInfo.ProfessorName = tbName.Text;
-                ConnectInfo.ClassName = tbClass.Text;
+                //ConnectInfo.user.Login(-1, tbName.Text, String.Empty);
+                ConnectInfo.InitializeProfessor(tbClass.Text, tbName.Text);
             }
             else //(CONNECTTYPE.STUDENT == this.connectType)
             {
+                int i = 0;
+                if (int.TryParse(tbClass.Text, out i))
+                    ConnectInfo.ID = i;
+                else
+                    return false;
+
                 ConnectInfo.user = new ClientSystem.ClientSystem();
                 Task.Delay(50).Wait();
-                ConnectInfo.user.Login(int.Parse(tbClass.Text), tbName.Text, "닉네임안쓰지롱");
-                ConnectInfo.Name = tbName.Text;
-                int i = 0;
-                if(int.TryParse(tbClass.Text, out i))
-                    ConnectInfo.ID = i;
+                ConnectInfo.user.Login(ConnectInfo.ID, tbName.Text, string.Empty);
+                ConnectInfo.InitializeStudent(i, tbName.Text);
             }
             //응답 대기
-            Task.Delay(50);
             btnConnect.Enabled = true;
             return true;
         }

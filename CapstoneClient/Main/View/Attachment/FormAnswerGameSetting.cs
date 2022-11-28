@@ -21,11 +21,25 @@ namespace Main.View.Attachment
 
         private void btnAddAnswer_Click(object sender, EventArgs e)
         {
-            if (tbAddAnswer.Text.Trim() == null)
+            if (tbAddAnswer.Text.Trim() == String.Empty)
                 return;
 
-            lbAnswer.Items.Add(tbAddAnswer.Text);
-            tbAddAnswer.Clear();
+            //선택한 게 있으면
+            int i = lbAnswer.SelectedIndex;
+            if (i != -1)
+            {
+                if (lbAnswer.Items[i].ToString().Trim() != string.Empty)
+                {
+                    lbAnswer.Items.RemoveAt(i);
+                    lbAnswer.Items.Insert(i, tbAddAnswer.Text);
+                    tbAddAnswer.Clear();
+                }
+            }
+            else
+            {
+                lbAnswer.Items.Add(tbAddAnswer.Text);
+                tbAddAnswer.Clear();
+            }
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -35,6 +49,49 @@ namespace Main.View.Attachment
 
         private void OpenGame()
         {
+        }
+
+        private void lbAnswer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InvalidateBtnRemove();
+        }
+
+        private void InvalidateBtnRemove()
+        {
+            int i = lbAnswer.SelectedIndex;
+            if (i != -1)
+            {
+                if (lbAnswer.Items[i].ToString().Trim() != string.Empty)
+                {
+                    btnRemove.Enabled = true;
+                    btnAddAnswer.Text = "수정";
+                }
+                else
+                {
+                    btnRemove.Enabled = false;
+                    btnAddAnswer.Text = "추가";
+                }
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            int i = lbAnswer.SelectedIndex;
+            if (i != -1)
+            {
+                lbAnswer.Items.RemoveAt(i);
+            }
+        }
+
+        private void lbAnswer_MouseDown(object sender, MouseEventArgs e)
+        {
+            if ((lbAnswer.ItemHeight * lbAnswer.Items.Count) < e.Y)
+            {
+                // listbox 선택이 해제 되었을 때
+                lbAnswer.SelectedIndex = -1;
+                btnRemove.Enabled = false;
+                btnAddAnswer.Text = "추가";
+            }
         }
     }
 }

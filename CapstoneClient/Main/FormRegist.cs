@@ -121,7 +121,7 @@ namespace Main
             if (num <= 419-82)
             {
 
-                num += (pictureBox1.Height - num) / 35 + 1;
+                num += (pictureBox1.Height - num) / 40 + 1;
                 lblLaunchProfessor.Size = new Size(292, 82 + num);
                 lblLaunchProfessor.Location = new Point(0, 169 - (num / 2));
             }
@@ -135,7 +135,7 @@ namespace Main
         {
             if (num <= 419-82)
             {
-                num += (pictureBox1.Height - num) / 35 + 1;
+                num += (pictureBox1.Height - num) / 40 + 1;
 
                 lblLaunchStudent.Size = new Size(292, 82 + num);
                 lblLaunchStudent.Location = new Point(0, 169 - (num / 2));
