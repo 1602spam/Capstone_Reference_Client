@@ -17,17 +17,8 @@ namespace Main.Class
     {
         public static ClientSystem.ClientSystem? user;
         public static int Type = 0; //CONNECTTYPE을 참조
-        public static int SeqID = 0;
-        public static string Name = "";
-        public static int ID = 0; //학번도 -1이면 교수로 하는 거 어떨까요
         public static string ClassName = "";
         public static string ProfessorName = "";
-
-        public static void InitializeStudent(int id, string name)
-        {
-            ConnectInfo.ID = id;
-            ConnectInfo.Name = name;
-        }
 
         public static void InitializeProfessor(string className, string name)
         {

@@ -1,6 +1,7 @@
 ﻿using Main.Class;
 using Main.View.Professor;
 using Main.View.Student;
+using ServerSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,7 +71,7 @@ namespace Main.View.Popup
                 ConnectInfo.Type = CONNECTTYPE.PROFESSOR;
 
                 //접속 정보를 송신하고 대기, 응답이 오면 새 창을 띄움
-                if (!SendConnectRequestAndWait())
+                if (!TryConnectAsProfessor())
                 {
                     MessageBox.Show("연결에 실패했습니다.", "알림");
                     return;
@@ -117,7 +118,7 @@ namespace Main.View.Popup
                 ConnectInfo.Type = CONNECTTYPE.STUDENT;
 
                 //접속 정보를 송신하고 대기, 응답이 오면 새 창을 띄움
-                if (!SendConnectRequestAndWait())
+                if (!TryConnectAsStudent())
                 {
                     MessageBox.Show("연결에 실패했습니다.", "알림");
                     return;
@@ -142,32 +143,31 @@ namespace Main.View.Popup
             FormRegist.Instance.Close();
         }
 
-        private bool SendConnectRequestAndWait()
+        private bool TryConnectAsProfessor()
         {
             btnConnect.Enabled = false;
-            if (CONNECTTYPE.PROFESSOR == this.connectType)
-            {
-                ServerSystem.ServerSystem server = new();
-                //ClientContainer.Instance.setOwner();
-                Task.Delay(50).Wait();
-                ConnectInfo.user = new ClientSystem.ClientSystem();
-                //ConnectInfo.user.Login(-1, tbName.Text, String.Empty);
-                ConnectInfo.InitializeProfessor(tbClass.Text, tbName.Text);
-            }
-            else //(CONNECTTYPE.STUDENT == this.connectType)
-            {
-                int i = 0;
-                if (int.TryParse(tbClass.Text, out i))
-                    ConnectInfo.ID = i;
-                else
-                    return false;
+            ServerSystem.ServerSystem server = new();
+            Task.Delay(50).Wait();
+            ConnectInfo.user = new ClientSystem.ClientSystem();
+            Task.Delay(50).Wait();
+            ConnectInfo.user.LoginOwner(tbName.Text); //LoginOwner 할때 수업명도 받아서 보여주면 좋겠어요
+            ConnectInfo.InitializeProfessor(tbClass.Text, tbName.Text);
+            btnConnect.Enabled = true;
+            return true;
+        }
 
-                ConnectInfo.user = new ClientSystem.ClientSystem();
-                Task.Delay(50).Wait();
-                ConnectInfo.user.Login(ConnectInfo.ID, tbName.Text, string.Empty);
-                ConnectInfo.InitializeStudent(i, tbName.Text);
-            }
-            //응답 대기
+        private bool TryConnectAsStudent()
+        {
+            btnConnect.Enabled = false;
+            int i = 0;
+            if (!int.TryParse(tbClass.Text, out i))
+                return false;
+            
+            ClientSystem.ClientSystem.setAddress(tbIP.Text);
+            ConnectInfo.user = new ClientSystem.ClientSystem();
+            Task.Delay(50).Wait();
+            
+            ConnectInfo.user.Login(i, tbName.Text, "nick");
             btnConnect.Enabled = true;
             return true;
         }

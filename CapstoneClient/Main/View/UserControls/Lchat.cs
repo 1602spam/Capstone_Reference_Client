@@ -66,11 +66,11 @@ namespace Main.View.UserControls
             this.lblTime.Text = DateTime.Now.ToString("tt hh시 mm분");
             //object 속성을 기반으로 내용을 채우는 메서드
             if (this.msg != null)
-                this.lblName.Text = msg.Content;
-            else
-                this.lblName.Text = Message;
+            {
+                this.Message = msg.Content;
+                this.lblName.Text = msg.Name;
+            }
             DMCheck();
-            //this.Message = "메시지";
         }
 
         public static int GetTextHeight(Label lbl)

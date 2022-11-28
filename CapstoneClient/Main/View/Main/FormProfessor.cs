@@ -29,7 +29,10 @@ namespace Main.View.Professor
             lblClassNameDef = lblClassName.Text + " ";
             lblIPDef = lblIP.Text + " " ;
 
-            lblName.Text = lblNameDef + ConnectInfo.ProfessorName;
+            if (ConnectInfo.user != null)
+            {
+                lblName.Text = lblNameDef + ConnectInfo.user.name;
+            }
             lblClassName.Text = lblClassNameDef + ConnectInfo.ClassName;
             lblIP.Text = lblIPDef + GetLocalIP();
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Main.Class;
+using Main.Class.vo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +28,7 @@ namespace Main.View.UserControls
                 ChatLocation();
             }
         }
+        public MdlMessage ?msg { get; set; }
 
         public Rchat(int chatPanelSize, string str)
         {
@@ -39,16 +42,21 @@ namespace Main.View.UserControls
         {
             InitializeComponent();
             this.ChatPanelSize = chatPanelSize;
-            //this.object = obj;
+            if (obj != null)
+            {
+                this.msg = obj as MdlMessage;
+            }
         }
 
         private void DMCheck()
         {
-            //if(this.obj.targetSeq!=1)
+            if (this.msg != null)
             {
-                return;
-                lblName.Text = "(DM)"+"받는 사람 이름" + " <= " + "보낸 사람 이름";
-                lblName.ForeColor = Color.Blue;
+                if (this.msg.IsWhisper == true)
+                {
+                    lblName.Text = "(DM)" + "받는 사람 이름" + " <= " + "보낸 사람 이름";
+                    lblName.ForeColor = Color.Blue;
+                }
             }
         }
 
@@ -61,10 +69,14 @@ namespace Main.View.UserControls
         public void Initialize()
         {
             this.Dock = DockStyle.Top;
-            //object 속성을 기반으로 내용을 채우는 메서드
-            this.lblName.Text = "내 이름";
+
+            if (ConnectInfo.user != null)
+            {
+                this.lblName.Text = ConnectInfo.user.name;
+            }
             DMCheck();
-            //this.Message = "메시지";
+            if(this.msg!=null)
+            this.Message = msg.Content;
             this.lblTime.Text = DateTime.Now.ToString("tt hh시 mm분");
         }
 
@@ -99,7 +111,7 @@ namespace Main.View.UserControls
             this.Height = rbtnChat.Bottom + 10;
             rbtnChat.Location = new Point(ChatPanelSize - rbtnChat.Width - 27, rbtnChat.Location.Y);
             lblContext.Location = new Point(ChatPanelSize - lblContext.Width - 35, lblContext.Location.Y);
-            lblTime.Location = new Point(rbtnChat.Location.X - GetTextWidth(lblTime) - 5, rbtnChat.Location.Y + rbtnChat.Height - GetTextHeight(lblTime));
+            lblTime.Location = new Point(rbtnChat.Location.X - GetTextWidth(lblTime) - 25, rbtnChat.Location.Y + rbtnChat.Height - GetTextHeight(lblTime));
             lblName.Location = new Point(ChatPanelSize - GetTextWidth(lblName) - 26, lblName.Location.Y);
         }
     }

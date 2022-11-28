@@ -15,7 +15,7 @@ namespace Main.Class.vo
 
         public MdlMessage(string name, string content, bool isMe, bool isWhisper)
         {
-            this.Name = Name;
+            this.Name = name;
             this.Content = content;
             this.IsMe = isMe;
             this.IsWhisper = isWhisper;

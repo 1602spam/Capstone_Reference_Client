@@ -29,10 +29,17 @@ namespace Main.View.Student
             lblProfessorNameDef = lblProfessorName.Text + " ";
             lblIDDef = lblID.Text + " ";
 
-            lblName.Text = lblNameDef + ConnectInfo.Name;
+            if (ConnectInfo.user != null)
+            {
+                lblName.Text = lblNameDef + ConnectInfo.user.name;
+                lblID.Text = lblIDDef + ConnectInfo.user.studentID;
+                if (ConnectInfo.user.userList.Keys.Contains(-1))
+                {
+                    lblProfessorName.Text = lblProfessorNameDef + ConnectInfo.user.userList.GetValueOrDefault(-1);
+                }
+            }
             lblClassName.Text = lblClassNameDef + ConnectInfo.ClassName;
-            lblProfessorName.Text = lblProfessorNameDef + ConnectInfo.ProfessorName;
-            lblID.Text = lblIDDef + ConnectInfo.ID;
+            
             //게임 초대 이벤트 발생 시 수락 거절 창 띄우는 메서드 등록
             //Event += openGameInvitation(object obj)
         }

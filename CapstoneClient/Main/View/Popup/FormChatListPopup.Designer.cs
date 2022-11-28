@@ -72,7 +72,7 @@
             this.Controls.Add(this.panChatMemberList);
             this.Controls.Add(this.panel1);
             this.Name = "FormChatListPopup";
-            this.Text = "FormChatListPopup";
+            this.Text = "채팅 참가자 목록";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -18,6 +18,8 @@ namespace Main.View.Popup
 {
     public partial class FormChatPopup : Form
     {
+        delegate void AddChatCallback(object msg, bool ontop);
+
         public List<Lchat> Lchats = new();
         public List<Rchat> Rchats = new();
 
@@ -25,6 +27,7 @@ namespace Main.View.Popup
 
         private String lblLocationDef = "";
 
+        private const int panMessageWidth = 404;
         public FormChatPopup()
         {
             InitializeComponent();
@@ -34,6 +37,7 @@ namespace Main.View.Popup
             this.InitializePopup();
             if(ConnectInfo.user!=null)
                 ConnectInfo.user.MessageEvent += OnMessageReceived;
+
             //메시지 추가 이벤트 발생 시 호출할 메서드 등록
             //Event += AddChat;
         }
@@ -51,18 +55,34 @@ namespace Main.View.Popup
 
         private void AddLChat(object message, bool onTop)
         {
-            Lchat lchat = new Lchat(panMessage.Width, message);
-            Lchats.Add(lchat);
-            panMessage.Controls.Add(lchat);
-            if(onTop) {lchat.SendToBack();} else {lchat.BringToFront();}
+            if (this.panMessage.InvokeRequired)
+            {
+                AddChatCallback c = new AddChatCallback(AddLChat);
+                this.Invoke(c, new object[] { message, onTop });
+            }
+            else
+            {
+                Lchat lchat = new Lchat(panMessageWidth, message);
+                Lchats.Add(lchat);
+                panMessage.Controls.Add(lchat);
+                if (onTop) { lchat.SendToBack(); } else { lchat.BringToFront(); }
+            }
         }
 
         private void AddRChat(object message, bool onTop)
         {
-            Rchat rchat = new Rchat(panMessage.Width, rtbChat.Text);
-            Rchats.Add(rchat);
-            panMessage.Controls.Add(rchat);
-            if(onTop) {rchat.SendToBack();} else {rchat.BringToFront();}
+            if (this.panMessage.InvokeRequired)
+            {
+                AddChatCallback c = new AddChatCallback(AddRChat);
+                this.Invoke(c, new object[] { message, onTop });
+            }
+            else
+            {
+                Rchat rchat = new Rchat(panMessageWidth, message);
+                Rchats.Add(rchat);
+                panMessage.Controls.Add(rchat);
+                if(onTop) {rchat.SendToBack();} else {rchat.BringToFront();}
+            }
         }
 
         private void AddLChat()

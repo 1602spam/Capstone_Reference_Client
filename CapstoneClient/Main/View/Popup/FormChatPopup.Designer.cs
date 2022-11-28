@@ -172,7 +172,7 @@
             this.Controls.Add(this.panMessage);
             this.Controls.Add(this.panel1);
             this.Name = "FormChatPopup";
-            this.Text = "FormChatPopup";
+            this.Text = "채팅창";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

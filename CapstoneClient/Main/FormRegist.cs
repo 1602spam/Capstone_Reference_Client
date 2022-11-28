@@ -14,6 +14,8 @@ namespace Main
         {
             InitializeComponent();
             Instance = this;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
         
         //마우스가 영역안에 있을 경우 .gif 
