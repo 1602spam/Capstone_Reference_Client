@@ -78,10 +78,10 @@ namespace Main.View.Student
 
         private void openNote()
         {
-            var form = Application.OpenForms["FormNotePopup"];
+            var form = Application.OpenForms["MainView"];
             if (form == null)
             {
-                form = new FormNotePopup();
+                form = new Canvas_module.MainView();
             }
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
