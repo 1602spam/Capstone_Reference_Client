@@ -55,7 +55,7 @@
             // 
             this.lblClassName.AutoSize = true;
             this.lblClassName.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblClassName.Location = new System.Drawing.Point(100, 45);
+            this.lblClassName.Location = new System.Drawing.Point(211, 45);
             this.lblClassName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.lblClassName.Name = "lblClassName";
             this.lblClassName.Size = new System.Drawing.Size(46, 15);

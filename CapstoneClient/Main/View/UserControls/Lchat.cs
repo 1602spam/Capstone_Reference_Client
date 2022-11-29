@@ -1,4 +1,5 @@
-﻿using Main.Class.vo;
+﻿using Main.Class;
+using Main.Class.vo;
 using Main.View.Popup;
 using System;
 using System.Collections.Generic;
@@ -119,7 +120,13 @@ namespace Main.View.UserControls
             {
                 FormChatPopup? f = form as FormChatPopup;
                 if (f != null)
-                    f.SetLocation(1);
+                {
+                    if (ConnectInfo.user != null) {
+                        //메시지의 id
+                        int id = -1;
+                        }
+                    //f.SetLocation(id);
+                }
             }
         }
     }

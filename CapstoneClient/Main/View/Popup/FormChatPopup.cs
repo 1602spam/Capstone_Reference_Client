@@ -112,8 +112,17 @@ namespace Main.View.Popup
             rtbChat.Text = rtbChat.Text.Trim();
 
             //메시지 객체화해서 전송
-            if(ConnectInfo.user!=null)
-                ConnectInfo.user.SendMessage(rtbChat.Text);
+            if (ConnectInfo.user != null)
+            {
+                if (idLocation != 0)
+                {
+                    ConnectInfo.user.SendWhisperMessage(idLocation, rtbChat.Text);
+                }
+                else
+                {
+                    ConnectInfo.user.SendMessage(rtbChat.Text);
+                }
+            }
 
             //채팅창 초기화
             rtbChat.Text = String.Empty;
@@ -131,20 +140,30 @@ namespace Main.View.Popup
 
         public void SetLocation(int id)
         {
-            if (-1 != id)
+            if (0 != id)
             {
                 this.idLocation = id;
                 lblLocationToAll.Visible = true;
-                lblLocation.Text = lblLocationDef + " (DM) " + "유저명";
+                string ?str = string.Empty;
+                if (ConnectInfo.user != null)
+                {
+                    ConnectInfo.user.userList.TryGetValue(id, out str);
+                }
+                lblLocation.Text = lblLocationDef + " (DM) " + str;
                 lblLocation.ForeColor = Color.Blue;
             }
             else
             {
-                this.idLocation = id;
-                lblLocationToAll.Visible = false;
-                lblLocation.Text = lblLocationDef + " 전체에게";
-                lblLocation.ForeColor = Color.Black;
+                SetDefaultLocation(id);
             }
+        }
+
+        private void SetDefaultLocation(int id)
+        {
+            this.idLocation = id;
+            lblLocationToAll.Visible = false;
+            lblLocation.Text = lblLocationDef + " 전체에게";
+            lblLocation.ForeColor = Color.Black;
         }
 
         private void OpenChatList()
