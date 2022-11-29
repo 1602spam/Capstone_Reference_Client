@@ -31,8 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbQuestion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.clbAnswer = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.cbAnswerCount = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,6 +39,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.lbAnswer = new System.Windows.Forms.CheckedListBox();
             this.tbAddAnswer = new System.Windows.Forms.TextBox();
             this.btnAddAnswer = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
@@ -70,23 +71,15 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "답";
             // 
-            // clbAnswer
+            // btnConfirm
             // 
-            this.clbAnswer.CheckOnClick = true;
-            this.clbAnswer.FormattingEnabled = true;
-            this.clbAnswer.Location = new System.Drawing.Point(116, 103);
-            this.clbAnswer.Name = "clbAnswer";
-            this.clbAnswer.Size = new System.Drawing.Size(568, 94);
-            this.clbAnswer.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(349, 255);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 50);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "확인";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnConfirm.Location = new System.Drawing.Point(349, 255);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(110, 50);
+            this.btnConfirm.TabIndex = 4;
+            this.btnConfirm.Text = "확인";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // cbAnswerCount
             // 
@@ -152,20 +145,41 @@
             this.panel5.Size = new System.Drawing.Size(684, 50);
             this.panel5.TabIndex = 0;
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(659, 203);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(25, 24);
+            this.btnRemove.TabIndex = 29;
+            this.btnRemove.Text = "x";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // lbAnswer
+            // 
+            this.lbAnswer.FormattingEnabled = true;
+            this.lbAnswer.Location = new System.Drawing.Point(116, 103);
+            this.lbAnswer.Name = "lbAnswer";
+            this.lbAnswer.Size = new System.Drawing.Size(568, 94);
+            this.lbAnswer.TabIndex = 28;
+            this.lbAnswer.SelectedIndexChanged += new System.EventHandler(this.lbAnswer_SelectedIndexChanged);
+            this.lbAnswer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbAnswer_MouseDown);
+            // 
             // tbAddAnswer
             // 
             this.tbAddAnswer.Location = new System.Drawing.Point(116, 203);
             this.tbAddAnswer.Name = "tbAddAnswer";
-            this.tbAddAnswer.Size = new System.Drawing.Size(537, 23);
-            this.tbAddAnswer.TabIndex = 25;
+            this.tbAddAnswer.Size = new System.Drawing.Size(477, 23);
+            this.tbAddAnswer.TabIndex = 27;
             // 
             // btnAddAnswer
             // 
-            this.btnAddAnswer.Location = new System.Drawing.Point(659, 203);
+            this.btnAddAnswer.Location = new System.Drawing.Point(599, 203);
             this.btnAddAnswer.Name = "btnAddAnswer";
-            this.btnAddAnswer.Size = new System.Drawing.Size(25, 24);
-            this.btnAddAnswer.TabIndex = 24;
-            this.btnAddAnswer.Text = "+";
+            this.btnAddAnswer.Size = new System.Drawing.Size(54, 24);
+            this.btnAddAnswer.TabIndex = 26;
+            this.btnAddAnswer.Text = "추가";
             this.btnAddAnswer.UseVisualStyleBackColor = true;
             this.btnAddAnswer.Click += new System.EventHandler(this.btnAddAnswer_Click);
             // 
@@ -174,13 +188,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 317);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.lbAnswer);
             this.Controls.Add(this.tbAddAnswer);
             this.Controls.Add(this.btnAddAnswer);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.clbAnswer);
+            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.label2);
             this.Name = "FormChoiceGameSetting";
             this.Text = "FormChoiceGameSetting";
@@ -196,8 +211,7 @@
         private Label label1;
         private TextBox tbQuestion;
         private Label label2;
-        private CheckedListBox clbAnswer;
-        private Button button1;
+        private Button btnConfirm;
         private ComboBox cbAnswerCount;
         private Label label3;
         private Label label4;
@@ -205,6 +219,8 @@
         private Panel panel3;
         private Panel panel1;
         private Panel panel5;
+        private Button btnRemove;
+        private CheckedListBox lbAnswer;
         private TextBox tbAddAnswer;
         private Button btnAddAnswer;
     }

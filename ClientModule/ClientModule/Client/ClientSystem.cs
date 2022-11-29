@@ -11,6 +11,8 @@ using ReceiveResult = System.Collections.Generic.KeyValuePair<byte, object?>;
 namespace ClientSystem
 {
 	public delegate void MessageListen(string nick, string content, bool isMe, bool isWhisper);
+	public delegate void ModifyUserListListen(int StudentId, string name, bool delete);
+	public delegate void GameStartListen();
 
 	public partial class ClientSystem
 	{
@@ -22,9 +24,9 @@ namespace ClientSystem
 		private readonly Semaphore semaphore;
 
 		private int seqNo = 0;
-		private int studentID = 0;
-		private string name = "";
-		private string nickName = "";
+		public int studentID = 0;
+		public string name = "";
+		public string nickName = "";
 		public bool isLogin = false;
 
 		// userCode, nickName
@@ -35,6 +37,20 @@ namespace ClientSystem
 		{
 			add		{ messageEvent += value; }
 			remove	{ messageEvent -= value; }
+		}
+
+		private event ModifyUserListListen? userListEvent;
+		public event ModifyUserListListen UserListEvent
+		{
+			add { userListEvent += value; }
+			remove { userListEvent -= value; }
+		}
+
+		private event GameStartListen? gameEvent;
+		public event GameStartListen GameEvent
+		{
+			add { gameEvent += value; }
+			remove { gameEvent -= value; }
 		}
 
 		public ClientSystem()
@@ -75,6 +91,8 @@ namespace ClientSystem
 			// 수신 종료 이벤트를 해제
 			server.stopEvent -= Stop;
 
+			//server.StopReceive();
+
 			Console.WriteLine("Server Disconnect\n");
 			// throw new Exception();
 		}
@@ -88,6 +106,19 @@ namespace ClientSystem
 			this.studentID = studentID;
 			this.name = name;
 			this.nickName = nickName;
+
+			server.Send(Generater.Generate(new LoginProtocol.LOGIN(0, studentID, name, nickName)));
+		}
+
+		public void LoginOwner(string name)
+		{
+			// 이미 로그인 상태라면
+			if (isLogin)
+				return;
+
+			this.studentID = -1;
+			this.name = name;
+			this.nickName = name;
 
 			server.Send(Generater.Generate(new LoginProtocol.LOGIN(0, studentID, name, nickName)));
 		}
@@ -111,11 +142,11 @@ namespace ClientSystem
 		// 귓속말
 		public void SendWhisperMessage(int targetID,string content)
 		{
+			if (!isLogin)
+				return;
 			MessageProtocol.MESSAGE message = new(this.studentID, targetID, content, this.seqNo);
 
 			server.Send(Generater.Generate(message));
 		}
-
-
 	}
 }

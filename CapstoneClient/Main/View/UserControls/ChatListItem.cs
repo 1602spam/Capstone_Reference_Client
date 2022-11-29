@@ -14,6 +14,9 @@ namespace Main.View.UserControls
 {
     public partial class ChatListItem : UserControl
     {
+        public int id = 0;
+        private string name = string.Empty;
+        
         public ChatListItem()
         {
             InitializeComponent();
@@ -25,6 +28,13 @@ namespace Main.View.UserControls
             //this.object = obj;
         }
 
+        public ChatListItem(int id, string name)
+        {
+            InitializeComponent();
+            this.id = id;
+            this.name = name;
+        }
+
         private void ChatMemberListItem_Load(object sender, EventArgs e)
         {
             Initialize();
@@ -34,12 +44,19 @@ namespace Main.View.UserControls
         {
             this.Dock = DockStyle.Top;
             //object 속성을 기반으로 내용을 채우는 메서드
-            this.lblName.Text = "유저명123456";
+            if (id != -1)
+            {
+                this.lblName.Text = id.ToString() + " " + name;
+            }
+            else
+            {
+                this.lblName.Text = name;
+            }
         }
 
         private void ChatListItem_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && ConnectInfo.user != null && this.id != ConnectInfo.user.studentID)
             {
                 openItemMenu();
             }
@@ -50,7 +67,7 @@ namespace Main.View.UserControls
             if (form != null)
                 form.Close();
 
-            var newform = new FormChatListItemMenu();
+            var newform = new FormChatListItemMenu(this.id);
             newform.Show();
             newform.Focus();
         }

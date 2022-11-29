@@ -1,6 +1,7 @@
 ﻿using Main.Class;
 using Main.View.Professor;
 using Main.View.Student;
+using ServerSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,8 +19,8 @@ namespace Main.View.Popup
         private int connectType = 0;
 
         //connectType은 CONNECTTYPE.PROFESSOR 혹은 CONNECTTYPE.STUDENT
-        //CONNECTTYPE.PROFESSOR일 경우 tbClass는 과목명, tbName은 교수명
-        //CONNECTTYPE.STUDENT일 경우 tbClass는 과목코드, tbName은 학생명
+        //CONNECTTYPE.PROFESSOR일 경우 tbClass는 수업명, tbName은 교수명
+        //CONNECTTYPE.STUDENT일 경우 tbClass는 학번, tbName 학생명, tbIP는 IP
 
         public FormRegistPopup(int connectType)
         {
@@ -30,17 +31,15 @@ namespace Main.View.Popup
 
             if (CONNECTTYPE.PROFESSOR == this.connectType)
             {
-
+                lblIP.Visible = false;
+                panIP.Visible = false;
             }
             else if (CONNECTTYPE.STUDENT == this.connectType)
             {
                 this.Text = "학생으로 접속";
-                lblClass.Text = "과목코드";
+                lblClass.Text = "학번";
                 lblName.Text = "학생명";
             }
-
-            //접속 정보 수신 시 호출할 이벤트 등록
-            //Event+=OnConnected;
         }
 
         private void OnConnected()
@@ -69,8 +68,9 @@ namespace Main.View.Popup
                 ConnectInfo.Type = CONNECTTYPE.PROFESSOR;
 
                 //접속 정보를 송신하고 대기, 응답이 오면 새 창을 띄움
-                if (!SendConnectRequestAndWait())
+                if (!TryConnectAsProfessor())
                 {
+                    MessageBox.Show("연결에 실패했습니다.", "알림");
                     return;
                 }
 
@@ -90,7 +90,24 @@ namespace Main.View.Popup
                 }
                 else if (tbClass.Text.Trim() == "")
                 {
-                    MessageBox.Show("과목코드를 입력하세요!", "알림");
+                    MessageBox.Show("학번을 입력하세요!", "알림");
+                    return;
+                }
+                else if (tbIP.Text.Trim() == "")
+                {
+                    MessageBox.Show("IP를 입력하세요!", "알림");
+                    return;
+                }
+
+                int i;
+                if (int.TryParse(tbClass.Text, out i) == false)
+                {
+                    MessageBox.Show("학번에는 숫자만 입력할 수 있습니다.", "알림");
+                    return;
+                }
+                else if (i < 0)
+                {
+                    MessageBox.Show("유효한 학번을 입력하세요.", "알림");
                     return;
                 }
 
@@ -98,8 +115,9 @@ namespace Main.View.Popup
                 ConnectInfo.Type = CONNECTTYPE.STUDENT;
 
                 //접속 정보를 송신하고 대기, 응답이 오면 새 창을 띄움
-                if (!SendConnectRequestAndWait())
+                if (!TryConnectAsStudent())
                 {
+                    MessageBox.Show("연결에 실패했습니다.", "알림");
                     return;
                 }
 
@@ -122,21 +140,32 @@ namespace Main.View.Popup
             FormRegist.Instance.Close();
         }
 
-        private bool SendConnectRequestAndWait()
+        private bool TryConnectAsProfessor()
         {
             btnConnect.Enabled = false;
-            if (CONNECTTYPE.PROFESSOR == this.connectType)
-            {
-                //교수 접속 정보 송신(과목명: tbClass.Text, 교수명: tbName.Text)
-            }
-            else //(CONNECTTYPE.STUDENT == this.connectType)
-            {
-                //학생 접속 정보 송신(과목코드: tbClass.Text, 학생명: tbName.Text)
-            }
-            //응답 대기
-            Task.Delay(50);
+            ServerSystem.ServerSystem server = new();
+            Task.Delay(50).Wait();
+            ConnectInfo.user = new ClientSystem.ClientSystem();
+            Task.Delay(50).Wait();
+            ConnectInfo.user.LoginOwner(tbName.Text); //LoginOwner 할때 수업명도 받아서 보여주면 좋겠어요
+            ConnectInfo.InitializeProfessor(tbClass.Text, tbName.Text);
             btnConnect.Enabled = true;
-            //처리 결과에 따라 true/false 리턴
+            return true;
+        }
+
+        private bool TryConnectAsStudent()
+        {
+            btnConnect.Enabled = false;
+            int i = 0;
+            if (!int.TryParse(tbClass.Text, out i))
+                return false;
+            
+            ClientSystem.ClientSystem.setAddress(tbIP.Text);
+            ConnectInfo.user = new ClientSystem.ClientSystem();
+            Task.Delay(50).Wait();
+            
+            ConnectInfo.user.Login(i, tbName.Text, "nick");
+            btnConnect.Enabled = true;
             return true;
         }
     }

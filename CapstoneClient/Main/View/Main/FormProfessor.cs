@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,16 +18,38 @@ namespace Main.View.Professor
         //레이블의 기본 문자열
         private string lblNameDef = "";         //교수명
         private string lblClassNameDef = "";    //수업명
-        private string lblCodeDef = "";         //수업코드
+        private string lblIPDef = "";         //IP
 
         public FormProfessor()
         {
             InitializeComponent();
             this.InitializeMain();
             //레이블의 기본 문자열 설정
-            lblNameDef = lblName.Text;
-            lblClassNameDef = lblClassName.Text;
-            lblCodeDef = lblCode.Text;
+            lblNameDef = lblName.Text + " ";
+            lblClassNameDef = lblClassName.Text + " ";
+            lblIPDef = lblIP.Text + " " ;
+
+            if (ConnectInfo.user != null)
+            {
+                lblName.Text = lblNameDef + ConnectInfo.user.name;
+            }
+            lblClassName.Text = lblClassNameDef + ConnectInfo.ClassName;
+            lblIP.Text = lblIPDef + GetLocalIP();
+        }
+
+        private string GetLocalIP()
+        {
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+            string IP = string.Empty;
+            foreach (var i in host.AddressList)
+            {
+                if (i.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    IP = i.ToString();
+                    break;
+                }
+            }
+            return IP;
         }
 
         private void btnChat_Click(object sender, EventArgs e)
@@ -60,6 +83,11 @@ namespace Main.View.Professor
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
             form.Focus();
+        }
+
+        private void FormProfessor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

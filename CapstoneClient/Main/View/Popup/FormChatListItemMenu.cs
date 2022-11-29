@@ -14,10 +14,11 @@ namespace Main.View.Popup
 {
     public partial class FormChatListItemMenu : Form
     {
-
-        public FormChatListItemMenu()
+        private int id;
+        public FormChatListItemMenu(int id)
         {
             InitializeComponent();
+            this.id = id;
 
             if (ConnectInfo.Type == CONNECTTYPE.PROFESSOR)
             {
@@ -45,7 +46,7 @@ namespace Main.View.Popup
                 {
                     FormChatPopup? f = form as FormChatPopup;
                     if (f != null)
-                        f.SetLocation(1);
+                        f.SetLocation(id);
                 }
                 FocusChat();
                 this.Close();
@@ -62,6 +63,7 @@ namespace Main.View.Popup
             {
                 //유저정보 송신
                 FocusChatList();
+                //ConnectInfo.user
                 this.Close();
             }
             else
