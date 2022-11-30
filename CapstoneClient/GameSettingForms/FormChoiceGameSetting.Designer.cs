@@ -34,20 +34,16 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cbTimeLimit = new System.Windows.Forms.ComboBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.btnRemove = new System.Windows.Forms.Button();
             this.lbAnswer = new System.Windows.Forms.CheckedListBox();
             this.tbAddAnswer = new System.Windows.Forms.TextBox();
             this.btnAddAnswer = new System.Windows.Forms.Button();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Location = new System.Drawing.Point(206, 104);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 15);
             this.label1.TabIndex = 0;
@@ -55,7 +51,7 @@
             // 
             // tbQuestion
             // 
-            this.tbQuestion.Location = new System.Drawing.Point(0, 18);
+            this.tbQuestion.Location = new System.Drawing.Point(206, 122);
             this.tbQuestion.Name = "tbQuestion";
             this.tbQuestion.Size = new System.Drawing.Size(477, 23);
             this.tbQuestion.TabIndex = 1;
@@ -63,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(116, 85);
+            this.label2.Location = new System.Drawing.Point(206, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 15);
             this.label2.TabIndex = 2;
@@ -71,7 +67,7 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(349, 255);
+            this.btnConfirm.Location = new System.Drawing.Point(439, 332);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(110, 50);
             this.btnConfirm.TabIndex = 4;
@@ -82,7 +78,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(482, 0);
+            this.label4.Location = new System.Drawing.Point(688, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 8;
@@ -96,45 +92,17 @@
             "20",
             "25",
             "30"});
-            this.cbTimeLimit.Location = new System.Drawing.Point(483, 18);
+            this.cbTimeLimit.Location = new System.Drawing.Point(689, 122);
             this.cbTimeLimit.Name = "cbTimeLimit";
             this.cbTimeLimit.Size = new System.Drawing.Size(85, 23);
             this.cbTimeLimit.TabIndex = 7;
             this.cbTimeLimit.Text = "직접 입력";
             this.cbTimeLimit.TextUpdate += new System.EventHandler(this.cbTimeLimit_TextUpdate);
             // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(116, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(684, 32);
-            this.panel3.TabIndex = 23;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(116, 317);
-            this.panel1.TabIndex = 21;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label1);
-            this.panel5.Controls.Add(this.tbQuestion);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Controls.Add(this.cbTimeLimit);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(116, 32);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(684, 50);
-            this.panel5.TabIndex = 0;
-            // 
             // btnRemove
             // 
             this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(659, 203);
+            this.btnRemove.Location = new System.Drawing.Point(749, 280);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(25, 24);
             this.btnRemove.TabIndex = 29;
@@ -145,7 +113,7 @@
             // lbAnswer
             // 
             this.lbAnswer.FormattingEnabled = true;
-            this.lbAnswer.Location = new System.Drawing.Point(116, 103);
+            this.lbAnswer.Location = new System.Drawing.Point(206, 180);
             this.lbAnswer.Name = "lbAnswer";
             this.lbAnswer.Size = new System.Drawing.Size(568, 94);
             this.lbAnswer.TabIndex = 28;
@@ -155,14 +123,14 @@
             // 
             // tbAddAnswer
             // 
-            this.tbAddAnswer.Location = new System.Drawing.Point(116, 203);
+            this.tbAddAnswer.Location = new System.Drawing.Point(206, 280);
             this.tbAddAnswer.Name = "tbAddAnswer";
             this.tbAddAnswer.Size = new System.Drawing.Size(477, 23);
             this.tbAddAnswer.TabIndex = 27;
             // 
             // btnAddAnswer
             // 
-            this.btnAddAnswer.Location = new System.Drawing.Point(599, 203);
+            this.btnAddAnswer.Location = new System.Drawing.Point(689, 280);
             this.btnAddAnswer.Name = "btnAddAnswer";
             this.btnAddAnswer.Size = new System.Drawing.Size(54, 24);
             this.btnAddAnswer.TabIndex = 26;
@@ -174,20 +142,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 317);
+            this.ClientSize = new System.Drawing.Size(1008, 495);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.tbQuestion);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lbAnswer);
+            this.Controls.Add(this.cbTimeLimit);
             this.Controls.Add(this.tbAddAnswer);
             this.Controls.Add(this.btnAddAnswer);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormChoiceGameSetting";
             this.Text = "FormChoiceGameSetting";
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,9 +169,6 @@
         private Button btnConfirm;
         private Label label4;
         private ComboBox cbTimeLimit;
-        private Panel panel3;
-        private Panel panel1;
-        private Panel panel5;
         private Button btnRemove;
         private CheckedListBox lbAnswer;
         private TextBox tbAddAnswer;
