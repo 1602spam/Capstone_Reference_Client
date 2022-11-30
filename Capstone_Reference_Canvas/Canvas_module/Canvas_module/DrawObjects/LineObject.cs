@@ -26,11 +26,11 @@ namespace Canvas_module.DrawObjects
         /// 연결된 라인 관련 변수
         /// </summary>
         [NonSerialized]
-        private GraphicsPath? areaPath = null;
+        private GraphicsPath areaPath = null;
         [NonSerialized]
-        private Pen? areaPen = null;
+        private Pen areaPen = null;
         [NonSerialized]
-        private Region? areaRegion = null;
+        private Region areaRegion = null;
 
         #endregion
 

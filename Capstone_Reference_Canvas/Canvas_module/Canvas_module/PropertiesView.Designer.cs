@@ -110,6 +110,7 @@
             this.button_SelectBackgroundColor.TabIndex = 7;
             this.button_SelectBackgroundColor.Text = "...";
             this.button_SelectBackgroundColor.UseVisualStyleBackColor = true;
+            this.button_SelectBackgroundColor.Click += new System.EventHandler(this.button_SelectBackgroundColor_Click);
             // 
             // button_Save
             // 
@@ -118,7 +119,7 @@
             this.button_Save.Size = new System.Drawing.Size(94, 29);
             this.button_Save.TabIndex = 8;
             this.button_Save.Text = "저장";
-            this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.UseVisualStyleBackColor = false;
             this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
             // button_Cancel
@@ -147,7 +148,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "PropertiesView";
-            this.Text = "PropertiesView";
+            this.Text = "속성";
             this.ResumeLayout(false);
             this.PerformLayout();
 

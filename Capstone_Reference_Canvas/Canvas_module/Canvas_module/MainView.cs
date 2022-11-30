@@ -18,7 +18,7 @@ namespace Canvas_module
 	{
 
 		#region 전역변수
-		private PropertiesView properties;
+		private PropertiesView? properies;
 
         #endregion
 
@@ -35,12 +35,9 @@ namespace Canvas_module
 
 
         #endregion
-        private void MainView_Load(object sender, EventArgs e)
-        {
-
-        }
+        
         #region 메뉴 클릭 이벤트
-			#region 파일 메뉴
+		#region 파일 메뉴
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             New();
@@ -124,6 +121,81 @@ namespace Canvas_module
                 MainController.Instance.Notify(ObserverAction.Invalidate);
             }
         }
+        //실행 취소
+        private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.Command.CanUndo)
+            {
+                if (MainController.Instance.Command.Undo())
+                {
+                    //DrawBox 가 새롭게 그리게끔 Observer에게 알린다.
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+
+                    //Command 의 상태가 갱신되게끔 Observer에게 알린다.
+                    MainController.Instance.Notify(ObserverAction.Command);
+                }
+            }
+        }
+
+        private void RedoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.Command.CanRedo)
+            {
+                if (MainController.Instance.Command.Redo())
+                {
+                    //DrawBox 가 새롭게 그리게끔 Observer에게 알린다.
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+
+                    //Command 의 상태가 갱신되게끔 Observer에게 알린다.
+                    MainController.Instance.Notify(ObserverAction.Command);
+                }
+            }
+        }
+
+
+        #endregion
+
+        #region 도구메뉴
+        private void pointertoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ///옵저버에게 선택하기가 선택되었음을 알린다.
+            MainController.Instance.Notify(ObserverAction.Select);
+        }
+
+        private void rectangletoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            ///옵저버에게 사각형 그리기가 선택되었음을 알린다.
+            MainController.Instance.Notify(ObserverAction.Rectangle);
+        
+        }
+
+        private void EllipsetoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ///옵저버에게 원 그리기가 선택되었음을 알린다.
+            MainController.Instance.Notify(ObserverAction.Ellipse);
+        }
+
+        private void linetoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ///옵저버에게 라인 그리기가 선택되었음을 알린다.
+            MainController.Instance.Notify(ObserverAction.Line);
+        }
+
+        private void penciltoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ///옵저버에게 연필이 선택되었음을 알린다.
+            MainController.Instance.Notify(ObserverAction.Pencil);
+        }
+
+        #endregion
+
+        #region 도움말
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("DrawTool 을 이용해 주셔서 감사합니다.");
+        }
+
         #endregion
 
         #region 옵저버 패턴
@@ -180,11 +252,11 @@ namespace Canvas_module
 			//선택된 DrawObject가 하나일 때만 실행 가능하게 한다.
 			if(MainController.Instance.GraphicModel.SelectedCount == 1)
 			{
-				PropertiesStripMenuItem1.Enabled = true;
+				PropertiesToolStripMenuItem.Enabled = true;
 			}
 			else
 			{
-				PropertiesStripMenuItem1.Enabled = false;
+				PropertiesToolStripMenuItem.Enabled = false;
 			}
 			
         }
@@ -194,12 +266,41 @@ namespace Canvas_module
         /// <summary>
         ///  속성 설정하기 
         /// </summary>
+        /// 
+        
+        private void PropertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DrawObjects.DrawObject obj in MainController.Instance.GraphicModel.GrapList)
+            {
+                if (obj.Selected)
+                {
+                    properies = new PropertiesView(obj.Color, obj.BackColor);
+
+                    if (properies.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+                    {
+                        obj.Color = properies.Color;
+                        obj.BackColor = properies.BackGroundColor;
+                        obj.PenWidth = properies.PenWidth;
+
+                        Console.WriteLine(obj.Color.ToString(), obj.BackColor.ToArgb(), obj.PenWidth);
+                        MainController.Instance.Notify(ObserverAction.Invalidate);
+                    }
+
+                    properies.Dispose();
+
+                    break;
+                }
+            }
+        }
 
         #endregion
 
-        #region file new, save, open 
+        #region 새로 만들기 & 저장하기 & 불러오기
 
-
+        /// <summary>
+        /// 새로 만들기 
+        /// 새로 만들기 전에 이전의 작업 내용을 저장 할 것인지 물어보고 진행한다.
+        /// </summary>
         private void New()
         {
             if (MessageBox.Show("새로운 그래프를 작성합니다. 작성 중인 내용은 모두 삭제됩니다.", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
@@ -220,79 +321,88 @@ namespace Canvas_module
             }
         }
 
-
         /// <summary>
         /// 저장하기
+        /// Model.Grapic 클래스를 바이너리로 직렬화해서 파일로 저장한다.
+        /// 파일 확장자는 DTF 이다. (예 : ex.DTF 로 저장된다.)
         /// </summary>
         private void FileSave()
         {
-            //파일 저장 대화창, 저장할 위치와 파일명 입력.
+            //파일 저장 대화창을 이용해서 저장할 위치와 파일명을 입력한다.
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			if(saveFileDialog1.ShowDialog() == DialogResult.OK)
-			{
-				FileStream? fs = null;
 
-				try
-				{
-					fs = new FileStream(saveFileDialog1.FileName, FileMode.Open);
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                FileStream fs = null;
+                try
+                {
+                    fs = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate);
+                    BinaryFormatter bf = new BinaryFormatter();
 
-					BinaryFormatter bf = new BinaryFormatter();
-
-                    
-					//파일을 Model.Graphic 클래스로 역직렬화한다.
-					Model.Graphic tmpItem = bf.Deserialize(fs) as Model.Graphic;
-                    Console.WriteLine("역직렬화 성공");
-                    //MainController, Instance, GraphicModel 을 바이너리 직렬화 한 후 파일로 저장한다.
+                    //MainController.Instance.GraphicModel 을 바이너리 직렬화한 후 파일로 저장한다.
                     bf.Serialize(fs, MainController.Instance.GraphicModel);
-                    Console.WriteLine("저장완료");
-					fs.Close();
-	
-				}
-				catch (Exception e)
-				{
-                    Console.WriteLine(e);
-				}
-			}
+                    fs.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+
+            }
         }
 
+        /// <summary>
+        /// 불러오기
+        /// 파일을 역직렬화 해서 Model.Grapic 클래스 형으로 바꾸어 준다.
+        /// </summary>
         private void FileLoad()
         {
-			openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
-			{
-				if (File.Exists(openFileDialog1.FileName))
-				{
-					FileStream? fs = null;
+            //파일 불러오기 대화창을 이용해서 불러올 파일의 위치와 파일명을 입력한다.
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-					try
-					{
-						fs = new FileStream(openFileDialog1.FileName, FileMode.Open);
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (File.Exists(openFileDialog1.FileName))
+                {
+                    FileStream fs = null;
+                    try
+                    {
 
-						BinaryFormatter? bf = new BinaryFormatter();
+                        fs = new FileStream(openFileDialog1.FileName, FileMode.Open);
 
-						// 파일을 Model.Graphic 클래스로 역직렬화
-						Model.Graphic tmpItem = bf.Deserialize(fs) as Model.Graphic;
+                        BinaryFormatter bf = new BinaryFormatter();
 
-						fs.Close();
+                        //파일을 Model.Graphic 클래스로 역직렬화 한다.
+                        Model.Graphic tmpItem = bf.Deserialize(fs) as Model.Graphic;
 
-						if(tmpItem != null)
-						{
-							MainController.Instance.GraphicModel.GrapList.Clear(); //기존 작성 내용 삭제
-							MainController.Instance.GraphicModel = tmpItem; //tmpItem을 GraphicModel 에 넣어줌.
-							MainController.Instance.Command.Clear(); //실행 취소 및 다시 실행 항목 초기화
-							SetToolStripMenu(); //실행 취소와 다시 실행 버튼의 상태를 설정
-							MainController.Instance.Notify(ObserverAction.FileLoad); //불러오기가 완료됨-> 옵저버에게 알림.
+                        fs.Close();
 
-						}
-					}
-					catch (Exception e)
-					{
+                        if (tmpItem != null)
+                        {
+                            //기존에 작성된 내용은 삭제한다.
+                            MainController.Instance.GraphicModel.GrapList.Clear();
 
-                        Console.WriteLine(e);
-					}
-				}
-			}
+                            //역직렬화 한 tmpItem 을 MainController.Instance.GraphicModel 에 넣어 준다.
+                            MainController.Instance.GraphicModel = tmpItem;
+
+                            //실행 취소와 다시 실행 항목을 초기화 한다.
+                            MainController.Instance.Command.Clear();
+
+                            //실행 취솨와 다시 실행 버튼의 상태를 설정한다.
+                            SetToolStripMenu();
+
+                            //불러오기가 완료 되었음을 옵저버에게 알린다.
+                            MainController.Instance.Notify(ObserverAction.FileLoad);
+
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+            }
         }
 
         private void FileSave_Png()
@@ -311,10 +421,9 @@ namespace Canvas_module
 				e.Cancel = true;
 				return;
 			}
-			if (MessageBox.Show("프로그램을 종료하시겠습니까?", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+			if (MessageBox.Show("작성 중인 내용을 저장 하시겠습니까?", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
 			{
 				FileSave();
-				return;
 			}
 		}
 
@@ -322,11 +431,17 @@ namespace Canvas_module
 
 
 
+
+
+
+
+
+
+
+
+
         #endregion
 
-        private void drawBox1_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
