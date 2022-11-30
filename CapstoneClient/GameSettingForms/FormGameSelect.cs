@@ -29,10 +29,12 @@ namespace Main.View.Attachments
         {
             OpenAnswerSetting();
         }
+
         private void btnSelectOX_Click(object sender, EventArgs e)
         {
             OpenOXSetting();
         }
+
         private void OpenChoiceSetting()
         {
             var f1 = Application.OpenForms["FormChoiceGameSetting"];
@@ -120,7 +122,5 @@ namespace Main.View.Attachments
             btnSelectAnswer.BackColor = Color.FromArgb(225, 225, 225);
             btnSelectOX.BackColor = Color.FromArgb(225, 225, 225);
         }
-
-
     }
 }

@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(116, 41);
+            this.label1.Location = new System.Drawing.Point(214, 127);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 15);
             this.label1.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // tbQuestion
             // 
-            this.tbQuestion.Location = new System.Drawing.Point(116, 59);
+            this.tbQuestion.Location = new System.Drawing.Point(214, 145);
             this.tbQuestion.Name = "tbQuestion";
             this.tbQuestion.Size = new System.Drawing.Size(477, 23);
             this.tbQuestion.TabIndex = 1;
@@ -59,15 +59,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(116, 85);
+            this.label2.Location = new System.Drawing.Point(214, 171);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 15);
+            this.label2.Size = new System.Drawing.Size(31, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "답";
+            this.label2.Text = "보기";
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(349, 255);
+            this.btnConfirm.Location = new System.Drawing.Point(447, 341);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(110, 50);
             this.btnConfirm.TabIndex = 4;
@@ -78,7 +78,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(598, 41);
+            this.label4.Location = new System.Drawing.Point(696, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 8;
@@ -92,7 +92,7 @@
             "20",
             "25",
             "30"});
-            this.cbTimeLimit.Location = new System.Drawing.Point(599, 59);
+            this.cbTimeLimit.Location = new System.Drawing.Point(697, 145);
             this.cbTimeLimit.Name = "cbTimeLimit";
             this.cbTimeLimit.Size = new System.Drawing.Size(85, 23);
             this.cbTimeLimit.TabIndex = 7;
@@ -102,7 +102,7 @@
             // btnRemove
             // 
             this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(659, 203);
+            this.btnRemove.Location = new System.Drawing.Point(757, 289);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(25, 24);
             this.btnRemove.TabIndex = 29;
@@ -113,7 +113,7 @@
             // lbAnswer
             // 
             this.lbAnswer.FormattingEnabled = true;
-            this.lbAnswer.Location = new System.Drawing.Point(116, 103);
+            this.lbAnswer.Location = new System.Drawing.Point(214, 189);
             this.lbAnswer.Name = "lbAnswer";
             this.lbAnswer.Size = new System.Drawing.Size(568, 94);
             this.lbAnswer.TabIndex = 28;
@@ -123,14 +123,14 @@
             // 
             // tbAddAnswer
             // 
-            this.tbAddAnswer.Location = new System.Drawing.Point(116, 203);
+            this.tbAddAnswer.Location = new System.Drawing.Point(214, 289);
             this.tbAddAnswer.Name = "tbAddAnswer";
             this.tbAddAnswer.Size = new System.Drawing.Size(477, 23);
             this.tbAddAnswer.TabIndex = 27;
             // 
             // btnAddAnswer
             // 
-            this.btnAddAnswer.Location = new System.Drawing.Point(599, 203);
+            this.btnAddAnswer.Location = new System.Drawing.Point(697, 289);
             this.btnAddAnswer.Name = "btnAddAnswer";
             this.btnAddAnswer.Size = new System.Drawing.Size(54, 24);
             this.btnAddAnswer.TabIndex = 26;
@@ -142,7 +142,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 317);
+            this.ClientSize = new System.Drawing.Size(1024, 517);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.tbQuestion);
