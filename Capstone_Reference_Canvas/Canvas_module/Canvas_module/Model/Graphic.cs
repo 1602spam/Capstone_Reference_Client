@@ -49,7 +49,7 @@ namespace Canvas_module.Model
                     }
                 }
 
-                return i = 0;
+                return i;
             }
         }
         #endregion

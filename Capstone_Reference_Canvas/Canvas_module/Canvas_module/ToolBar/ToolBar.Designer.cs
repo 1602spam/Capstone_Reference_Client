@@ -65,7 +65,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(535, 28);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // toolStripButtonNew
             // 
@@ -74,7 +73,8 @@
             this.toolStripButtonNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNew.Name = "toolStripButtonNew";
             this.toolStripButtonNew.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonNew.Text = "toolStripButtonNew";
+            this.toolStripButtonNew.Text = "New";
+            this.toolStripButtonNew.ToolTipText = "새로 만들기";
             this.toolStripButtonNew.Click += new System.EventHandler(this.toolStripButtonNew_Click);
             // 
             // toolStripButtonOpen
@@ -84,7 +84,8 @@
             this.toolStripButtonOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonOpen.Name = "toolStripButtonOpen";
             this.toolStripButtonOpen.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonOpen.Text = "toolStripButtonOpen";
+            this.toolStripButtonOpen.Text = "Open";
+            this.toolStripButtonOpen.ToolTipText = "파일 열기";
             this.toolStripButtonOpen.Click += new System.EventHandler(this.toolStripButtonOpen_Click);
             // 
             // toolStripButtonSave
@@ -94,7 +95,8 @@
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonSave.Text = "toolStripButtonSave";
+            this.toolStripButtonSave.Text = "Save";
+            this.toolStripButtonSave.ToolTipText = "저장하기";
             this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
             // 
             // toolStripButtonSelect
@@ -104,7 +106,8 @@
             this.toolStripButtonSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSelect.Name = "toolStripButtonSelect";
             this.toolStripButtonSelect.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonSelect.Text = "toolStripButtonSelect";
+            this.toolStripButtonSelect.Text = "Select";
+            this.toolStripButtonSelect.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // toolStripButtonRectangle
             // 
@@ -113,7 +116,8 @@
             this.toolStripButtonRectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRectangle.Name = "toolStripButtonRectangle";
             this.toolStripButtonRectangle.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonRectangle.Text = "toolStripButtonRectangle";
+            this.toolStripButtonRectangle.Text = "Rectangle";
+            this.toolStripButtonRectangle.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // toolStripButtonEllipse
             // 
@@ -122,7 +126,8 @@
             this.toolStripButtonEllipse.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEllipse.Name = "toolStripButtonEllipse";
             this.toolStripButtonEllipse.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonEllipse.Text = "toolStripButtonEllipse";
+            this.toolStripButtonEllipse.Text = "Ellipse";
+            this.toolStripButtonEllipse.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // toolStripButtonLine
             // 
@@ -131,7 +136,8 @@
             this.toolStripButtonLine.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLine.Name = "toolStripButtonLine";
             this.toolStripButtonLine.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonLine.Text = "toolStripButtonLine";
+            this.toolStripButtonLine.Text = "Line";
+            this.toolStripButtonLine.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // toolStripButtonPencil
             // 
@@ -140,7 +146,8 @@
             this.toolStripButtonPencil.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPencil.Name = "toolStripButtonPencil";
             this.toolStripButtonPencil.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonPencil.Text = "toolStripButtonPencil";
+            this.toolStripButtonPencil.Text = "Pencil";
+            this.toolStripButtonPencil.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // toolStripButtonUndo
             // 
@@ -149,7 +156,7 @@
             this.toolStripButtonUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUndo.Name = "toolStripButtonUndo";
             this.toolStripButtonUndo.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonUndo.Text = "toolStripButtonUndo";
+            this.toolStripButtonUndo.Text = "Undo";
             this.toolStripButtonUndo.Click += new System.EventHandler(this.toolStripButtonUndo_Click);
             // 
             // toolStripButtonRedo
@@ -159,7 +166,7 @@
             this.toolStripButtonRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRedo.Name = "toolStripButtonRedo";
             this.toolStripButtonRedo.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButtonRedo.Text = "toolStripButtonRedo";
+            this.toolStripButtonRedo.Text = "Redo";
             this.toolStripButtonRedo.Click += new System.EventHandler(this.toolStripButtonRedo_Click);
             // 
             // ToolBar

@@ -12,33 +12,33 @@ namespace Canvas_module.Controller
     public sealed class MainController : IObservable
     {
 
-        #region 전역변수
+        #region 전역 변수
 
         /// <summary>
         /// 싱글톤 패턴을 위한 인스턴스
         /// </summary>
-        private static MainController? instance = null;
+        private static MainController instance = null;
 
         /// <summary>
-        /// 현재 Canvas에서 그려지는 DrawObject를 저장하는 Collection
+        /// 현재 DrawBox 에서 그려지는 DrawObject를 저장하는 컬렉션
         /// </summary>
         private Model.Graphic graphicModel = new Model.Graphic();
         private static readonly object padlock = new object();
 
         /// <summary>
-        /// IObserver 를 상속받은 객체를 관리하기 위한 컬렉션
+        /// IObserver 를 상속 받은 객체를 관리하기 위한 컬렉션
         /// </summary>
         private List<IObserver> listener = new List<IObserver>();
 
         /// <summary>
-        /// Undo, Redo 관리 Command 클래스
+        /// 실행취소(Undo) 와 다시실행(Redo)를 관리하는 Command 클래스
         /// </summary>
         private Command.Command command = new Command.Command();
 
         /// <summary>
-        /// 최근에 사용한 Pen의 두께
+        /// 최근에 사용한 Pen 의 두께
         /// </summary>
-        private int lastUsedPenWidth = 1;
+        private int lastUsedPenWith = 1;
 
         /// <summary>
         /// 최근에 사용한 테두리의 색
@@ -49,9 +49,11 @@ namespace Canvas_module.Controller
         /// 최근에 사용한 배경색
         /// </summary>
         private Color lastUsedBackColor = Color.White;
+
         #endregion
 
         #region 생성자
+
         MainController()
         {
 
@@ -82,6 +84,7 @@ namespace Canvas_module.Controller
         #endregion
 
         #region 옵저버 패턴
+
         /// <summary>
         /// 옵저버에 등록된 구독자들에게 ObserverAction 을 전달
         /// 전달은 받은 구독자들은 ObserverAction 에 따라서 적절한 행동을 한다.
@@ -124,9 +127,11 @@ namespace Canvas_module.Controller
         {
             listener.Remove(observer);
         }
+
         #endregion
 
         #region 속성
+
         /// <summary>
         /// 최근에 사용한 Pen 의 두께
         /// </summary>
@@ -134,12 +139,12 @@ namespace Canvas_module.Controller
         {
             get
             {
-                return lastUsedPenWidth;
+                return lastUsedPenWith;
             }
 
             set
             {
-                lastUsedPenWidth = value;
+                lastUsedPenWith = value;
             }
         }
 
@@ -150,11 +155,13 @@ namespace Canvas_module.Controller
         {
             get
             {
+                Console.WriteLine("get"+ lastUsedBackColor);
                 return lastUsedBackColor;
             }
 
             set
             {
+                Console.WriteLine("set"+ lastUsedBackColor);
                 lastUsedBackColor = value;
             }
         }
@@ -175,6 +182,10 @@ namespace Canvas_module.Controller
             }
         }
 
+
+        /// <summary>
+        /// 실행취소(Undo) 와 다시실행(Redo)
+        /// </summary>
         public Command.Command Command
         {
             get
@@ -188,6 +199,9 @@ namespace Canvas_module.Controller
             }
         }
 
+        /// <summary>
+        /// 현재 DrawBox 에 그려진 그래픽 객체 컬렉션
+        /// </summary>
         public Model.Graphic GraphicModel
         {
             get
@@ -201,15 +215,24 @@ namespace Canvas_module.Controller
             }
         }
 
+        /// <summary>
+        /// 현재 선택된 DrawObject 의 Type
+        /// </summary>
         public DrawObjectType DrawObjectType
         {
-            get; set;
+            get;
+            set;
         }
 
+        /// <summary>
+        /// DrawBox 에서 현재 선택된 상태
+        /// </summary>
         public SelectMode SelectMode
         {
-            get; set;
+            get;
+            set;
         }
+
         #endregion
     }
 }

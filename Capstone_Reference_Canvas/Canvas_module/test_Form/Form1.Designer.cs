@@ -42,7 +42,7 @@
             // drawBox1
             // 
             this.drawBox1.BackColor = System.Drawing.Color.White;
-            this.drawBox1.Location = new System.Drawing.Point(141, 157);
+            this.drawBox1.Location = new System.Drawing.Point(47, 84);
             this.drawBox1.Name = "drawBox1";
             this.drawBox1.Size = new System.Drawing.Size(336, 190);
             this.drawBox1.TabIndex = 6;

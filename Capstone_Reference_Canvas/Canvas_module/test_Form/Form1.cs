@@ -8,8 +8,8 @@ namespace test_Form
         public Form1()
         {
             InitializeComponent();
-            MainView mainView = new MainView();
-            mainView.Show();
+            //MainView mainView = new MainView();
+            // ainView.Show();
         }
 
        

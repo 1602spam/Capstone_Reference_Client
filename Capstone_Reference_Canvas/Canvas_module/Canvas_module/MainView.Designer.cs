@@ -45,7 +45,7 @@
             this.UndoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RedoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.PropertiesStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.PropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pointertoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rectangletoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -138,7 +138,7 @@
             this.UndoToolStripMenuItem,
             this.RedoToolStripMenuItem1,
             this.toolStripSeparator3,
-            this.PropertiesStripMenuItem1});
+            this.PropertiesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.editToolStripMenuItem.Text = "편집";
@@ -146,58 +146,62 @@
             // SelectAllToolStripMenuItem
             // 
             this.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem";
-            this.SelectAllToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.SelectAllToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.SelectAllToolStripMenuItem.Text = "전체 선택";
             this.SelectAllToolStripMenuItem.Click += new System.EventHandler(this.SelectAllToolStripMenuItem_Click);
             // 
             // UnselectAllToolStripMenuItem
             // 
             this.UnselectAllToolStripMenuItem.Name = "UnselectAllToolStripMenuItem";
-            this.UnselectAllToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.UnselectAllToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.UnselectAllToolStripMenuItem.Text = "전체 해제";
             this.UnselectAllToolStripMenuItem.Click += new System.EventHandler(this.UnselectAllToolStripMenuItem_Click);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.DeleteToolStripMenuItem.Text = "삭제하기";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // DeleteAllToolStripMenuItem
             // 
             this.DeleteAllToolStripMenuItem.Name = "DeleteAllToolStripMenuItem";
-            this.DeleteAllToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.DeleteAllToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.DeleteAllToolStripMenuItem.Text = "전체 삭제하기";
             this.DeleteAllToolStripMenuItem.Click += new System.EventHandler(this.DeleteAllToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // UndoToolStripMenuItem
             // 
             this.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem";
-            this.UndoToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.UndoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.UndoToolStripMenuItem.Text = "실행 취소";
+            this.UndoToolStripMenuItem.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
             // 
             // RedoToolStripMenuItem1
             // 
             this.RedoToolStripMenuItem1.Name = "RedoToolStripMenuItem1";
-            this.RedoToolStripMenuItem1.Size = new System.Drawing.Size(187, 26);
+            this.RedoToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.RedoToolStripMenuItem1.Text = "다시 실행";
+            this.RedoToolStripMenuItem1.Click += new System.EventHandler(this.RedoToolStripMenuItem1_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(221, 6);
             // 
-            // PropertiesStripMenuItem1
+            // PropertiesToolStripMenuItem
             // 
-            this.PropertiesStripMenuItem1.Name = "PropertiesStripMenuItem1";
-            this.PropertiesStripMenuItem1.Size = new System.Drawing.Size(187, 26);
-            this.PropertiesStripMenuItem1.Text = "속성 실행하기";
+            this.PropertiesToolStripMenuItem.Enabled = false;
+            this.PropertiesToolStripMenuItem.Name = "PropertiesToolStripMenuItem";
+            this.PropertiesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.PropertiesToolStripMenuItem.Text = "속성 실행하기";
+            this.PropertiesToolStripMenuItem.Click += new System.EventHandler(this.PropertiesToolStripMenuItem_Click);
             // 
             // drawToolStripMenuItem
             // 
@@ -216,6 +220,7 @@
             this.pointertoolStripMenuItem.Name = "pointertoolStripMenuItem";
             this.pointertoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.pointertoolStripMenuItem.Text = "선택하기";
+            this.pointertoolStripMenuItem.Click += new System.EventHandler(this.pointertoolStripMenuItem_Click);
             // 
             // rectangletoolStripMenuItem
             // 
@@ -228,24 +233,28 @@
             this.EllipsetoolStripMenuItem.Name = "EllipsetoolStripMenuItem";
             this.EllipsetoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.EllipsetoolStripMenuItem.Text = "원";
+            this.EllipsetoolStripMenuItem.Click += new System.EventHandler(this.EllipsetoolStripMenuItem_Click);
             // 
             // linetoolStripMenuItem
             // 
             this.linetoolStripMenuItem.Name = "linetoolStripMenuItem";
             this.linetoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.linetoolStripMenuItem.Text = "선";
+            this.linetoolStripMenuItem.Click += new System.EventHandler(this.linetoolStripMenuItem_Click);
             // 
             // penciltoolStripMenuItem
             // 
             this.penciltoolStripMenuItem.Name = "penciltoolStripMenuItem";
             this.penciltoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.penciltoolStripMenuItem.Text = "연필";
+            this.penciltoolStripMenuItem.Click += new System.EventHandler(this.penciltoolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.helpToolStripMenuItem.Text = "도움말";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // saveFileDialog1
             // 
@@ -266,7 +275,6 @@
             this.drawBox1.Name = "drawBox1";
             this.drawBox1.Size = new System.Drawing.Size(650, 325);
             this.drawBox1.TabIndex = 2;
-            
             // 
             // toolBar1
             // 
@@ -286,7 +294,6 @@
             this.Name = "MainView";
             this.Text = "DrawTool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
-            this.Load += new System.EventHandler(this.MainView_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -311,7 +318,7 @@
         private ToolStripMenuItem DeleteAllToolStripMenuItem;
         private ToolStripMenuItem UndoToolStripMenuItem;
         private ToolStripMenuItem RedoToolStripMenuItem1;
-        private ToolStripMenuItem PropertiesStripMenuItem1;
+        private ToolStripMenuItem PropertiesToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator3;

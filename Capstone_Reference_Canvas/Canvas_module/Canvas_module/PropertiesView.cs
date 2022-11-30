@@ -42,6 +42,8 @@ namespace Canvas_module
         public PropertiesView(Color color, Color backGroundColor, int penWidth = 1)
         {
             InitializeComponent();
+
+            InitControls();
             label_BackgroundColor.BackColor = backGroundColor;
             label_Color.BackColor = color;
             combobox_PenWidth.Text = penWidth.ToString();
@@ -51,13 +53,13 @@ namespace Canvas_module
         #endregion
 
         #region 이벤트
-        #endregion
+        
 
         //저장하기 버튼
         private void button_Save_Click(object sender, EventArgs e)
         {
-            Controller.MainController.Instance.LastUsedColor = label_Color.BackColor;
-            Controller.MainController.Instance.LastUesdBackgoroundColor = label_BackgroundColor.BackColor;
+            Controller.MainController.Instance.LastUsedColor = Color = label_Color.BackColor;
+            Controller.MainController.Instance.LastUesdBackgoroundColor = BackGroundColor = label_BackgroundColor.BackColor;
             Controller.MainController.Instance.LastUsedPenWidth = PenWidth = int.Parse(combobox_PenWidth.Text);
 
             this.DialogResult = DialogResult.OK;
@@ -74,6 +76,15 @@ namespace Canvas_module
             }
         }
 
+        //배경 색 지정
+        private void button_SelectBackgroundColor_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = label_BackgroundColor.BackColor;
+            if(colorDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                label_BackgroundColor.BackColor = colorDialog1.Color;
+            }
+        }
         //취소하기
         private void button_Cancel_Click(object sender, EventArgs e)
         {
@@ -83,6 +94,7 @@ namespace Canvas_module
                 label_BackgroundColor.BackColor = colorDialog1.Color;
             }
         }
+
 
         /// <summary>
         /// 콤보박스 초기화
@@ -95,5 +107,6 @@ namespace Canvas_module
             }
         }
 
+        #endregion
     }
 }

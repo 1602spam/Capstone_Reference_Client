@@ -11,29 +11,34 @@ namespace Canvas_module.Command
     public class Command
     {
         #region 전역변수
-        /// <summary>
-        /// 실행 취소(Undo) 스택
-        /// List<DrawObject> 를 스택으로 쌓는다.
-        /// </summary>
-        private Stack<List<DrawObject>> undoStack = new Stack<List<DrawObject>>();
 
         /// <summary>
-        /// 다시 실행(Redo) 스택
+        /// 실행취소(Undo) 스택
         /// List<DrawObject> 를 스택으로 쌓는다.
         /// </summary>
-        private Stack<List<DrawObject>> redoStack = new Stack<List<DrawObject>>();
+        private Stack<List<DrawObjects.DrawObject>> undoStack = new Stack<List<DrawObjects.DrawObject>>();
+
+        /// <summary>
+        /// 다시실행(Redo) 스택
+        /// List<DrawObject> 를 스택으로 쌓는다.
+        /// </summary>
+        private Stack<List<DrawObjects.DrawObject>> redoStack = new Stack<List<DrawObjects.DrawObject>>();
+
         #endregion
 
         #region 속성
 
         /// <summary>
-        /// 실행 취소 가능 여부
+        /// 실행취소(Undo) 가능 여부 
         /// </summary>
         public bool CanUndo
         {
             get { return undoStack.Count > 0; }
         }
-        
+
+        /// <summary>
+        /// 다시실행(Redo) 가능 여부
+        /// </summary>
         public bool CanRedo
         {
             get { return redoStack.Count > 0; }
@@ -41,8 +46,7 @@ namespace Canvas_module.Command
 
         #endregion
 
-        #region 내부함수
-
+        #region 내부 함수
 
         /// <summary>
         /// Command 추가 => 실행취소(Undo) 스택에 List<DrawObjects.DrawObject>를 추가한다.
@@ -58,44 +62,6 @@ namespace Canvas_module.Command
         }
 
         /// <summary>
-        /// 실행취소(Undo)
-        /// 실행 취소 후 실행 취소 여부를 bool 값으로 반환
-        /// </summary>
-        /// <returns>true or false</returns>
-        public bool Undo()
-        {
-            if (CanUndo)
-            {
-                //Redo 스택에 현재 GrapList를 넣어준다.
-                redoStack.Push(DataClone(MainController.Instance.GraphicModel.GrapList));
-
-                MainController.Instance.GraphicModel.GrapList = DataClone(undoStack.Pop());
-
-                return true;
-            }
-
-            return false;
-        }
-
-   
-        /// <summary>
-        /// 다시 실행(redo)
-        /// 다시 실행 후 다시 실행 여부를 bool 값 반환.
-        /// </summary>
-        /// <returns>true or false</returns>
-        public bool Redo()
-        {
-            if (CanRedo)
-            {
-                undoStack.Push(DataClone(MainController.Instance.GraphicModel.GrapList));
-
-                MainController.Instance.GraphicModel.GrapList = DataClone(redoStack.Pop());
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
         /// 실행취소(Undo) 와 다시실행(Redo) 스택을 비운다.
         /// </summary>
         public void Clear()
@@ -104,18 +70,66 @@ namespace Canvas_module.Command
             redoStack.Clear();
         }
 
-        private List<DrawObject> DataClone(List<DrawObject> drawObjects)
-        {
-            List<DrawObject> dataclone = new List<DrawObject>();
 
-            foreach(DrawObject item in drawObjects)
+        /// <summary>
+        /// 실행취소(Undo)
+        /// 실행취소 후 실행취소 여부를 bool 값으로 반환한다.
+        /// </summary>
+        /// <returns>true or false</returns>
+        public bool Undo()
+        {
+            if (CanUndo)
             {
-                dataclone.Add(item.Clone());
+                //다시실행(Redo) 스택에 현재 GrapList 를 넣어준다.
+                redoStack.Push(DataClone(MainController.Instance.GraphicModel.GrapList));
+
+                //실행취소(Undo) 스택에서 가장 최근에 들어온 값을 복사하여 현재 GrapList에 입력한다.
+                MainController.Instance.GraphicModel.GrapList = DataClone(undoStack.Pop());
+
+                return true;
             }
 
-            return dataclone;
+            return false;
         }
-        #endregion
 
+        /// <summary>
+        /// 다시실행(Redo)
+        /// 다시실행 후 다시실행 여부를 bool 값으로 반환한다.
+        /// </summary>
+        /// <returns>true or false</returns>
+        public bool Redo()
+        {
+            if (CanRedo)
+            {
+                //실행취소(Undo) 스택에 현재 GrapList 를 넣어준다.
+                undoStack.Push(DataClone(MainController.Instance.GraphicModel.GrapList));
+
+                //현재 GrapList 에 다시실행(Redo) 스택에서 가장 최근에 들어온 값을 복사하여 넣어준다.
+                MainController.Instance.GraphicModel.GrapList = DataClone(redoStack.Pop());
+
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// List<DrawObjects.DrawObject> 을 복사하여 반환한다.
+        /// </summary>
+        /// <param name="data">List<DrawObjects.DrawObject></param>
+        /// <returns>List<DrawObjects.DrawObject></returns>
+        private List<DrawObjects.DrawObject> DataClone(List<DrawObjects.DrawObject> data)
+        {
+            List<DrawObject> clone = new List<DrawObject>();
+
+            foreach (DrawObject item in data)
+            {
+                clone.Add(item.Clone());
+            }
+
+            return clone;
+        }
+
+        #endregion
     }
 }

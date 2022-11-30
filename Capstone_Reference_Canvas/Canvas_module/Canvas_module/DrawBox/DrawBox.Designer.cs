@@ -66,24 +66,28 @@
             this.SelectAlltoolStripMenuItem.Name = "SelectAlltoolStripMenuItem";
             this.SelectAlltoolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.SelectAlltoolStripMenuItem.Text = "전체 선택";
+            this.SelectAlltoolStripMenuItem.Click += new System.EventHandler(this.SelectAlltoolStripMenuItem_Click);
             // 
             // UnselectAlltoolStripMenuItem
             // 
             this.UnselectAlltoolStripMenuItem.Name = "UnselectAlltoolStripMenuItem";
             this.UnselectAlltoolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.UnselectAlltoolStripMenuItem.Text = "전체 해제";
+            this.UnselectAlltoolStripMenuItem.Click += new System.EventHandler(this.UnselectAlltoolStripMenuItem_Click);
             // 
             // DeletetoolStripMenuItem
             // 
             this.DeletetoolStripMenuItem.Name = "DeletetoolStripMenuItem";
             this.DeletetoolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.DeletetoolStripMenuItem.Text = "삭제하기";
+            this.DeletetoolStripMenuItem.Click += new System.EventHandler(this.DeletetoolStripMenuItem_Click);
             // 
             // DeleteAlltoolStripMenuItem
             // 
             this.DeleteAlltoolStripMenuItem.Name = "DeleteAlltoolStripMenuItem";
             this.DeleteAlltoolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.DeleteAlltoolStripMenuItem.Text = "전체 삭제하기";
+            this.DeleteAlltoolStripMenuItem.Click += new System.EventHandler(this.DeleteAlltoolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -95,12 +99,14 @@
             this.UndotoolStripMenuItem.Name = "UndotoolStripMenuItem";
             this.UndotoolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.UndotoolStripMenuItem.Text = "실행 취소";
+            this.UndotoolStripMenuItem.Click += new System.EventHandler(this.UndotoolStripMenuItem_Click);
             // 
             // RedotoolStripMenuItem
             // 
             this.RedotoolStripMenuItem.Name = "RedotoolStripMenuItem";
             this.RedotoolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.RedotoolStripMenuItem.Text = "다시 실행";
+            this.RedotoolStripMenuItem.Click += new System.EventHandler(this.RedotoolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -112,10 +118,13 @@
             this.PropertiestoolStripMenuItem.Name = "PropertiestoolStripMenuItem";
             this.PropertiestoolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.PropertiestoolStripMenuItem.Text = "속성 설정하기";
+            this.PropertiestoolStripMenuItem.Click += new System.EventHandler(this.PropertiestoolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(240, 125);
             this.pictureBox1.Name = "pictureBox1";
@@ -129,14 +138,15 @@
             // 
             // DrawBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pictureBox1);
             this.Name = "DrawBox";
             this.Size = new System.Drawing.Size(269, 152);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawBox_Paint_1);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseUp);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
