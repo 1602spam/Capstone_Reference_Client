@@ -54,8 +54,11 @@ namespace Main.View.UserControls
             {
                 if (this.msg.IsWhisper == true)
                 {
-                    lblName.Text = "(DM)" + "받는 사람 이름" + " <= " + "보낸 사람 이름";
-                    lblName.ForeColor = Color.Blue;
+                    if (ConnectInfo.user != null)
+                    {
+                        lblName.Text = "(DM) " + "받는사람이름" + " <= " + ConnectInfo.user.name;
+                        lblName.ForeColor = Color.Blue;
+                    }
                 }
             }
         }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -15,6 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Canvas_module">
+      <HintPath>..\..\Capstone_Reference_Canvas\Canvas_module\Canvas_module\bin\Debug\net6.0-windows\Canvas_module.dll</HintPath>
+    </Reference>
     <Reference Include="ClientSystem">
       <HintPath>..\..\DLL\Debug\net6.0\ClientSystem.dll</HintPath>
     </Reference>

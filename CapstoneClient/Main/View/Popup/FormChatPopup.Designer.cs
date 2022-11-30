@@ -57,13 +57,13 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.Location = new System.Drawing.Point(182, 5);
+            this.lblTitle.Location = new System.Drawing.Point(26, 4);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(31, 15);
+            this.lblTitle.Size = new System.Drawing.Size(346, 17);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "채팅";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnChatList
             // 
@@ -174,7 +174,6 @@
             this.Name = "FormChatPopup";
             this.Text = "채팅창";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);

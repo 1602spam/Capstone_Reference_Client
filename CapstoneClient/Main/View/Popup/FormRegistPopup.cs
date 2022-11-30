@@ -40,9 +40,6 @@ namespace Main.View.Popup
                 lblClass.Text = "학번";
                 lblName.Text = "학생명";
             }
-
-            //접속 정보 수신 시 호출할 이벤트 등록
-            //Event+=OnConnected;
         }
 
         private void OnConnected()

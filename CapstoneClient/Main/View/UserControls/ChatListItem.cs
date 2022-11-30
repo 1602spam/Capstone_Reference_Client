@@ -14,7 +14,7 @@ namespace Main.View.UserControls
 {
     public partial class ChatListItem : UserControl
     {
-        private int id = 0;
+        public int id = 0;
         private string name = string.Empty;
         
         public ChatListItem()
@@ -56,7 +56,7 @@ namespace Main.View.UserControls
 
         private void ChatListItem_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && ConnectInfo.user != null && this.id != ConnectInfo.user.studentID)
             {
                 openItemMenu();
             }

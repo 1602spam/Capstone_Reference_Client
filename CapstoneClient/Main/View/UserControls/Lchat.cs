@@ -1,4 +1,5 @@
-﻿using Main.Class.vo;
+﻿using Main.Class;
+using Main.Class.vo;
 using Main.View.Popup;
 using System;
 using System.Collections.Generic;
@@ -50,8 +51,11 @@ namespace Main.View.UserControls
             if (this.msg != null)
                 if(this.msg.IsWhisper==true)
                 {
-                    lblName.Text = "(DM) " + "보낸 사람 이름";
-                    lblName.ForeColor = Color.Blue;
+                    if (ConnectInfo.user != null)
+                    {
+                        lblName.Text = "(DM) " + msg.Name + " => " + ConnectInfo.user.name;
+                        lblName.ForeColor = Color.Blue;
+                    }
                 }
         }
 
@@ -119,7 +123,13 @@ namespace Main.View.UserControls
             {
                 FormChatPopup? f = form as FormChatPopup;
                 if (f != null)
-                    f.SetLocation(1);
+                {
+                    if (ConnectInfo.user != null) {
+                        //메시지의 id
+                        int id = -1;
+                        }
+                    //f.SetLocation(id);
+                }
             }
         }
     }

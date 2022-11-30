@@ -4,3 +4,6 @@
 [submodule "Capstone_Reference_Client_UI"]
 	path = Capstone_Reference_Client_UI
 	url = https://github.com/ycs-201807062/Capstone_Reference_Client_UI.git
+[submodule "Capstone_Reference_Game"]
+	path = Capstone_Reference_Game
+	url = https://github.com/ycs-201807027/Capstone_Reference_Game.git
