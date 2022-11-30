@@ -66,9 +66,10 @@
             // 
             // panMain
             // 
-            this.panMain.Location = new System.Drawing.Point(10, 71);
+            this.panMain.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panMain.Location = new System.Drawing.Point(0, 83);
             this.panMain.Name = "panMain";
-            this.panMain.Size = new System.Drawing.Size(780, 319);
+            this.panMain.Size = new System.Drawing.Size(1024, 517);
             this.panMain.TabIndex = 3;
             // 
             // btnSelectOX
@@ -86,7 +87,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(800, 402);
+            this.ClientSize = new System.Drawing.Size(1024, 600);
             this.Controls.Add(this.btnSelectOX);
             this.Controls.Add(this.panMain);
             this.Controls.Add(this.btnSelectAnswer);

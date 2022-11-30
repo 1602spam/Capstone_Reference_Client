@@ -48,16 +48,47 @@ namespace Main.View.Attachment
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            OpenGame();
+            if (tbQuestion.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("질문을 입력하세요.", "알림");
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(cbTimeLimit.Text, "[^0-9]"))
+            {
+                MessageBox.Show("제한시간을 입력해주세요.");
+            }
+            else
+            {
+                OpenGame();
+            }
         }
 
         private void OpenGame()
         {
+            //질문
+            string question = tbQuestion.Text;
+
+            //정답이 O면 true, X면 false
+            bool isAnswerO = this.isO;
+
+            //시간제한
+            string time = cbTimeLimit.Text;
+
+            //OX게임 실행 함수
+            //run();
         }
 
         private void FormOXGameSetting_Load(object sender, EventArgs e)
         {
             ActivateO();
+        }
+
+        private void cbTimeLimit_TextUpdate(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(cbTimeLimit.Text, "[^0-9]"))
+            {
+                MessageBox.Show("제한시간에는 숫자만 입력할 수 있습니다.", "알림");
+                cbTimeLimit.Text = cbTimeLimit.Text.Remove(cbTimeLimit.Text.Length - 1);
+            }
         }
     }
 }

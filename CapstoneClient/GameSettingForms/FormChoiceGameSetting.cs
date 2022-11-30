@@ -49,7 +49,7 @@ namespace Main.View.Attachment
                 }
                 else
                 {
-                    MessageBox.Show("답은 최대 5개까지 등록할 수 있습니다.","알림");
+                    MessageBox.Show("보기는 최대 5개까지 등록할 수 있습니다.","알림");
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace Main.View.Attachment
             }
             else if (lbAnswer.Items.Count < 2)
             {
-                MessageBox.Show("최소 2개의 답을 등록하세요.", "알림");
+                MessageBox.Show("최소 2개의 보기를 등록하세요.", "알림");
             }
             else if (lbAnswer.CheckedItems.Count != 1)
             {
@@ -80,6 +80,23 @@ namespace Main.View.Attachment
 
         private void OpenGame()
         {
+            //문제
+            string question = tbQuestion.Text;
+
+            //보기
+            List<string> answers = new();
+            foreach (string item in lbAnswer.Items)
+            {
+                answers.Add(item);
+            }
+            //정답 인덱스
+            int index = lbAnswer.SelectedIndex;
+
+            //시간제한
+            string time = cbTimeLimit.Text;
+
+            //다지선다 게임 실행 함수
+            //run();
         }
 
         private void lbAnswer_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,7 +164,7 @@ namespace Main.View.Attachment
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(cbTimeLimit.Text, "[^0-9]"))
             {
-                MessageBox.Show("숫자만 입력해주세요.");
+                MessageBox.Show("제한시간에는 숫자만 입력할 수 있습니다.","알림");
                 cbTimeLimit.Text = cbTimeLimit.Text.Remove(cbTimeLimit.Text.Length - 1);
             }
         }

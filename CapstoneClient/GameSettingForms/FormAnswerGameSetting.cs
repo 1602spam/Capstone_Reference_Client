@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Main.View.Attachment
 {
@@ -34,23 +35,68 @@ namespace Main.View.Attachment
                     lbAnswer.Items.RemoveAt(i);
                     lbAnswer.Items.Insert(i, tbAddAnswer.Text);
                     tbAddAnswer.Clear();
+                    btnRemove.Enabled = false;
+                    btnAddAnswer.Text = "추가";
                 }
 #pragma warning restore CS8602 // null 가능 참조에 대한 역참조입니다.
             }
-            else
+            else //선택한 게 없으면
             {
-                lbAnswer.Items.Add(tbAddAnswer.Text);
-                tbAddAnswer.Clear();
+                if (lbAnswer.Items.Count < 5)
+                {
+                    lbAnswer.Items.Add(tbAddAnswer.Text);
+                    tbAddAnswer.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("보기는 최대 5개까지 등록할 수 있습니다.","알림");
+                }
             }
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            OpenGame();
+            if (tbQuestion.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("질문을 입력하세요.", "알림");
+            }
+            else if (lbAnswer.Items.Count < 1)
+            {
+                MessageBox.Show("최소 1개의 보기를 등록하세요.", "알림");
+            }
+            else if (lbAnswer.CheckedItems.Count != 1)
+            {
+                MessageBox.Show("정답이 체크되었는지 확인하세요.", "알림");
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(cbTimeLimit.Text, "[^0-9]"))
+            {
+                MessageBox.Show("제한시간을 입력해주세요.");
+            }
+            else
+            {
+                OpenGame();
+            }
         }
 
         private void OpenGame()
         {
+            //문제
+            string question = tbQuestion.Text;
+
+            //보기
+            List<string> answers = new();
+            foreach (string item in lbAnswer.Items)
+            {
+                answers.Add(item);
+            }
+            //정답 인덱스
+            int index = lbAnswer.SelectedIndex;
+
+            //시간제한
+            string time = cbTimeLimit.Text;
+
+            //주관식 게임 실행 함수
+            //run();
         }
 
         private void lbAnswer_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,6 +130,8 @@ namespace Main.View.Attachment
             if (i != -1)
             {
                 lbAnswer.Items.RemoveAt(i);
+                btnRemove.Enabled = false;
+                btnAddAnswer.Text = "추가";
             }
         }
 
@@ -95,6 +143,29 @@ namespace Main.View.Attachment
                 lbAnswer.SelectedIndex = -1;
                 btnRemove.Enabled = false;
                 btnAddAnswer.Text = "추가";
+            }
+        }
+
+        private void lbAnswer_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            lbAnswer.ItemCheck -= lbAnswer_ItemCheck;
+
+            int j = e.Index;
+            for (int i = 0; i < lbAnswer.Items.Count; i++)
+            {
+                if (i == j) { continue; }
+                lbAnswer.SetItemChecked(i, false);
+            }
+
+            lbAnswer.ItemCheck += lbAnswer_ItemCheck;
+        }
+
+        private void cbTimeLimit_TextUpdate(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(cbTimeLimit.Text, "[^0-9]"))
+            {
+                MessageBox.Show("제한시간에는 숫자만 입력할 수 있습니다.","알림");
+                cbTimeLimit.Text = cbTimeLimit.Text.Remove(cbTimeLimit.Text.Length - 1);
             }
         }
     }
