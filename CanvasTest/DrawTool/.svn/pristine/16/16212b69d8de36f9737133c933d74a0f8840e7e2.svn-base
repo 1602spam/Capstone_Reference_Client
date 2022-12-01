@@ -1,0 +1,127 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DrawTool.DrawObjects;
+using System.Windows.Forms;
+using System.Drawing;
+using DrawTool.Observer;
+
+namespace DrawTool.Controller
+{
+    /// <summary>
+    /// 메인 컨트롤 역활을 할 싱글톤 클래스
+    /// 쓰레드에 안전한 싱글톤
+    /// </summary>
+    public sealed class MainController : IObservable
+    {
+        #region 전역 변수
+        private static MainController instance = null;
+      
+
+        private static readonly object padlock = new object();
+
+
+
+        #endregion
+
+        #region 생성자
+        MainController()
+        {
+          
+        }
+
+        public static MainController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (padlock)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new MainController();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+        #endregion
+
+
+        #region Observer
+        List<IObserver> listener = new List<IObserver>();
+
+        public void Notify(ObserverAction action)
+        {
+            foreach (IObserver item in listener)
+            {
+                item.OnNext(action);
+            }
+        }
+
+        public IDisposable Subscribe(IObserver observer)
+        {
+            listener.Add(observer);
+
+            return listener as IDisposable;
+        }
+
+        public void Unsubscribe(IObserver observer)
+        {
+            listener.Remove(observer);
+        }
+        #endregion
+
+
+
+        private List<DrawObject> grapList = new List<DrawObject>();
+
+
+      
+
+        private Command.Command command = new Command.Command();
+
+        public Command.Command Command
+        {
+            get
+            {
+                return command;
+            }
+
+            set
+            {
+                command = value;
+            }
+        }
+
+        public List<DrawObject> GrapList
+        {
+            get
+            {
+                return grapList;
+            }
+
+            set
+            {
+                grapList = value;
+            }
+        }
+
+        public DrawObjectType DrawObjectType
+        {
+            get;
+            set;
+        }
+
+        public SelectMode SelectMode
+        {
+            get;
+            set;
+        }
+
+    }
+}

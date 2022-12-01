@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace DrawTool.Controller
+{
+    /// <summary>
+    /// 메인 컨트롤 역활을 할 싱글톤 클래스
+    /// 쓰레드에 안전한 싱글톤
+    /// </summary>
+    public sealed class MainController
+    {
+        #region 전역 변수
+        private static MainController instance = null;
+      
+
+        private static readonly object padlock = new object();
+
+
+
+        #endregion
+
+        #region 생성자
+        MainController()
+        {
+          
+        }
+
+        public static MainController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (padlock)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new MainController();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+        #endregion
+    
+    }
+}

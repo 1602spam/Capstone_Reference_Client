@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace DrawTool.DrawBox
+{
+    public partial class UserControl_DrawBox : UserControl
+    {
+        public UserControl_DrawBox()
+        {
+            InitializeComponent();
+
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.SetStyle(ControlStyles.DoubleBuffer, true);
+            this.UpdateStyles();
+            this.DoubleBuffered = true;
+        }
+
+
+
+
+
+
+        bool allowResize = false;
+             
+        private void pictureBox_ReSize_MouseDown(object sender, MouseEventArgs e)
+        {
+            allowResize = true;
+        }
+
+        private void pictureBox_ReSize_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (allowResize)
+            {
+                this.Height = pictureBox_ReSize.Top + e.Y;
+                this.Width = pictureBox_ReSize.Left + e.X;
+            }
+        }
+
+        private void pictureBox_ReSize_MouseUp(object sender, MouseEventArgs e)
+        {
+            allowResize = false;           
+        }
+    }
+}

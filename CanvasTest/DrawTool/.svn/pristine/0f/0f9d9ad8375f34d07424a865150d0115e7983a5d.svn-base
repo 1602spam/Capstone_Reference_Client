@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DrawTool.Controller;
+
+namespace DrawTool.Observer
+{
+     interface IObservable
+    {
+         void Notify(ObserverAction action);
+         void Notify(ObserverClass observer);
+         IDisposable Subscribe(IObserver observer);
+         void Unsubscribe(IObserver observer);
+    }
+}

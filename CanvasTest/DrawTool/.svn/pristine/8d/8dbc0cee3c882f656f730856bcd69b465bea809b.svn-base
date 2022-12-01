@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DrawTool.Controller;
+using DrawTool.DrawObjects;
+
+namespace DrawTool.Command
+{
+    public class Command
+    {
+        public void AddHistory(List<DrawObjects.DrawObject> data)
+        {
+            undoStack.Push(DataClone(data));
+            //redoStack.Clear(); 
+        }
+  
+          public void Clear() 
+          { 
+              undoStack.Clear(); 
+              redoStack.Clear(); 
+          } 
+  
+          public bool CanUndo 
+          { 
+              get { return undoStack.Count > 0; } 
+          } 
+  
+          public bool CanRedo 
+          { 
+              get { return redoStack.Count > 0; } 
+          }
+
+
+          public bool Undo()
+          {
+               List<DrawObjects.DrawObject> data = new List<DrawObjects.DrawObject>();
+
+              if (CanUndo) 
+              {
+                  redoStack.Push(DataClone(MainController.Instance.GrapList));
+
+                 
+                  //redoStack.Push(DataClone(data));
+
+                  MainController.Instance.GrapList = DataClone(undoStack.Pop());
+
+              
+           
+                  return true; 
+              } 
+     
+              return false; 
+          }
+
+
+        private List<DrawObjects.DrawObject> DataClone(List<DrawObjects.DrawObject> data)
+        {     
+            List<DrawObject> clone = new List<DrawObject>();
+
+            foreach (DrawObject item in data)
+            {
+                clone.Add(item.Clone());
+            }
+
+            return clone;       
+        }
+
+          public bool Redo() 
+          {
+              if (CanRedo) 
+              {
+                  //redoStack.Push(DataClone(MainController.Instance.GrapList));
+
+
+                  undoStack.Push(DataClone(MainController.Instance.GrapList));
+                  MainController.Instance.GrapList = DataClone(redoStack.Pop());
+
+            
+                  return true; 
+              } 
+         
+              return false; 
+          } 
+  
+          public uint HistoryCapacity 
+          { 
+              get { return historyCapacity; } 
+             set 
+              { 
+                  historyCapacity = value; 
+                  if (historyCapacity > 0) 
+                  { 
+                      while (undoStack.Count > historyCapacity) 
+                      { 
+                          undoStack.Pop(); 
+                      } 
+                  } 
+              } 
+          }
+
+          private Stack<List<DrawObjects.DrawObject>> undoStack = new Stack<List<DrawObjects.DrawObject>>();
+          private Stack<List<DrawObjects.DrawObject>> redoStack = new Stack<List<DrawObjects.DrawObject>>(); 
+        private uint historyCapacity; 
+
+
+
+    }
+}

@@ -1,0 +1,280 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using DrawTool.Controller;
+using DrawTool.Observer;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace DrawTool
+{
+    public partial class MainView : Form, IObserver
+    {
+        public MainView()
+        {
+            InitializeComponent();
+
+            MainController.Instance.Subscribe(this);
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DrawObjects.DrawObject item in MainController.Instance.GraphicModel.GrapList)
+            {
+                item.Selected = true;
+            }
+
+            MainController.Instance.Notify(ObserverAction.Invalidate);
+            
+        }
+
+        private void unselectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DrawObjects.DrawObject item in MainController.Instance.GraphicModel.GrapList)
+            {
+                item.Selected = false;
+            }
+
+            MainController.Instance.Notify(ObserverAction.Invalidate);
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           for(int i =0; i < MainController.Instance.GraphicModel.GrapList.Count; i++)
+           {
+               if (MainController.Instance.GraphicModel.GrapList[i].Selected)
+                {
+                    MainController.Instance.Command.AddHistory(MainController.Instance.GraphicModel.GrapList);
+
+                    MainController.Instance.GraphicModel.GrapList.RemoveAt(i);          
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+                }
+            }
+        }
+
+        private void deleteAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.GraphicModel.GrapList.Count > 0)
+            {
+                MainController.Instance.Command.AddHistory(MainController.Instance.GraphicModel.GrapList);
+                MainController.Instance.GraphicModel.GrapList.Clear();
+
+                MainController.Instance.Notify(ObserverAction.Invalidate);
+            }
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.Command.CanUndo)
+            {
+                if (MainController.Instance.Command.Undo())
+                {
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+                    MainController.Instance.Notify(ObserverAction.Command);                   
+                }
+            }
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.Command.CanRedo)
+            {
+
+                if (MainController.Instance.Command.Redo())
+                {
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+                    MainController.Instance.Notify(ObserverAction.Command);                    
+                }
+            }
+        }
+
+        public void OnNext(ObserverAction action)
+        {
+            switch (action)
+            {
+                case ObserverAction.Command: SetUndoRedoButton(); return;
+                case ObserverAction.Invalidate: SetUndoRedoButton(); return;
+            }
+        }
+
+        public void OnNext(ObserverClass observer)
+        {
+            if (observer.Name == ObserverName.ToolBar)
+            {
+                switch (observer.Action)
+                {
+                    case ObserverAction.FileLoad: FileLoad(); return;
+                    case ObserverAction.FileSave: FileSave(); return;
+                    case ObserverAction.New: New(); return;
+                }
+            }
+        }
+
+        private void SetUndoRedoButton()
+        {
+            if (MainController.Instance.Command.CanUndo)
+            {
+                undoToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                undoToolStripMenuItem.Enabled = false;
+            }
+
+            if (MainController.Instance.Command.CanRedo)
+            {
+                redoToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                redoToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void selectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Select);
+        }
+
+        private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Rectangle);
+        }
+
+        private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Ellipse);
+        }
+
+        private void lineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Line);
+        }
+
+        private void pencilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Pencil);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("DrawTool 을 이용해 주셔서 감사합니다.");
+        }
+
+        private void FileSave()
+        {
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                FileStream fs = null;
+                try
+                {
+                    fs = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate);
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(fs, MainController.Instance.GraphicModel);
+                    fs.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileSave();
+        }
+
+        private void FileLoad()
+        {
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (File.Exists(openFileDialog1.FileName))
+                {
+                    FileStream fs = null;
+                    try
+                    {
+
+                        fs = new FileStream(openFileDialog1.FileName, FileMode.Open);
+                        BinaryFormatter bf = new BinaryFormatter();
+                        Model.Graphic tmpItem = bf.Deserialize(fs) as Model.Graphic;
+                        fs.Close();
+
+                        if (tmpItem != null)
+                        {
+
+                            MainController.Instance.GraphicModel.GrapList.Clear();
+                            MainController.Instance.GraphicModel = tmpItem;
+
+                            MainController.Instance.Command.Clear();
+                            MainController.Instance.Notify(ObserverAction.FileLoad);
+
+                            SetUndoRedoButton();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileLoad();
+        }
+
+        private void New()
+        {
+            if (MessageBox.Show("새로운 그래프를 작성합니다. 작성 중인 내용은 모두 삭제됩니다.", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (MessageBox.Show("작성 중인 내용을 저장 하시겠습니까?", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    FileSave();
+                }
+
+                MainController.Instance.GraphicModel.GrapList.Clear();
+                MainController.Instance.Command.Clear();
+                MainController.Instance.Notify(ObserverAction.New);
+            }          
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            New();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MainView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("프로그램을 종료 하시겠습니까?", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+            {
+                e.Cancel = true;
+                return;
+            }
+            
+            if (MessageBox.Show("작성 중인 내용을 저장 하시겠습니까?", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                FileSave();
+            }
+
+        }
+    }
+}

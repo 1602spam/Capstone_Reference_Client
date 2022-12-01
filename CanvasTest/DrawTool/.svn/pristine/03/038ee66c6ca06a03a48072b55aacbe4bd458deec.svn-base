@@ -1,0 +1,133 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using DrawTool.Controller;
+using DrawTool.Observer;
+
+namespace DrawTool.ToolBar
+{
+    public partial class UserControl_ToolBar : UserControl, IObserver
+    {
+        private List<ToolStripButton> drawButtonList = new List<ToolStripButton>();       
+
+        public UserControl_ToolBar()
+        {
+            InitializeComponent();
+
+            drawButtonList.Add(toolStripButtonEllipse);
+            drawButtonList.Add(toolStripButtonLine);
+            drawButtonList.Add(toolStripButtonSelect);
+            drawButtonList.Add(toolStripButtonPencil);
+            drawButtonList.Add(toolStripButtonRectangle);
+
+            SetToolBarButtonState("Select");
+
+            MainController.Instance.Subscribe(this);
+        }
+            
+        public void OnNext(ObserverAction action)
+        {
+            if (action == ObserverAction.Command)
+            {
+                SetUndoRedoButton();
+            }
+
+            if (action == ObserverAction.Invalidate)
+            {
+                SetToolBarButtonState("Select");
+            }
+        }
+
+        public void SetUndoRedoButton()
+        {
+            if (MainController.Instance.Command.CanUndo)
+            {
+                toolStripButtonUndo.Enabled = true;
+            }
+            else
+            {
+                toolStripButtonUndo.Enabled = false;
+            }
+
+            if (MainController.Instance.Command.CanRedo)
+            {
+                toolStripButtonRedo.Enabled = true;
+            }
+            else
+            {
+                toolStripButtonRedo.Enabled = false;
+            }
+        }
+
+        public void SetToolBarButtonState(string type)
+        {
+            foreach (ToolStripButton item in drawButtonList)
+            {
+                if (item.Text == type)
+                {
+                    item.Enabled = false;
+                    item.BackColor = Color.DarkGray;
+
+                    MainController.Instance.DrawObjectType = GetDrawObjectType(type);
+                }
+                else
+                {
+                    item.Enabled = true;
+                    item.BackColor = Color.FromArgb(188, 199, 216);
+                }
+
+            }
+        }
+
+
+        private DrawObjectType GetDrawObjectType(string buttonName)
+        {
+            switch (buttonName)
+            {
+                case "Select": return DrawObjectType.Select;
+                case "Rectangle": return DrawObjectType.Rectangle;
+                case "Line": return DrawObjectType.Line;
+                case "Ellipse": return DrawObjectType.Ellipse;
+                case "Pencil": return DrawObjectType.Pencil;
+            }
+
+            return DrawObjectType.Select;
+        }
+        
+        private void toolStripButton_Click(object sender, EventArgs e)
+        {          
+            SetToolBarButtonState(((ToolStripButton)sender).Text);
+        }
+
+
+
+        private void toolStripButtonUndo_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.Command.CanUndo)
+            {
+               if( MainController.Instance.Command.Undo())
+                MainController.Instance.Notify(ObserverAction.Invalidate);
+
+               SetUndoRedoButton();
+            }
+            
+        }
+
+        private void toolStripButtonRedo_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.Command.CanRedo)
+            {
+
+                if (MainController.Instance.Command.Redo())
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+
+                SetUndoRedoButton(); 
+            }
+        }
+    }
+}
