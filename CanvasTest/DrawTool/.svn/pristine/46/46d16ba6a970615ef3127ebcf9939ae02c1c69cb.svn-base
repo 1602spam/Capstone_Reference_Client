@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Drawing;
+
+namespace DrawTool.DrawObjects
+{
+    class EllipseObject : RectangleObject
+    {
+        	public EllipseObject() : this(0, 0, 1, 1)
+		{
+		}
+
+            public EllipseObject(int x, int y, int width, int height)
+                : base()
+        {
+            Rectangle = new Rectangle(x, y, width, height);
+            Initialize();
+        }
+
+        /// <summary>
+        /// Clone this instance
+        /// </summary>
+        public override DrawObject Clone()
+        {
+            EllipseObject ellipseObject = new EllipseObject();
+            ellipseObject.Rectangle = this.Rectangle;
+
+            FillDrawObjectFields(ellipseObject);
+            return ellipseObject;
+        }
+
+
+        public override void Draw(Graphics g)
+        {
+            Pen pen = new Pen(Color, PenWidth);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.DrawEllipse(pen, RectangleObject.GetNormalizedRectangle(Rectangle));
+            g.FillEllipse(new SolidBrush(Color), Rectangle);
+
+            pen.Dispose();
+        }
+    }
+}

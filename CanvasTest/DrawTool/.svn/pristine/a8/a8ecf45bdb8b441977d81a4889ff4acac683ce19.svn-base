@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DrawTool.DrawObjects;
+
+namespace DrawTool.Model
+{
+    [Serializable]
+    public class Graphic
+    {
+        private List<DrawObject> grapList = new List<DrawObject>();
+
+
+        public List<DrawObject> GrapList
+        {
+            get
+            {
+                return grapList;
+            }
+
+            set
+            {
+                grapList = value;
+            }
+        }
+    }
+}

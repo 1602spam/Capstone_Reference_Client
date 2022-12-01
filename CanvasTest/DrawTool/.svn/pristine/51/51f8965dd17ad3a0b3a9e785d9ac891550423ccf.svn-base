@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Globalization;
+
+namespace DrawTool
+{
+    public partial class PropertiesVIew : Form
+    {
+        public PropertiesVIew()
+        {
+            InitializeComponent();
+
+            InitControls();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnSelectColor_Click(object sender, EventArgs e)
+        {                     
+            colorDialog1.Color = lblColor.BackColor;
+
+            if (colorDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                lblColor.BackColor = colorDialog1.Color;
+                lblColor.Text = "";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color =  label3.BackColor;
+
+            if (colorDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                label3.BackColor = colorDialog1.Color;
+                label3.Text = "";
+            }
+        }
+
+        private const int maxWidth = 5;
+
+        private void InitControls()
+        {
+            for (int i = 1; i <= maxWidth; i++)
+            {
+                cmbPenWidth.Items.Add(i.ToString(CultureInfo.InvariantCulture));
+            }
+        }
+
+        private void cmbPenWidth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //int width = cmbPenWidth.SelectedIndex + 1;
+            //lblPenWidth.Text = width.ToString(CultureInfo.InvariantCulture);
+        }
+    }
+}

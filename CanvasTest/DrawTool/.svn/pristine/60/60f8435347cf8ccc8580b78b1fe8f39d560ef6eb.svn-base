@@ -1,0 +1,148 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using DrawTool.Controller;
+using DrawTool.Observer;
+
+namespace DrawTool
+{
+    public partial class MainView : Form, IObserver
+    {
+        public MainView()
+        {
+            InitializeComponent();
+
+            MainController.Instance.Subscribe(this);
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DrawObjects.DrawObject item in MainController.Instance.GrapList)
+            {
+                item.Selected = true;
+            }
+
+            MainController.Instance.Notify(ObserverAction.Invalidate);
+            
+        }
+
+        private void unselectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DrawObjects.DrawObject item in MainController.Instance.GrapList)
+            {
+                item.Selected = false;
+            }
+
+            MainController.Instance.Notify(ObserverAction.Invalidate);
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           for(int i =0; i < MainController.Instance.GrapList.Count; i++)
+           {
+               if (MainController.Instance.GrapList[i].Selected)
+                {
+                    MainController.Instance.Command.AddHistory(MainController.Instance.GrapList);
+
+                    MainController.Instance.GrapList.RemoveAt(i);          
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+                }
+            }
+        }
+
+        private void deleteAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.GrapList.Count > 0)
+            {
+                MainController.Instance.Command.AddHistory(MainController.Instance.GrapList);
+                MainController.Instance.GrapList.Clear();
+
+                MainController.Instance.Notify(ObserverAction.Invalidate);
+            }
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.Command.CanUndo)
+            {
+                if (MainController.Instance.Command.Undo())
+                {
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+                    MainController.Instance.Notify(ObserverAction.Command);                   
+                }
+            }
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MainController.Instance.Command.CanRedo)
+            {
+
+                if (MainController.Instance.Command.Redo())
+                {
+                    MainController.Instance.Notify(ObserverAction.Invalidate);
+                    MainController.Instance.Notify(ObserverAction.Command);                    
+                }
+            }
+        }
+
+        public void OnNext(ObserverAction action)
+        {
+            switch (action)
+            {
+                case ObserverAction.Command: SetUndoRedoButton(); return;
+            }
+        }
+
+        private void SetUndoRedoButton()
+        {
+            if (MainController.Instance.Command.CanUndo)
+            {
+                undoToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                undoToolStripMenuItem.Enabled = false;
+            }
+
+            if (MainController.Instance.Command.CanRedo)
+            {
+                redoToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                redoToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void selectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Select);
+        }
+
+        private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Rectangle);
+        }
+
+        private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Ellipse);
+        }
+
+        private void lineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Line);
+        }
+
+        private void pencilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.Instance.Notify(ObserverAction.Pencil);
+        }
+    }
+}

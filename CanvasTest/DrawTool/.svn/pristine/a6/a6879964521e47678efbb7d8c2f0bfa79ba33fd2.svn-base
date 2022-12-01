@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace DrawTool.Controller
+{
+    public enum ObserverAction
+    {
+        Notify
+    };
+
+    public enum DrawObjectType
+    {
+        Rectangle,
+        Ellipse,
+        Line,
+        Pencil,
+        Select
+    };
+
+    public enum SelectMode
+    {      
+        None,
+        NetSelection,   
+        Move,          
+        Size           
+    };
+}

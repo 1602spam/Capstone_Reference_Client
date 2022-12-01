@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DrawTool.Controller;
+
+namespace DrawTool.Observer
+{
+    public class ObserverClass
+    {
+        public ObserverClass(string name)
+        {
+            Name = GetName(name);
+        }
+
+        private ObserverName GetName(string name)
+        {
+            switch (name)
+            {
+                case "MainView": return ObserverName.MainView;
+                case "ToolBar": return ObserverName.ToolBar;
+                case "DrawBox": return ObserverName.DrawBox;
+            }
+
+            return ObserverName.MainView;
+        }
+
+        public ObserverName Name;
+        public ObserverAction Action;
+    }
+}
+ 
