@@ -161,6 +161,7 @@ namespace Main.View.Popup
                 return false;
             
             ClientSystem.ClientSystem.setAddress(tbIP.Text);
+            ConnectInfo.IP = tbIP.Text;
             ConnectInfo.user = new ClientSystem.ClientSystem();
             Task.Delay(50).Wait();
             

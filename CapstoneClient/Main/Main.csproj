@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -9,14 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="View\Attachment\**" />
     <Compile Remove="View\DesignExample\**" />
+    <EmbeddedResource Remove="View\Attachment\**" />
     <EmbeddedResource Remove="View\DesignExample\**" />
+    <None Remove="View\Attachment\**" />
     <None Remove="View\DesignExample\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Canvas_module">
       <HintPath>..\..\DLL\Debug\net6.0\Canvas_module.dll</HintPath>
+    </Reference>
+    <Reference Include="Capstone_Reference_Game">
+      <HintPath>..\..\DLL\Debug\net6.0\Capstone_Reference_Game.dll</HintPath>
+    </Reference>
+    <Reference Include="Capstone_Reference_GameServer">
+      <HintPath>..\..\DLL\Debug\net6.0\Capstone_Reference_GameServer.dll</HintPath>
     </Reference>
     <Reference Include="ClientSystem">
       <HintPath>..\..\DLL\Debug\net6.0\ClientSystem.dll</HintPath>
@@ -27,19 +36,31 @@
     <Reference Include="NetworkLibrary">
       <HintPath>..\..\DLL\Debug\net6.0\NetworkLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Reference_Game_Module">
+      <HintPath>..\..\DLL\Debug\net6.0\Reference_Game_Module.dll</HintPath>
+    </Reference>
     <Reference Include="ServerSystem">
       <HintPath>..\..\Capstone_Reference_Client_UI\DLL\Debug\net6.0\ServerSystem.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="View\Attachments\FormAnswerGameSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Attachments\FormChoiceGameSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Attachments\FormGameSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Attachments\FormOXGameSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="View\Attachment\FormOXGameSetting.cs">
-      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 

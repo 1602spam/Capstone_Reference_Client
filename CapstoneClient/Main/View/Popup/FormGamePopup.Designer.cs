@@ -36,14 +36,14 @@
             this.panMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panMain.Location = new System.Drawing.Point(0, 0);
             this.panMain.Name = "panMain";
-            this.panMain.Size = new System.Drawing.Size(800, 450);
+            this.panMain.Size = new System.Drawing.Size(1024, 600);
             this.panMain.TabIndex = 0;
             // 
             // FormGamePopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1024, 600);
             this.Controls.Add(this.panMain);
             this.Name = "FormGamePopup";
             this.Text = "FormGamePopup";

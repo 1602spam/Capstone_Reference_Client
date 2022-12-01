@@ -23,14 +23,13 @@ namespace Main.View.Popup
         private void OpenGameSelect()
         {
             FormGameSelect form = new FormGameSelect();
-            panMain.Controls.Add(form);
+            panMain.Controls.Add(form); 
             form.Show();
         }
 
         private void FormGamePopup_Load(object sender, EventArgs e)
         {
-            if (ConnectInfo.Type == CONNECTTYPE.PROFESSOR)
-            { OpenGameSelect(); }
+            OpenGameSelect();
         }
     }
 }

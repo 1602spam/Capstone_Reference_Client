@@ -1,3 +1,5 @@
+using Main.View.Popup;
+
 namespace Main
 {
     internal static class Program
@@ -12,6 +14,7 @@ namespace Main
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FormRegist());
+            //Application.Run(new FormGamePopup());
         }
     }
 }
