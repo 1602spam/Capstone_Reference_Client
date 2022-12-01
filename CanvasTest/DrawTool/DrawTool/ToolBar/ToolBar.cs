@@ -244,9 +244,12 @@ namespace DrawTool.ToolBar
         }
 
         #endregion
+
+        // 형광펜 클릭 시
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void test_Click(object sender, EventArgs e)
         {
+            // 펜의 크기만 조절 함
             SetToolBarButtonState(((ToolStripButton)sender).Text);
             Controller.MainController.Instance.LastUsedPenWidth = 12;
             Controller.MainController.Instance.LastUsedColor =
@@ -255,8 +258,7 @@ namespace DrawTool.ToolBar
                     Controller.MainController.Instance.LastUsedColor.R, 
                     Controller.MainController.Instance.LastUsedColor.G, 
                     Controller.MainController.Instance.LastUsedColor.B);
-            // 형광펜
-            // 색변경
+          
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

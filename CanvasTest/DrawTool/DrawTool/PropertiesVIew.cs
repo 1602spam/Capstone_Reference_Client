@@ -85,11 +85,10 @@ namespace DrawTool
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void button_Save_Click(object sender, EventArgs e)
         {
-
-            MessageBox.Show(tb.Value.ToString());
+            //color 수정
+            //MessageBox.Show(tb.Value.ToString());
             //프로그램의 속성에 속성들을 저장한다.
-            //Color = label_Color.BackColor;
-            Controller.MainController.Instance.LastUsedColor = Color.FromArgb(tb.Value, label_Color.BackColor.R, label_Color.BackColor.G, label_Color.BackColor.B);
+            Controller.MainController.Instance.LastUsedColor = Color = Color.FromArgb(tb.Value, label_Color.BackColor.R, label_Color.BackColor.G, label_Color.BackColor.B);
             Controller.MainController.Instance.LastUesdBackgoroundColor = BackGroundColor = label_BackgroundColor.BackColor;
             Controller.MainController.Instance.LastUsedPenWidth = PenWidth = int.Parse(combobox_PenWidth.Text);
                        
@@ -136,9 +135,13 @@ namespace DrawTool
 
         #endregion
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        // 트랙바 숫자 표현하기
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        private void tb_Scroll(object sender, EventArgs e)
         {
-
+            lblnum.Text = tb.Value.ToString();
         }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     }
 }

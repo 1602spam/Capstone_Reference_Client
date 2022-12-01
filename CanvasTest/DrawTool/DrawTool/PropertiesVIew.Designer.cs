@@ -41,6 +41,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.label3 = new System.Windows.Forms.Label();
             this.tb = new System.Windows.Forms.TrackBar();
+            this.lblnum = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tb)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,10 +160,20 @@
             this.tb.Maximum = 255;
             this.tb.Minimum = 1;
             this.tb.Name = "tb";
-            this.tb.Size = new System.Drawing.Size(186, 45);
+            this.tb.Size = new System.Drawing.Size(155, 45);
             this.tb.TabIndex = 20;
             this.tb.Value = 1;
-            this.tb.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.tb.Scroll += new System.EventHandler(this.tb_Scroll);
+            // 
+            // lblnum
+            // 
+            this.lblnum.AutoSize = true;
+            this.lblnum.ForeColor = System.Drawing.Color.White;
+            this.lblnum.Location = new System.Drawing.Point(229, 122);
+            this.lblnum.Name = "lblnum";
+            this.lblnum.Size = new System.Drawing.Size(11, 12);
+            this.lblnum.TabIndex = 21;
+            this.lblnum.Text = "0";
             // 
             // PropertiesVIew
             // 
@@ -170,6 +181,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.ClientSize = new System.Drawing.Size(278, 204);
+            this.Controls.Add(this.lblnum);
             this.Controls.Add(this.tb);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button_SelectBackgroudColor);
@@ -205,5 +217,6 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TrackBar tb;
+        private System.Windows.Forms.Label lblnum;
     }
 }
