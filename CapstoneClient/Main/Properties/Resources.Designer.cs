@@ -73,6 +73,16 @@ namespace Main.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap Chat2 {
+            get {
+                object obj = ResourceManager.GetObject("Chat2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap gif_professor {
             get {
                 object obj = ResourceManager.GetObject("gif_professor", resourceCulture);
@@ -123,6 +133,16 @@ namespace Main.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap line {
+            get {
+                object obj = ResourceManager.GetObject("line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap Note {
             get {
                 object obj = ResourceManager.GetObject("Note", resourceCulture);
@@ -146,6 +166,16 @@ namespace Main.Properties {
         internal static System.Drawing.Bitmap Quiz {
             get {
                 object obj = ResourceManager.GetObject("Quiz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Quiz1 {
+            get {
+                object obj = ResourceManager.GetObject("Quiz1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
