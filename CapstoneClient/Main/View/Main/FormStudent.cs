@@ -39,7 +39,7 @@ namespace Main.View.Student
                 }
             }
             lblClassName.Text = lblClassNameDef + ConnectInfo.ClassName;
-            
+
             //게임 초대 이벤트 발생 시 수락 거절 창 띄우는 메서드 등록
             //Event += openGameInvitation(object obj)
         }
@@ -55,7 +55,7 @@ namespace Main.View.Student
         private void openGameInvitation(object obj)
         {
             var form = Application.OpenForms["FormGameInvitation"];
-            if(form!=null)
+            if (form != null)
                 form.Close();
 
             var newform = new FormGameInvitation();
@@ -78,10 +78,10 @@ namespace Main.View.Student
 
         private void openNote()
         {
-            var form = Application.OpenForms["MainView"];
+            var form = Application.OpenForms["FormNotePopup"];
             if (form == null)
             {
-                form = new Canvas_module.MainView();
+                form = new FormNotePopup();
             }
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
