@@ -98,5 +98,18 @@ namespace Main.Class
             form.Start();
             form.Show();
         }
+
+        public void StartAnswerQuiz(string title, int time)
+        {
+            GameConfiguration config = new GameConfiguration()
+            {
+                Title = title,
+                Time = time,
+                QuizType = QuizTypes.DESCRIPTIVE_QUIZ
+            };
+            GameServerForm form = new GameServerForm(config);
+            form.Start();
+            form.Show();
+        }
     }
 }
