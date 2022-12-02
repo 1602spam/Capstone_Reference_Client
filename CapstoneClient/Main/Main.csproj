@@ -22,7 +22,7 @@
       <HintPath>..\..\DLL\Debug\net6.0\Canvas_module.dll</HintPath>
     </Reference>
     <Reference Include="Capstone_Reference_Game">
-      <HintPath>..\..\DLL\Debug\net6.0\Capstone_Reference_Game.dll</HintPath>
+      <HintPath>..\..\Capstone_Reference_Game\Capstone_Reference_Game\Capstone_Reference_Game\bin\Debug\net6.0-windows\Capstone_Reference_Game.dll</HintPath>
     </Reference>
     <Reference Include="Capstone_Reference_GameServer">
       <HintPath>..\..\DLL\Debug\net6.0\Capstone_Reference_GameServer.dll</HintPath>

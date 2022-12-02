@@ -71,7 +71,7 @@ namespace Main.View.Attachment
             {
                 MessageBox.Show("정답이 체크되었는지 확인하세요.", "알림");
             }
-            else if (System.Text.RegularExpressions.Regex.IsMatch(cbTimeLimit.Text, "[^0-9]"))
+            else if (System.Text.RegularExpressions.Regex.IsMatch(cbTimeLimit.Text, "[^0-9]") && cbTimeLimit.Text != "없음")
             {
                 MessageBox.Show("제한시간을 입력해주세요.");
             }
@@ -98,7 +98,10 @@ namespace Main.View.Attachment
 
             //시간제한
             int time;
-            int.TryParse(cbTimeLimit.Text, out time);
+            if (cbTimeLimit.Text == "없음")
+            { time = 0; }
+            else
+            { int.TryParse(cbTimeLimit.Text, out time); }
 
             Game game = new();
 

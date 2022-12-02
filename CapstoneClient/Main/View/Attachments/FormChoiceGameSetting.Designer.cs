@@ -88,6 +88,7 @@
             // 
             this.cbTimeLimit.FormattingEnabled = true;
             this.cbTimeLimit.Items.AddRange(new object[] {
+            "없음",
             "15",
             "20",
             "25",
