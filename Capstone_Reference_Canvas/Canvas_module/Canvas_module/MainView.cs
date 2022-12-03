@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -26,9 +27,8 @@ namespace Canvas_module
         public MainView()
 		{
 			InitializeComponent();
-
 			SetToolStripMenu();
-
+            
 			//옵저버 구독
 			MainController.Instance.Subscribe(this);
 		}
@@ -63,7 +63,10 @@ namespace Canvas_module
             FileSave_Png();
         }
 
-       
+        private void CapturetoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capture_Load();
+        }
 
 
         #endregion
@@ -292,7 +295,7 @@ namespace Canvas_module
                 }
             }
         }
-
+        
         #endregion
 
         #region 새로 만들기 & 저장하기 & 불러오기
@@ -407,7 +410,50 @@ namespace Canvas_module
 
         private void FileSave_Png()
         {
+            //ScreenShot(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, 0, 0); //화면 전체캡쳐
+            ScreenShot(this.drawBox1.Width, this.drawBox1.Height, this.Location.X + this.drawBox1.Location.X, this.Location.Y + this.drawBox1.Location.Y);
 
+        }
+
+        private void ScreenShot(int width, int height, int x, int y)
+        {
+            Bitmap bitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+            Graphics graphics = Graphics.FromImage(bitmap);
+
+            graphics.CopyFromScreen(x, y, 0, 0, bitmap.Size);
+
+            //현재 프로젝트 위치에 저장됩니다.
+            string path = Environment.CurrentDirectory;
+            string fileName = "image11.png";
+
+            //MessageBox.Show(Path.Combine(path + fileName));
+            bitmap.Save(Path.Combine(path, fileName), ImageFormat.Png);
+        }
+
+        private void Capture_Load()
+        {
+            
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "이미지 파일(.jpg)|*.jpg|모든 파일(*.*)|*.*";
+            openFileDialog.Title = "캡쳐화면 가져오기";
+            openFileDialog.FileName = "";
+            openFileDialog1.InitialDirectory = Environment.CurrentDirectory;
+            
+            
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (File.Exists(openFileDialog.FileName))
+                {
+                    Stream imageStreamSource = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+                    
+                    //openFIleDialog를 열어서 일치하는 filename 값을 img 속성에 넣음
+                    drawBox1.BackgroundImage = new Bitmap(openFileDialog.FileName);
+                    Console.WriteLine(openFileDialog.FileName);
+                    this.ClientSize = drawBox1.BackgroundImage.Size;
+                    
+                    
+                }
+            }
 
         }
         #endregion
@@ -428,20 +474,16 @@ namespace Canvas_module
 		}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         #endregion
 
-        
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void drawBox1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

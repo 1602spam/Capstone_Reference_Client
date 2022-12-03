@@ -126,7 +126,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Silver;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(240, 125);
+            this.pictureBox1.Location = new System.Drawing.Point(898, 549);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -140,9 +140,12 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.pictureBox1);
             this.Name = "DrawBox";
-            this.Size = new System.Drawing.Size(269, 152);
+            this.Size = new System.Drawing.Size(927, 576);
+            this.Load += new System.EventHandler(this.DrawBox_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawBox_Paint_1);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseMove);
