@@ -66,13 +66,15 @@ namespace Canvas_module.Command
         /// <param name="data">List<DrawObjects.DrawObject></param>
         public void AddCommand(List<DrawObjects.DrawObject> data)
         {
-            Console.WriteLine("아아 addcommand");
+         
             //실행취소(Undo) list에 추가
             undoList.Add(DataClone(data));
-            Console.WriteLine(undoList.Count);
+         
             //Command 가 추가 되었음을 옵저버에게 알린다.
             MainController.Instance.Notify(ObserverAction.Command);
         }
+
+        
 
         /// <summary>
         /// 실행취소(Undo) 와 다시실행(Redo) 스택을 비운다.

@@ -21,6 +21,10 @@ namespace Canvas_module.DrawBox
 		//속성 설정 폼
 		private PropertiesView properies;
 
+		private TextView textview;
+
+		public string context;
+
 		//선택된 객체의 사이즈를 변경할 때 사용
 		private DrawObject resizedObject;
 
@@ -146,7 +150,8 @@ namespace Canvas_module.DrawBox
 			foreach (DrawObject o in MainController.Instance.GraphicModel.GrapList)
 			{
 				o.Selected = false;
-			}
+
+            }
 		}
 
 		private DrawObject AddNewDrawObject(DrawObjectType type, Point location)
@@ -160,6 +165,7 @@ namespace Canvas_module.DrawBox
 					lastX = location.X;
 					lastY = location.Y;
 					return newPencil = new PencilObject(location.X, location.Y, location.X + 1, location.Y + 1);
+				case DrawObjectType.TextBox: return new TextBoxObject(location.X, location.Y, 1, 1);
 			}
 
 
@@ -203,7 +209,8 @@ namespace Canvas_module.DrawBox
 						//현재 클릭된 DrawObejct 를 선택한다.
 						ob.Selected = true;
 
-						break;
+
+                        break;
 					}
 				}
 
@@ -288,13 +295,19 @@ namespace Canvas_module.DrawBox
 			//마우스 우클릭시 팝업 메뉴를 보여준다.
 			else if (e.Button == System.Windows.Forms.MouseButtons.Right)
 			{
+
 				SetToolStripMenu();
 
 				contextMenuStrip1.Show(MousePosition);
-
+				/*if (MainController.Instance.DrawObjectType == DrawObjectType.Select)
+				{
+					
+					
+				}*/
 				return;
 			}
 
+			
 		}
 		private void DrawBox_MouseMove(object sender, MouseEventArgs e)
 		{
@@ -419,7 +432,7 @@ namespace Canvas_module.DrawBox
 				//Pencil 변수를 null 로 초기화 한다.
 				newPencil = null;
 
-				MainController.Instance.Notify(ObserverAction.Select);
+				MainController.Instance.Notify(ObserverAction.LastTool);
 			}
 			else
 			{
@@ -460,7 +473,38 @@ namespace Canvas_module.DrawBox
 			this.Capture = false;
 		}
 
-		private void DrawBox_Paint_1(object sender, PaintEventArgs e)
+		/// <summary>
+		/// 마우스 더블 클릭
+		/// </summary>
+        private void DrawBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {     
+
+            foreach (DrawObject obj in MainController.Instance.GraphicModel.GrapList) 
+			{
+				if (obj.Selected && obj.GetType() == typeof(TextBoxObject))
+				{
+                    textview = new TextView(context);
+
+                    if (textview.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+                    {
+						
+
+						context = this.textview.Text;
+                        MainController.Instance.Notify(ObserverAction.Invalidate);
+                        this.Invalidate(false);
+                    }
+
+                    textview.Dispose();
+             
+                    break;
+                }
+			
+            }
+
+			
+        }
+
+        private void DrawBox_Paint_1(object sender, PaintEventArgs e)
 		{
 			//그려진 DrawObject가 하나 이상 일때
 			if (MainController.Instance.GraphicModel.GrapList.Count > 0)
@@ -468,11 +512,11 @@ namespace Canvas_module.DrawBox
 				using (SolidBrush brush = new SolidBrush(Color.FromArgb(255, 255, 255)))
                     
                 {
-                    //e.Graphics.FillRectangle(brush, this.ClientRectangle);
+					//e.Graphics.FillRectangle(brush, this.ClientRectangle);
 
-                    	MainController.Instance.GraphicModel.GrapList.Reverse();
+					//MainController.Instance.GraphicModel.GrapList.Reverse();
 
-                    /*    foreach (DrawObject ob in MainController.Instance.GraphicModel.GrapList)
+					/*    foreach (DrawObject ob in MainController.Instance.GraphicModel.GrapList)
                         {
                             //DrawObject 를 그려준다.
                             ob.Draw(e.Graphics);
@@ -486,32 +530,33 @@ namespace Canvas_module.DrawBox
                             }
                         }*/
 
-                    for (int i = MainController.Instance.GraphicModel.GrapList.Count - 1; i >= 0; i--)
-                    {
+					for (int i = MainController.Instance.GraphicModel.GrapList.Count - 1; i >= 0; i--)
+					{
 
-                        DrawObject ob = MainController.Instance.GraphicModel.GrapList[i];
+						DrawObject ob = MainController.Instance.GraphicModel.GrapList[i];
 
-                        //DrawObject 를 그려준다.
-                        ob.Draw(e.Graphics);
+						//DrawObject 를 그려준다.
+						ob.Draw(e.Graphics, context);
+					
+						
+						//DrawObject 가 선택되었다면 선택된 DrawObject 를 표시하기 위한 Pointer를 그려준다
+						if (ob.Selected == true)
+						{
+							ob.DrawPointer(e.Graphics);
 
-
-                        //DrawObject 가 선택되었다면 선택된 DrawObject 를 표시하기 위한 Pointer를 그려준다
-                        if (ob.Selected == true)
-                        {
-                            ob.DrawPointer(e.Graphics);
-
-                        }
-                    }
+						}
+					}
 
 
                 }
 			}
 		}
 
-		#endregion
+    
+        #endregion
 
-		#region 메뉴 버튼 설정
-		private void SetToolStripMenu()
+        #region 메뉴 버튼 설정
+        private void SetToolStripMenu()
 		{
 			if (MainController.Instance.Command.CanUndo)
 			{
@@ -649,10 +694,7 @@ namespace Canvas_module.DrawBox
 			}
 		}
 
-		private void DrawBox_Load(object sender, EventArgs e)
-		{
-
-		}
+		
 	}
 }
 

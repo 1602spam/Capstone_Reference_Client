@@ -124,7 +124,7 @@ namespace Canvas_module.DrawObjects
         /// DrawObject 그리기 함수
         /// </summary>
         /// <param name="g"></param>
-        public virtual void Draw(Graphics g)
+        public virtual void Draw(Graphics g, string context)
         {
         }
 

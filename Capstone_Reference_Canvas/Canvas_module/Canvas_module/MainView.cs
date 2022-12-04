@@ -1,4 +1,4 @@
-﻿using Canvas_module.Controller;
+﻿ using Canvas_module.Controller;
 using Canvas_module.Observer;
 using System;
 using System.Collections.Generic;
@@ -37,10 +37,12 @@ namespace Canvas_module
         #endregion
         
         #region 메뉴 클릭 이벤트
+
 		#region 파일 메뉴
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             New();
+ 
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,12 +52,12 @@ namespace Canvas_module
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileLoad();
+            Capture_Load();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileSave();
+            FileSave_Png();
         }
 
         private void save_pngtoolStripMenuItem_Click(object sender, EventArgs e)
@@ -191,12 +193,18 @@ namespace Canvas_module
             MainController.Instance.Notify(ObserverAction.Pencil);
         }
 
+        private void TextBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //옵저버에게 텍스트박스가 선택되었음을 알린다.
+            MainController.Instance.Notify(ObserverAction.TextBox);
+        }
+
         #endregion
 
         #region 도움말
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DrawTool 을 이용해 주셔서 감사합니다.");
+            MessageBox.Show("Draw_Canvas를 이용해 주셔서 감사합니다.");
         }
 
         #endregion
@@ -221,8 +229,8 @@ namespace Canvas_module
 			{
 				switch (obserber.Action)
 				{
-					case ObserverAction.FileLoad: FileLoad(); return;
-					case ObserverAction.FileSave: FileSave(); return;
+					case ObserverAction.FileLoad: Capture_Load(); return;
+					case ObserverAction.FileSave: FileSave_Png(); return;
 					case ObserverAction.New: New(); return;
 				}
 			}
@@ -298,7 +306,7 @@ namespace Canvas_module
         
         #endregion
 
-        #region 새로 만들기 & 저장하기 & 불러오기
+        #region 새로 만들기 & 저장하기  & 불러오기
 
         /// <summary>
         /// 새로 만들기 
@@ -310,7 +318,7 @@ namespace Canvas_module
             {
                 if (MessageBox.Show("작성 중인 내용을 저장 하시겠습니까?", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    FileSave();
+                    FileSave_Png();
                 }
 
                 //현재까지 작업된 내용을 삭제한다.
@@ -321,90 +329,7 @@ namespace Canvas_module
 
                 //새로운 만들기가 호출 되었음을 옵저버에게 알린다.
                 MainController.Instance.Notify(ObserverAction.New);
-            }
-        }
 
-        /// <summary>
-        /// 저장하기
-        /// Model.Grapic 클래스를 바이너리로 직렬화해서 파일로 저장한다.
-        /// 파일 확장자는 DTF 이다. (예 : ex.DTF 로 저장된다.)
-        /// </summary>
-        private void FileSave()
-        {
-            //파일 저장 대화창을 이용해서 저장할 위치와 파일명을 입력한다.
-            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                FileStream fs = null;
-                try
-                {
-                    fs = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate);
-                    BinaryFormatter bf = new BinaryFormatter();
-
-                    //MainController.Instance.GraphicModel 을 바이너리 직렬화한 후 파일로 저장한다.
-                    bf.Serialize(fs, MainController.Instance.GraphicModel);
-                    fs.Close();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-
-            }
-        }
-
-        /// <summary>
-        /// 불러오기
-        /// 파일을 역직렬화 해서 Model.Grapic 클래스 형으로 바꾸어 준다.
-        /// </summary>
-        private void FileLoad()
-        {
-            //파일 불러오기 대화창을 이용해서 불러올 파일의 위치와 파일명을 입력한다.
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                if (File.Exists(openFileDialog1.FileName))
-                {
-                    FileStream fs = null;
-                    try
-                    {
-
-                        fs = new FileStream(openFileDialog1.FileName, FileMode.Open);
-
-                        BinaryFormatter bf = new BinaryFormatter();
-
-                        //파일을 Model.Graphic 클래스로 역직렬화 한다.
-                        Model.Graphic tmpItem = bf.Deserialize(fs) as Model.Graphic;
-
-                        fs.Close();
-
-                        if (tmpItem != null)
-                        {
-                            //기존에 작성된 내용은 삭제한다.
-                            MainController.Instance.GraphicModel.GrapList.Clear();
-
-                            //역직렬화 한 tmpItem 을 MainController.Instance.GraphicModel 에 넣어 준다.
-                            MainController.Instance.GraphicModel = tmpItem;
-
-                            //실행 취소와 다시 실행 항목을 초기화 한다.
-                            MainController.Instance.Command.Clear();
-
-                            //실행 취솨와 다시 실행 버튼의 상태를 설정한다.
-                            SetToolStripMenu();
-
-                            //불러오기가 완료 되었음을 옵저버에게 알린다.
-                            MainController.Instance.Notify(ObserverAction.FileLoad);
-
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                }
             }
         }
 
@@ -423,11 +348,19 @@ namespace Canvas_module
             graphics.CopyFromScreen(x, y, 0, 0, bitmap.Size);
 
             //현재 프로젝트 위치에 저장됩니다.
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "이미지 파일(.jpg) | *.jpg | 모든 파일(*.*) | *.*";
+            saveFileDialog.Title = "파일 저장하기";
+            saveFileDialog.FileName = "";
             string path = Environment.CurrentDirectory;
             string fileName = "image11.png";
 
-            //MessageBox.Show(Path.Combine(path + fileName));
-            bitmap.Save(Path.Combine(path, fileName), ImageFormat.Png);
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(Path.Combine(path + fileName));
+                bitmap.Save(Path.Combine(path, fileName), ImageFormat.Png);
+            }
+          
         }
 
         private void Capture_Load()
@@ -448,10 +381,8 @@ namespace Canvas_module
                     
                     //openFIleDialog를 열어서 일치하는 filename 값을 img 속성에 넣음
                     drawBox1.BackgroundImage = new Bitmap(openFileDialog.FileName);
-                    Console.WriteLine(openFileDialog.FileName);
                     this.ClientSize = drawBox1.BackgroundImage.Size;
-                    
-                    
+   
                 }
             }
 
@@ -469,21 +400,14 @@ namespace Canvas_module
 			}
 			if (MessageBox.Show("작성 중인 내용을 저장 하시겠습니까?", "확인", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
 			{
-				FileSave();
+				FileSave_Png();
 			}
 		}
 
 
+
         #endregion
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void drawBox1_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

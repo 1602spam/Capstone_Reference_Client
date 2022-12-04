@@ -61,7 +61,7 @@ namespace Canvas_module.DrawObjects
         /// <summary>
         /// 이 객체를 그려준다.
         /// </summary>
-        public override void Draw(Graphics g)
+        public override void Draw(Graphics g, string context)
         {
             int x1 = 0, y1 = 0;     // 이전의 위치
             int x2, y2;             // 현재의 위치

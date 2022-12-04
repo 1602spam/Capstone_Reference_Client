@@ -1,33 +1,33 @@
 ﻿namespace Canvas_module.DrawBox
 {
-    partial class DrawBox
-    {
-        /// <summary> 
-        /// 필수 디자이너 변수입니다.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class DrawBox
+	{
+		/// <summary> 
+		/// 필수 디자이너 변수입니다.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// 사용 중인 모든 리소스를 정리합니다.
-        /// </summary>
-        /// <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary> 
+		/// 사용 중인 모든 리소스를 정리합니다.
+		/// </summary>
+		/// <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region 구성 요소 디자이너에서 생성한 코드
+		#region 구성 요소 디자이너에서 생성한 코드
 
-        /// <summary> 
-        /// 디자이너 지원에 필요한 메서드입니다. 
-        /// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary> 
+		/// 디자이너 지원에 필요한 메서드입니다. 
+		/// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+		/// </summary>
+		private void InitializeComponent()
+		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DrawBox));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -140,13 +140,12 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.pictureBox1);
             this.Name = "DrawBox";
             this.Size = new System.Drawing.Size(927, 576);
-            this.Load += new System.EventHandler(this.DrawBox_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawBox_Paint_1);
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseDoubleClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawBox_MouseUp);
@@ -154,20 +153,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem SelectAlltoolStripMenuItem;
-        private ToolStripMenuItem UnselectAlltoolStripMenuItem;
-        private ToolStripMenuItem DeletetoolStripMenuItem;
-        private ToolStripMenuItem DeleteAlltoolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem UndotoolStripMenuItem;
-        private ToolStripMenuItem RedotoolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem PropertiestoolStripMenuItem;
-        private PictureBox pictureBox1;
-    }
+		private ContextMenuStrip contextMenuStrip1;
+		private ToolStripMenuItem SelectAlltoolStripMenuItem;
+		private ToolStripMenuItem UnselectAlltoolStripMenuItem;
+		private ToolStripMenuItem DeletetoolStripMenuItem;
+		private ToolStripMenuItem DeleteAlltoolStripMenuItem;
+		private ToolStripSeparator toolStripSeparator1;
+		private ToolStripMenuItem UndotoolStripMenuItem;
+		private ToolStripMenuItem RedotoolStripMenuItem;
+		private ToolStripSeparator toolStripSeparator2;
+		private ToolStripMenuItem PropertiestoolStripMenuItem;
+		private PictureBox pictureBox1;
+	}
 }

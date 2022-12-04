@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,10 +43,12 @@ namespace Canvas_module.ToolBar
             drawButtonList.Add(toolStripButtonSelect);
             drawButtonList.Add(toolStripButtonPencil);
             drawButtonList.Add(toolStripButtonRectangle);
+            drawButtonList.Add(toolStripButtonTextBox);
+            
 
             #endregion
 
-            //선택하기 버튼으로 설정
+          //선택하기 버튼으로 설정
             SetToolBarButtonState("Select");
 
             //옵저버에 ToolBar 등록
@@ -71,9 +72,11 @@ namespace Canvas_module.ToolBar
                 case ObserverAction.Line: SetToolBarButtonState("Line"); return;
                 case ObserverAction.Pencil: SetToolBarButtonState("Pencil"); return;
                 case ObserverAction.Rectangle: SetToolBarButtonState("Rectangle"); return;
+                case ObserverAction.TextBox: SetToolBarButtonState("TextBox"); return;
                 case ObserverAction.Select: SetToolBarButtonState("Select"); return;
-                case ObserverAction.FileLoad: SetToolBarButtonState("Select"); SetUndoRedoButton(); return;
-                case ObserverAction.New: SetToolBarButtonState("Select"); SetUndoRedoButton(); return;
+                case ObserverAction.FileLoad: SetToolBarButtonState(MainController.Instance.LastUsedDraw_obj.ToString()); SetUndoRedoButton(); return;
+                case ObserverAction.New: SetToolBarButtonState(MainController.Instance.LastUsedDraw_obj.ToString()); SetUndoRedoButton(); return;
+                case ObserverAction.LastTool: SetToolBarButtonState(MainController.Instance.LastUsedDraw_obj.ToString()); return;
             }
         }
 
@@ -123,14 +126,16 @@ namespace Canvas_module.ToolBar
             //생성자에서 등록한 그리기 도구 버튼 리스트
             foreach (ToolStripButton item in drawButtonList)
             {
-                //선택된 버튼은 배경 색깔을 DarkGray 로 변경해준다.
+                //선택된 버튼은 배경 색깔을 White 로 변경해준다.
                 if (item.Text == buttonName)
                 {
+                    
                     item.Enabled = false;
                     item.BackColor = Color.White;
 
                     //현재 선택된 그리기 도구를 MainController 에 넣어준다.
                     MainController.Instance.DrawObjectType = GetDrawObjectType(buttonName);
+                    MainController.Instance.LastUsedDraw_obj = MainController.Instance.DrawObjectType;
                 }
                 else
                 {
@@ -149,26 +154,32 @@ namespace Canvas_module.ToolBar
         /// <returns>DrawObjectType</returns>
         private DrawObjectType GetDrawObjectType(string buttonName)
         {
-            switch (buttonName)
+         
+           
+            switch (buttonName) 
             {
                 case "Select": return DrawObjectType.Select;
                 case "Rectangle": return DrawObjectType.Rectangle;
                 case "Line": return DrawObjectType.Line;
-                case "Ellipse": return DrawObjectType.Ellipse;
+                case "Ellipse":  return DrawObjectType.Ellipse;
                 case "Pencil": return DrawObjectType.Pencil;
+                case "TextBox": return DrawObjectType.TextBox;
+
             }
 
             //buttonName 중에 일치하는 이름이 없다면 DrawObjectType.Select 를 기본으로 반환한다.
-            return DrawObjectType.Select;
+            return Controller.MainController.Instance.LastUsedDraw_obj;
+          
         }
 
         #endregion
+
         #region  ToolBar Strip 메뉴에 있는 도구들 Click
 
 
         private void toolStripButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(sender);
+            Console.WriteLine(sender +" : toolstripbutton select status");
             SetToolBarButtonState(((ToolStripButton)sender).Text);
         }
 
@@ -233,10 +244,11 @@ namespace Canvas_module.ToolBar
             MainController.Instance.Notify(observer);
         }
 
+
+
+
         #endregion
 
         
-
-       
     }
 }

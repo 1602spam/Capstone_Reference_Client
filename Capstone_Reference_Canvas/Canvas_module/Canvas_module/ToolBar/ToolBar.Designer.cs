@@ -1,33 +1,33 @@
 ﻿namespace Canvas_module.ToolBar
 {
-    partial class ToolBar
-    {
-        /// <summary> 
-        /// 필수 디자이너 변수입니다.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class ToolBar
+	{
+		/// <summary> 
+		/// 필수 디자이너 변수입니다.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// 사용 중인 모든 리소스를 정리합니다.
-        /// </summary>
-        /// <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary> 
+		/// 사용 중인 모든 리소스를 정리합니다.
+		/// </summary>
+		/// <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region 구성 요소 디자이너에서 생성한 코드
+		#region 구성 요소 디자이너에서 생성한 코드
 
-        /// <summary> 
-        /// 디자이너 지원에 필요한 메서드입니다. 
-        /// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary> 
+		/// 디자이너 지원에 필요한 메서드입니다. 
+		/// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+		/// </summary>
+		private void InitializeComponent()
+		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolBar));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
@@ -38,6 +38,7 @@
             this.toolStripButtonEllipse = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLine = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPencil = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonTextBox = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonUndo = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRedo = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
@@ -58,6 +59,7 @@
             this.toolStripButtonEllipse,
             this.toolStripButtonLine,
             this.toolStripButtonPencil,
+            this.toolStripButtonTextBox,
             this.toolStripButtonUndo,
             this.toolStripButtonRedo});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -149,6 +151,16 @@
             this.toolStripButtonPencil.Text = "Pencil";
             this.toolStripButtonPencil.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
+            // toolStripButtonTextBox
+            // 
+            this.toolStripButtonTextBox.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonTextBox.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTextBox.Image")));
+            this.toolStripButtonTextBox.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonTextBox.Name = "toolStripButtonTextBox";
+            this.toolStripButtonTextBox.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonTextBox.Text = "TextBox";
+            this.toolStripButtonTextBox.Click += new System.EventHandler(this.toolStripButton_Click);
+            // 
             // toolStripButtonUndo
             // 
             this.toolStripButtonUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -180,20 +192,21 @@
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButtonNew;
-        private ToolStripButton toolStripButtonOpen;
-        private ToolStripButton toolStripButtonSave;
-        private ToolStripButton toolStripButtonSelect;
-        private ToolStripButton toolStripButtonRectangle;
-        private ToolStripButton toolStripButtonEllipse;
-        private ToolStripButton toolStripButtonLine;
-        private ToolStripButton toolStripButtonPencil;
-        private ToolStripButton toolStripButtonUndo;
-        private ToolStripButton toolStripButtonRedo;
-    }
+		private ToolStrip toolStrip1;
+		private ToolStripButton toolStripButtonNew;
+		private ToolStripButton toolStripButtonOpen;
+		private ToolStripButton toolStripButtonSave;
+		private ToolStripButton toolStripButtonSelect;
+		private ToolStripButton toolStripButtonRectangle;
+		private ToolStripButton toolStripButtonEllipse;
+		private ToolStripButton toolStripButtonLine;
+		private ToolStripButton toolStripButtonPencil;
+		private ToolStripButton toolStripButtonUndo;
+		private ToolStripButton toolStripButtonRedo;
+		private ToolStripButton toolStripButtonTextBox;
+	}
 }

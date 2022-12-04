@@ -55,7 +55,7 @@ namespace Canvas_module.DrawObjects
         /// <summary>
         /// 이 객체를 그려준다.
         /// </summary>
-        public override void Draw(Graphics g)
+        public override void Draw(Graphics g, string context)
         {
             using (Pen pen = new Pen(Color, PenWidth))
             {
@@ -298,7 +298,7 @@ namespace Canvas_module.DrawObjects
         {
             return GetNormalizedRectangle(r.X, r.Y, r.X + r.Width, r.Y + r.Height);
         }
-
+        
         #endregion
 
         #region 속성

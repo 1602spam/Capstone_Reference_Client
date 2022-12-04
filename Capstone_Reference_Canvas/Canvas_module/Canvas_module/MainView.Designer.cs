@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +53,7 @@
             this.EllipsetoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linetoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.penciltoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TextBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -220,7 +220,8 @@
             this.rectangletoolStripMenuItem,
             this.EllipsetoolStripMenuItem,
             this.linetoolStripMenuItem,
-            this.penciltoolStripMenuItem});
+            this.penciltoolStripMenuItem,
+            this.TextBoxToolStripMenuItem});
             this.drawToolStripMenuItem.Name = "drawToolStripMenuItem";
             this.drawToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.drawToolStripMenuItem.Text = "도구";
@@ -228,36 +229,43 @@
             // pointertoolStripMenuItem
             // 
             this.pointertoolStripMenuItem.Name = "pointertoolStripMenuItem";
-            this.pointertoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.pointertoolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.pointertoolStripMenuItem.Text = "선택하기";
             this.pointertoolStripMenuItem.Click += new System.EventHandler(this.pointertoolStripMenuItem_Click);
             // 
             // rectangletoolStripMenuItem
             // 
             this.rectangletoolStripMenuItem.Name = "rectangletoolStripMenuItem";
-            this.rectangletoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.rectangletoolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.rectangletoolStripMenuItem.Text = "사각형";
             // 
             // EllipsetoolStripMenuItem
             // 
             this.EllipsetoolStripMenuItem.Name = "EllipsetoolStripMenuItem";
-            this.EllipsetoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.EllipsetoolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.EllipsetoolStripMenuItem.Text = "원";
             this.EllipsetoolStripMenuItem.Click += new System.EventHandler(this.EllipsetoolStripMenuItem_Click);
             // 
             // linetoolStripMenuItem
             // 
             this.linetoolStripMenuItem.Name = "linetoolStripMenuItem";
-            this.linetoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.linetoolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.linetoolStripMenuItem.Text = "선";
             this.linetoolStripMenuItem.Click += new System.EventHandler(this.linetoolStripMenuItem_Click);
             // 
             // penciltoolStripMenuItem
             // 
             this.penciltoolStripMenuItem.Name = "penciltoolStripMenuItem";
-            this.penciltoolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.penciltoolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.penciltoolStripMenuItem.Text = "연필";
             this.penciltoolStripMenuItem.Click += new System.EventHandler(this.penciltoolStripMenuItem_Click);
+            // 
+            // TextBoxToolStripMenuItem
+            // 
+            this.TextBoxToolStripMenuItem.Name = "TextBoxToolStripMenuItem";
+            this.TextBoxToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.TextBoxToolStripMenuItem.Text = "텍스트박스";
+            this.TextBoxToolStripMenuItem.Click += new System.EventHandler(this.TextBoxToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -288,13 +296,11 @@
             // drawBox1
             // 
             this.drawBox1.BackColor = System.Drawing.Color.White;
-            this.drawBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("drawBox1.BackgroundImage")));
             this.drawBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.drawBox1.Location = new System.Drawing.Point(0, 72);
+            this.drawBox1.Location = new System.Drawing.Point(0, 61);
             this.drawBox1.Name = "drawBox1";
-            this.drawBox1.Size = new System.Drawing.Size(738, 412);
-            this.drawBox1.TabIndex = 2;
-            this.drawBox1.Load += new System.EventHandler(this.drawBox1_Load);
+            this.drawBox1.Size = new System.Drawing.Size(1601, 608);
+            this.drawBox1.TabIndex = 3;
             // 
             // MainView
             // 
@@ -346,5 +352,6 @@
         private ToolStripMenuItem save_pngtoolStripMenuItem;
         private ToolStripMenuItem CapturetoolStripMenuItem;
         private DrawBox.DrawBox drawBox1;
+        private ToolStripMenuItem TextBoxToolStripMenuItem;
     }
 }
