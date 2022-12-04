@@ -113,7 +113,7 @@ namespace ClientSystem
 			nick = userList[message.studentID];
 			
 			// 이벤트가 등록되어있다면 뒤의 문장 호출
-			messageEvent?.Invoke(nick, message.content, isMe, isWhisper);
+			messageEvent?.Invoke(nick, message.content, message.studentID , isMe, isWhisper);
 		}
 
 		private void UserProcess(ReceiveResult result)

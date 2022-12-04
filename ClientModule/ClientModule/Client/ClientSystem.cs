@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 using ClientToServer;
 using Protocol;
+using static Protocol.MessageProtocol;
 using ReceiveResult = System.Collections.Generic.KeyValuePair<byte, object?>;
 
 namespace ClientSystem
 {
-	public delegate void MessageListen(string nick, string content, bool isMe, bool isWhisper);
+	public delegate void MessageListen(string nick, string content, int studentID, bool isMe, bool isWhisper);
 	public delegate void ModifyUserListListen(int StudentId, string name, bool delete);
 	public delegate void GameStartListen();
 
@@ -147,6 +148,10 @@ namespace ClientSystem
 			MessageProtocol.MESSAGE message = new(this.studentID, targetID, content, this.seqNo);
 
 			server.Send(Generater.Generate(message));
+		}
+		public void StartGame()
+		{
+			server.Send(Generater.Generate(new GameStartProtocol.GameStart()));
 		}
 	}
 }
