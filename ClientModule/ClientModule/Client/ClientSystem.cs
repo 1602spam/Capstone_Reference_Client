@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -138,6 +139,16 @@ namespace ClientSystem
 			MessageProtocol.MESSAGE message = new(this.studentID, 0, content, this.seqNo);
 
 			server.Send(Generater.Generate(message));
+		}
+		public void KickUser(int StudentId)
+		{
+			UserProtocol.USER user = new UserProtocol.USER();
+			if (!isLogin)
+				return;
+			user.studentID = studentID;
+			user.seqNo = -1;
+
+			server.Send(Generater.Generate(user));
 		}
 
 		// 귓속말
