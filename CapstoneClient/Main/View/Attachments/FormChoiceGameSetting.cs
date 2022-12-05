@@ -1,6 +1,7 @@
 ﻿using Capstone_Reference_Game_Module;
 using Capstone_Reference_GameServer;
 using Main.Class;
+using ServerSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -119,16 +120,6 @@ namespace Main.View.Attachment
             game.StartChoiceQuiz(tbQuestion.Text, time, answers, index);
 
             game.JoinAsServer();
-
-            //테스트 클라이언트 실행
-            game.JoinAsClient("127.0.0.1", "12345", "jin");
-            game.JoinAsClient("127.0.0.1", "123456", "jin2");
-            game.JoinAsClient("127.0.0.1", "123457", "jin3");
-            game.JoinAsClient("127.0.0.1", "123458", "jin4");
-
-            //게임 시작 이벤트 발생
-            //Connectinfo.user.GameEvent();
-            //클라이언트 main에 게임 시작 이벤트 리스너 등록해서 JoinAsClient 불러주면 됨
 
             var f = Application.OpenForms["FormGamePopup"];
             if (f != null)

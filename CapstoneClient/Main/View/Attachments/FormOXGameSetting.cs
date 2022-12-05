@@ -84,11 +84,6 @@ namespace Main.View.Attachment
 
             game.JoinAsServer();
 
-            game.JoinAsClient("127.0.0.1", "12345", "jin");
-            game.JoinAsClient("127.0.0.1", "123456", "jin2");
-            game.JoinAsClient("127.0.0.1", "123457", "jin3");
-            game.JoinAsClient("127.0.0.1", "123458", "jin4");
-
             var f = Application.OpenForms["FormGamePopup"];
             if (f != null)
             {

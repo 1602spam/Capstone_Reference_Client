@@ -1,4 +1,5 @@
 ﻿using Main.Class;
+using ServerSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,8 +63,9 @@ namespace Main.View.Popup
             if (MessageBox.Show("정말로 퇴장시키시겠습니까?", "알림", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //유저정보 송신
+                if (ConnectInfo.user!=null)
+                    ClientContainer.Instance.RemoveUser(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID],id);
                 FocusChatList();
-                //ConnectInfo.user
                 this.Close();
             }
             else

@@ -143,7 +143,7 @@ namespace Main.View.Popup
         private bool TryConnectAsProfessor()
         {
             btnConnect.Enabled = false;
-            ServerSystem.ServerSystem server = new();
+            ConnectInfo.server = new();
             Task.Delay(50).Wait();
             ConnectInfo.user = new ClientSystem.ClientSystem();
             Task.Delay(50).Wait();

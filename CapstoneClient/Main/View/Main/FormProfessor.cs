@@ -76,7 +76,14 @@ namespace Main.View.Professor
         }
 		private void openGame()
 		{
-			var form = Application.OpenForms["FormGamePopup"];
+            var form1 = Application.OpenForms["GameServerForm"];
+            if (form1 != null)
+            {
+                MessageBox.Show("게임 서버가 구동 중입니다.", "알림");
+                return;
+            }
+
+            var form = Application.OpenForms["FormGamePopup"];
 			if (form == null)
 			{
 				form = new FormGamePopup();
@@ -88,7 +95,7 @@ namespace Main.View.Professor
 
 		private void FormProfessor_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			
+            ServerSystem.ServerSystem.Stop();
 		}
 
 
@@ -273,6 +280,23 @@ namespace Main.View.Professor
                 
                 pbQuiz.Location = new Point(448, -151);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openUserList();
+        }
+
+        private void openUserList()
+        {
+            var form = Application.OpenForms["FormUserListPopup"];
+            if (form == null)
+            {
+                form = new FormUserListPopup();
+            }
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Show();
+            form.Focus();
         }
     }
 }

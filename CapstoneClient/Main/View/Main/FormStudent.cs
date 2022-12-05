@@ -31,6 +31,7 @@ namespace Main.View.Student
 
             if (ConnectInfo.user != null)
             {
+                ConnectInfo.user.GameEvent += openGame;
                 lblName.Text = lblNameDef + ConnectInfo.user.name;
                 lblID.Text = lblIDDef + ConnectInfo.user.studentID;
                 if (ConnectInfo.user.userList.Keys.Contains(-1))
@@ -39,9 +40,12 @@ namespace Main.View.Student
                 }
             }
             lblClassName.Text = lblClassNameDef + ConnectInfo.ClassName;
+        }
 
-            //게임 초대 이벤트 발생 시 수락 거절 창 띄우는 메서드 등록
-            //Event += openGameInvitation(object obj)
+        private void openGame()
+        {
+            Game game = new();
+            game.JoinAsClient("127.0.0.1", ConnectInfo.user.studentID.ToString(), ConnectInfo.user.name);
         }
         private void btnChat_Click(object sender, EventArgs e)
         {

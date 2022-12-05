@@ -20,6 +20,7 @@ namespace Main.Class
 
     public static class ConnectInfo
     {
+        public static ServerSystem.ServerSystem? server;
         public static ClientSystem.ClientSystem? user;
         public static int Type = 0; //CONNECTTYPE을 참조
         public static string ClassName = "";
@@ -83,6 +84,9 @@ namespace Main.Class
             GameServerForm form = new GameServerForm(config);
             form.Start();
             form.Show();
+
+            if (ConnectInfo.user != null)
+                ClientContainer.Instance.StartGame(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID]);
         }
 
         public void StartOXQuiz(string title, int time, int answer)
@@ -97,6 +101,9 @@ namespace Main.Class
             GameServerForm form = new GameServerForm(config);
             form.Start();
             form.Show();
+
+            if (ConnectInfo.user != null)
+                ClientContainer.Instance.StartGame(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID]);
         }
 
         public void StartAnswerQuiz(string title, int time)
@@ -110,6 +117,9 @@ namespace Main.Class
             GameServerForm form = new GameServerForm(config);
             form.Start();
             form.Show();
+
+            if(ConnectInfo.user!=null)
+                ClientContainer.Instance.StartGame(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID]);
         }
     }
 }

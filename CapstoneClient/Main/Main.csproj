@@ -40,7 +40,7 @@
       <HintPath>..\..\DLL\Debug\net6.0\Reference_Game_Module.dll</HintPath>
     </Reference>
     <Reference Include="ServerSystem">
-      <HintPath>..\..\Capstone_Reference_Client_UI\DLL\Debug\net6.0\ServerSystem.dll</HintPath>
+      <HintPath>..\..\DLL\Debug\net6.0\ServerSystem.dll</HintPath>
     </Reference>
   </ItemGroup>
 
