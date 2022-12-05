@@ -15,7 +15,8 @@ namespace Canvas_module.DrawObjects
 
 
 		private Rectangle rectangle;
-		
+
+		private string text = "내용을 입력해주세요.";
 	 
 
 		public TextBoxObject() : this(0, 0, 1, 1)
@@ -51,7 +52,7 @@ namespace Canvas_module.DrawObjects
 		/// <summary>
 		/// 이 객체를 그려준다.
 		/// </summary>
-		public override void Draw(Graphics g, string context)
+		public override void Draw(Graphics g, string text)
 		{
 			using (Pen pen = new Pen(Color, PenWidth))
 			{
@@ -61,7 +62,7 @@ namespace Canvas_module.DrawObjects
 
 				RectangleF rf = new RectangleF(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
 
-			    g.DrawString(context, new Font("Arial", 20), new SolidBrush(Color.Gray), rf);
+			    g.DrawString(text, new Font("Arial", 20), new SolidBrush(Color.Gray), rf);
 				
 				
 			}
@@ -324,7 +325,17 @@ namespace Canvas_module.DrawObjects
 			}
 		}
 
-	
+		public string Text
+		{
+			get
+			{
+				return text;
+			}
+			set
+			{
+				text = value;
+			}
+		}
 	   
 
 	}

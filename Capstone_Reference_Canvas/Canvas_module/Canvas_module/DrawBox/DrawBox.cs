@@ -23,8 +23,6 @@ namespace Canvas_module.DrawBox
 
 		private TextView textview;
 
-		public string context;
-
 		//선택된 객체의 사이즈를 변경할 때 사용
 		private DrawObject resizedObject;
 
@@ -483,13 +481,11 @@ namespace Canvas_module.DrawBox
 			{
 				if (obj.Selected && obj.GetType() == typeof(TextBoxObject))
 				{
-                    textview = new TextView(context);
+					textview = new TextView(((TextBoxObject)obj).Text);
 
                     if (textview.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                     {
-						
-
-						context = this.textview.Text;
+                        ((TextBoxObject)obj).Text = this.textview.Text;
                         MainController.Instance.Notify(ObserverAction.Invalidate);
                         this.Invalidate(false);
                     }
@@ -536,7 +532,15 @@ namespace Canvas_module.DrawBox
 						DrawObject ob = MainController.Instance.GraphicModel.GrapList[i];
 
 						//DrawObject 를 그려준다.
-						ob.Draw(e.Graphics, context);
+						if (ob.GetType() == typeof(TextBoxObject))
+						{
+							ob.Draw(e.Graphics, ((TextBoxObject)ob).Text);
+						}
+						else 
+						{
+							ob.Draw(e.Graphics);
+						}
+						
 					
 						
 						//DrawObject 가 선택되었다면 선택된 DrawObject 를 표시하기 위한 Pointer를 그려준다

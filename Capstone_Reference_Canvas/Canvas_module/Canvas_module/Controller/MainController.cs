@@ -31,7 +31,7 @@ namespace Canvas_module.Controller
         private List<IObserver> listener = new List<IObserver>();
 
         /// <summary>
-        /// 실행취소(Undo) 와 다시실행(Redo)를 관리하는 Command 클래스
+        /// 실행취소(Undo) 와 다시실행(Redo)를 관리하는 Command 클래스LastText
         /// </summary>
         private Command.Command command = new Command.Command();
 
@@ -49,11 +49,6 @@ namespace Canvas_module.Controller
         /// 최근에 사용한 배경색
         /// </summary>
         private Color lastUsedBackColor = Color.White;
-
-        /// <summary>
-        /// 입력한 text 문자열
-        /// </summary>
-        private string lastText = "";
 
         /// <summary>
         /// 최근에 사용한 DrawObject
@@ -187,12 +182,6 @@ namespace Canvas_module.Controller
             {
                 lastUsedColor = value;
             }
-        }
-        
-        public string LastText
-        {
-            get {  return lastText; }
-            set { lastText = value; }
         }
 
         public DrawObjectType LastUsedDraw_obj

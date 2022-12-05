@@ -55,7 +55,7 @@ namespace Canvas_module.DrawObjects
         /// <summary>
         /// 이 객체를 그려준다.
         /// </summary>
-        public override void Draw(Graphics g, string context)
+        public override void Draw(Graphics g)
         {
             using (Pen pen = new Pen(Color, PenWidth))
             {

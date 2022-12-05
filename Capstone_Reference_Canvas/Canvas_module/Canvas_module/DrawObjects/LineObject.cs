@@ -72,7 +72,7 @@ namespace Canvas_module.DrawObjects
         /// 이 객체를 그려준다.
         /// </summary>
         /// <param name="g"></param>
-        public override void Draw(Graphics g, string context)
+        public override void Draw(Graphics g)
         {
             g.SmoothingMode = SmoothingMode.AntiAlias;
 

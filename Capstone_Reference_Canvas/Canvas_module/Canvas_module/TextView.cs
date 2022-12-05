@@ -43,7 +43,7 @@ namespace Canvas_module
 
         private void savebutton_Click(object sender, EventArgs e)
         {
-            Controller.MainController.Instance.LastText = Text = this.textBox1.Text;
+            Text = this.textBox1.Text;
             this.DialogResult = DialogResult.OK;
         }
 
