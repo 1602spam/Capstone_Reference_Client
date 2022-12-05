@@ -43,6 +43,8 @@ namespace Canvas_module.DrawObjects
 		{
 			TextBoxObject txtboxobj = new TextBoxObject();
 			txtboxobj.rectangle = this.rectangle;
+			txtboxobj.text = this.text;
+			Console.WriteLine(txtboxobj.text + "clone");
 
 			FillDrawObjectFields(txtboxobj);
 			return txtboxobj;
@@ -52,7 +54,7 @@ namespace Canvas_module.DrawObjects
 		/// <summary>
 		/// 이 객체를 그려준다.
 		/// </summary>
-		public override void Draw(Graphics g, string text)
+		public override void Draw(Graphics g, string text1)
 		{
 			using (Pen pen = new Pen(Color, PenWidth))
 			{
@@ -62,8 +64,9 @@ namespace Canvas_module.DrawObjects
 
 				RectangleF rf = new RectangleF(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
 
-			    g.DrawString(text, new Font("Arial", 20), new SolidBrush(Color.Gray), rf);
-				
+			    g.DrawString(text1, new Font("Arial", 20), new SolidBrush(Color.Gray), rf);
+
+				text = text1;
 				
 			}
 		}
@@ -251,6 +254,7 @@ namespace Canvas_module.DrawObjects
 		{
 			rectangle.X += deltaX;
 			rectangle.Y += deltaY;
+			
 		}
 
 		/// <summary>

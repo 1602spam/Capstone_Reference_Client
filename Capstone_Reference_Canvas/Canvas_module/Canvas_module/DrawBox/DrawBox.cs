@@ -488,6 +488,7 @@ namespace Canvas_module.DrawBox
                         ((TextBoxObject)obj).Text = this.textview.Text;
                         MainController.Instance.Notify(ObserverAction.Invalidate);
                         this.Invalidate(false);
+						MainController.Instance.Command.AddCommand(MainController.Instance.GraphicModel.GrapList);
                     }
 
                     textview.Dispose();
@@ -508,23 +509,7 @@ namespace Canvas_module.DrawBox
 				using (SolidBrush brush = new SolidBrush(Color.FromArgb(255, 255, 255)))
                     
                 {
-					//e.Graphics.FillRectangle(brush, this.ClientRectangle);
-
-					//MainController.Instance.GraphicModel.GrapList.Reverse();
-
-					/*    foreach (DrawObject ob in MainController.Instance.GraphicModel.GrapList)
-                        {
-                            //DrawObject 를 그려준다.
-                            ob.Draw(e.Graphics);
-
-
-                            //DrawObject 가 선택되었다면 선택된 DrawObject 를 표시하기 위한 Pointer를 그려준다
-                            if (ob.Selected == true)
-                            {
-                                ob.DrawPointer(e.Graphics);
-
-                            }
-                        }*/
+					
 
 					for (int i = MainController.Instance.GraphicModel.GrapList.Count - 1; i >= 0; i--)
 					{
