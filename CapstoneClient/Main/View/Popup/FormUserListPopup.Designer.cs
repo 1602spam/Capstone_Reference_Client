@@ -33,13 +33,15 @@
             this.chName = new System.Windows.Forms.ColumnHeader();
             this.lblChatable = new System.Windows.Forms.Label();
             this.btnChatable = new System.Windows.Forms.Button();
+            this.chIsLogin = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chID,
-            this.chName});
+            this.chName,
+            this.chIsLogin});
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(498, 341);
@@ -77,6 +79,11 @@
             this.btnChatable.UseVisualStyleBackColor = true;
             this.btnChatable.Click += new System.EventHandler(this.button1_Click);
             // 
+            // chIsLogin
+            // 
+            this.chIsLogin.Text = "로그인 여부";
+            this.chIsLogin.Width = 120;
+            // 
             // FormUserListPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -99,5 +106,6 @@
         private ColumnHeader chName;
         private Label lblChatable;
         private Button btnChatable;
+        private ColumnHeader chIsLogin;
     }
 }

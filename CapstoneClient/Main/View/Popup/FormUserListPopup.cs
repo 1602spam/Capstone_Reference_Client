@@ -19,9 +19,40 @@ namespace Main.View.Popup
             InitializeComponent();
             this.InitializePopup();
 
+            /*
             foreach (var item in ClientContainer.Instance.loginDict)
             {
                 string[] items = new string[] { item.Key.ToString(), item.Value.name}; 
+                ListViewItem lvitem = new(items);
+                listView1.Items.Add(lvitem);
+            }
+            */
+            refreshListView(0,"test",false);
+
+            if(ConnectInfo.user!=null)
+                ConnectInfo.user.UserListEvent += refreshListView;
+        }
+
+        private void refreshListView(int num, string name, bool deleted)
+        {
+            if (ConnectInfo.user == null)
+                return;
+
+            listView1.Items.Clear();
+
+            foreach (var item in ConnectInfo.user.userList)
+            {
+                string[] items;
+                string id = item.Key.ToString();
+                if (id == "-1") { id = "교수"; }
+                if (ClientContainer.Instance.loginDict.ContainsKey(item.Key) == true)
+                {
+                    items = new string[] { id, item.Value, "O" };
+                }
+                else
+                {
+                    items = new string[] { id, item.Key.ToString(), item.Value, "X" };
+                }
                 ListViewItem lvitem = new(items);
                 listView1.Items.Add(lvitem);
             }

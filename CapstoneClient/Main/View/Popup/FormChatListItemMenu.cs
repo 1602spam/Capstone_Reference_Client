@@ -62,9 +62,8 @@ namespace Main.View.Popup
             //삭제 요청 시 메시지를 띄우고, OK 클릭 시 이 객체에서 IsDeleted가 true인 객체를 전송함
             if (MessageBox.Show("정말로 퇴장시키시겠습니까?", "알림", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //유저정보 송신
-                if (ConnectInfo.user!=null)
-                    ClientContainer.Instance.RemoveUser(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID],id);
+                //강퇴 메서드
+                ClientContainer.Instance.RemoveUser(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID], id);
                 FocusChatList();
                 this.Close();
             }
