@@ -48,5 +48,18 @@ namespace Canvas_module
         }
 
         #endregion
+
+        private void TextView_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = textBox1;
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                savebutton_Click(sender, e);
+            }
+        }
     }
 }

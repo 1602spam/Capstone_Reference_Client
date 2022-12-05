@@ -35,9 +35,10 @@
             // 
             // savebutton
             // 
-            this.savebutton.Location = new System.Drawing.Point(546, 26);
+            this.savebutton.Location = new System.Drawing.Point(607, 32);
+            this.savebutton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.savebutton.Name = "savebutton";
-            this.savebutton.Size = new System.Drawing.Size(94, 29);
+            this.savebutton.Size = new System.Drawing.Size(104, 36);
             this.savebutton.TabIndex = 0;
             this.savebutton.Text = "저장";
             this.savebutton.UseVisualStyleBackColor = true;
@@ -45,30 +46,35 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(36, 61);
+            this.textBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.OutlineButton;
+            this.textBox1.Location = new System.Drawing.Point(40, 76);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(604, 27);
+            this.textBox1.Size = new System.Drawing.Size(671, 31);
             this.textBox1.TabIndex = 1;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 26);
+            this.label1.Location = new System.Drawing.Point(40, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 20);
+            this.label1.Size = new System.Drawing.Size(346, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "텍스트 박스에 들어갈 내용을 입력하세요.";
             // 
             // TextView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 109);
+            this.ClientSize = new System.Drawing.Size(741, 136);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.savebutton);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TextView";
             this.Text = "텍스트 입력하기";
+            this.Load += new System.EventHandler(this.TextView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
