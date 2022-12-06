@@ -33,15 +33,13 @@
             this.chName = new System.Windows.Forms.ColumnHeader();
             this.lblChatable = new System.Windows.Forms.Label();
             this.btnChatable = new System.Windows.Forms.Button();
-            this.chIsLogin = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chID,
-            this.chName,
-            this.chIsLogin});
+            this.chName});
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(498, 341);
@@ -71,18 +69,13 @@
             // 
             // btnChatable
             // 
-            this.btnChatable.Location = new System.Drawing.Point(672, 8);
+            this.btnChatable.Location = new System.Drawing.Point(516, 30);
             this.btnChatable.Name = "btnChatable";
             this.btnChatable.Size = new System.Drawing.Size(116, 23);
             this.btnChatable.TabIndex = 2;
             this.btnChatable.Text = "채팅 허용/금지";
             this.btnChatable.UseVisualStyleBackColor = true;
             this.btnChatable.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // chIsLogin
-            // 
-            this.chIsLogin.Text = "로그인 여부";
-            this.chIsLogin.Width = 120;
             // 
             // FormUserListPopup
             // 
@@ -106,6 +99,5 @@
         private ColumnHeader chName;
         private Label lblChatable;
         private Button btnChatable;
-        private ColumnHeader chIsLogin;
     }
 }

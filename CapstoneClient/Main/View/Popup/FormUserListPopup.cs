@@ -45,17 +45,13 @@ namespace Main.View.Popup
                 string[] items;
                 string id = item.Key.ToString();
                 if (id == "-1") { id = "교수"; }
-                if (ClientContainer.Instance.loginDict.ContainsKey(item.Key) == true)
-                {
-                    items = new string[] { id, item.Value, "O" };
-                }
-                else
-                {
-                    items = new string[] { id, item.Value, "X" };
-                }
+
+                items = new string[] { id, item.Value };
                 ListViewItem lvitem = new(items);
                 listView1.Items.Add(lvitem);
             }
+
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

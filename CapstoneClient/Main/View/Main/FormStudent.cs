@@ -42,7 +42,7 @@ namespace Main.View.Student
             lblClassName.Text = lblClassNameDef + ConnectInfo.ClassName;
         }
 
-        private void openGame()
+        public void openGame()
         {
             Game game = new();
             if(ConnectInfo.user!=null)

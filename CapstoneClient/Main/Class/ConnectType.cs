@@ -86,7 +86,7 @@ namespace Main.Class
             form.Show();
 
             if (ConnectInfo.user != null)
-                ClientContainer.Instance.StartGame(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID]);
+                ConnectInfo.user.StartGame();
         }
 
         public void StartOXQuiz(string title, int time, int answer)
@@ -103,7 +103,8 @@ namespace Main.Class
             form.Show();
 
             if (ConnectInfo.user != null)
-                ClientContainer.Instance.StartGame(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID]);
+                ConnectInfo.user.StartGame();
+            //ClientContainer.Instance.StartGame(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID]);
         }
 
         public void StartAnswerQuiz(string title, int time)
@@ -119,7 +120,8 @@ namespace Main.Class
             form.Show();
 
             if(ConnectInfo.user!=null)
-                ClientContainer.Instance.StartGame(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID]);
+                ConnectInfo.user.StartGame();
+            //ClientContainer.Instance.StartGame(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID]);
         }
     }
 }
