@@ -15,6 +15,7 @@ namespace Canvas_module.Controller
         Ellipse,      //원
         Line,         //줄
         Pencil,       //연필
+        HighLightPen, //형광펜
         TextBox,
         Select,       //선택
         FileLoad,     //불러오기

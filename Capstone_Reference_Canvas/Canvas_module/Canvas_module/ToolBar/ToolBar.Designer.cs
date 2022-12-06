@@ -38,6 +38,7 @@
             this.toolStripButtonEllipse = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLine = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPencil = new System.Windows.Forms.ToolStripButton();
+            this.HighLightPentoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonTextBox = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonUndo = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRedo = new System.Windows.Forms.ToolStripButton();
@@ -59,6 +60,7 @@
             this.toolStripButtonEllipse,
             this.toolStripButtonLine,
             this.toolStripButtonPencil,
+            this.HighLightPentoolStripButton,
             this.toolStripButtonTextBox,
             this.toolStripButtonUndo,
             this.toolStripButtonRedo});
@@ -151,6 +153,17 @@
             this.toolStripButtonPencil.Text = "Pencil";
             this.toolStripButtonPencil.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
+            // HighLightPentoolStripButton
+            // 
+            this.HighLightPentoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.HighLightPentoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("HighLightPentoolStripButton.Image")));
+            this.HighLightPentoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.HighLightPentoolStripButton.Name = "HighLightPentoolStripButton";
+            this.HighLightPentoolStripButton.Size = new System.Drawing.Size(29, 25);
+            this.HighLightPentoolStripButton.Text = "Pencil";
+            this.HighLightPentoolStripButton.ToolTipText = "highlight pen";
+            this.HighLightPentoolStripButton.Click += new System.EventHandler(this.HighLightPentoolStripButton_Click);
+            // 
             // toolStripButtonTextBox
             // 
             this.toolStripButtonTextBox.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -208,5 +221,6 @@
 		private ToolStripButton toolStripButtonUndo;
 		private ToolStripButton toolStripButtonRedo;
 		private ToolStripButton toolStripButtonTextBox;
-	}
+        private ToolStripButton HighLightPentoolStripButton;
+    }
 }

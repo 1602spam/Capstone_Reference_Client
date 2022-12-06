@@ -39,6 +39,10 @@
             this.button_SelectBackgroundColor = new System.Windows.Forms.Button();
             this.button_Save = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
+            this.tb = new System.Windows.Forms.TrackBar();
+            this.lblnum = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.tb)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -114,7 +118,7 @@
             // 
             // button_Save
             // 
-            this.button_Save.Location = new System.Drawing.Point(40, 119);
+            this.button_Save.Location = new System.Drawing.Point(47, 198);
             this.button_Save.Name = "button_Save";
             this.button_Save.Size = new System.Drawing.Size(94, 29);
             this.button_Save.TabIndex = 8;
@@ -124,7 +128,7 @@
             // 
             // button_Cancel
             // 
-            this.button_Cancel.Location = new System.Drawing.Point(195, 118);
+            this.button_Cancel.Location = new System.Drawing.Point(210, 198);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(94, 29);
             this.button_Cancel.TabIndex = 9;
@@ -132,11 +136,43 @@
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
+            // tb
+            // 
+            this.tb.Location = new System.Drawing.Point(78, 136);
+            this.tb.Maximum = 255;
+            this.tb.Minimum = 1;
+            this.tb.Name = "tb";
+            this.tb.Size = new System.Drawing.Size(204, 56);
+            this.tb.TabIndex = 10;
+            this.tb.Value = 50;
+            this.tb.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lblnum
+            // 
+            this.lblnum.AutoSize = true;
+            this.lblnum.Location = new System.Drawing.Point(287, 150);
+            this.lblnum.Name = "lblnum";
+            this.lblnum.Size = new System.Drawing.Size(17, 20);
+            this.lblnum.TabIndex = 11;
+            this.lblnum.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 150);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "투명도";
+            // 
             // PropertiesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 179);
+            this.ClientSize = new System.Drawing.Size(362, 248);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblnum);
+            this.Controls.Add(this.tb);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.button_SelectBackgroundColor);
@@ -149,6 +185,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PropertiesView";
             this.Text = "속성";
+            ((System.ComponentModel.ISupportInitialize)(this.tb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +204,8 @@
         private Button button_SelectBackgroundColor;
         private Button button_Save;
         private Button button_Cancel;
+        private TrackBar tb;
+        private Label lblnum;
+        private Label label5;
     }
 }
