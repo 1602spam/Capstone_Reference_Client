@@ -59,8 +59,8 @@ namespace ClientSystem
 		private event GameStartListen? exitEvent;
 		public event GameStartListen ExitEvent
 		{
-			add { gameEvent += value; }
-			remove { gameEvent -= value; }
+			add { exitEvent += value; }
+			remove { exitEvent -= value; }
 		}
 
 		public ClientSystem()
@@ -95,7 +95,7 @@ namespace ClientSystem
 		{
 			Console.WriteLine("\t: Stop Signal Generation");
 
-			gameEvent?.Invoke();
+			exitEvent?.Invoke();
 
 			// 수신 이벤트를 해제
 			server.receiveEvent -= WakeUp;
