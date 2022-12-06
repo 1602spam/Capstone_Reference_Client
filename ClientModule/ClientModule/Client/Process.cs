@@ -129,6 +129,7 @@ namespace ClientSystem
 			{
 				Console.WriteLine("Student Id\t: " + user.studentID + "\t\t User Leaved");
 				DeleteUser(user.studentID);
+				userListEvent?.Invoke(studentID, name, true);
 				return;
 			}
 
