@@ -140,6 +140,7 @@ namespace ClientSystem
 
 			server.Send(Generater.Generate(message));
 		}
+		// 유저 강퇴
 		public void KickUser(int StudentId)
 		{
 			UserProtocol.USER user = new UserProtocol.USER();
