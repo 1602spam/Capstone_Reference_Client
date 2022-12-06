@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
 using ClientToServer;
 using Protocol;
+using static Protocol.MessageProtocol;
 using ReceiveResult = System.Collections.Generic.KeyValuePair<byte, object?>;
 
 namespace ClientSystem
 {
-	public delegate void MessageListen(string nick, string content, bool isMe, bool isWhisper);
+	public delegate void MessageListen(string nick, string content, int studentID, bool isMe, bool isWhisper);
 	public delegate void ModifyUserListListen(int StudentId, string name, bool delete);
 	public delegate void GameStartListen();
 
@@ -138,6 +140,17 @@ namespace ClientSystem
 
 			server.Send(Generater.Generate(message));
 		}
+		// 유저 강퇴
+		public void KickUser(int StudentId)
+		{
+			UserProtocol.USER user = new UserProtocol.USER();
+			if (!isLogin)
+				return;
+			user.studentID = studentID;
+			user.seqNo = -1;
+
+			server.Send(Generater.Generate(user));
+		}
 
 		// 귓속말
 		public void SendWhisperMessage(int targetID,string content)
@@ -147,6 +160,10 @@ namespace ClientSystem
 			MessageProtocol.MESSAGE message = new(this.studentID, targetID, content, this.seqNo);
 
 			server.Send(Generater.Generate(message));
+		}
+		public void StartGame()
+		{
+			server.Send(Generater.Generate(new GameStartProtocol.GameStart()));
 		}
 	}
 }
