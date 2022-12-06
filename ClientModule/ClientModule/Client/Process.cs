@@ -111,7 +111,7 @@ namespace ClientSystem
 			}
 
 			nick = userList[message.studentID];
-			
+			 
 			// 이벤트가 등록되어있다면 뒤의 문장 호출
 			messageEvent?.Invoke(nick, message.content, message.studentID , isMe, isWhisper);
 		}
@@ -165,6 +165,7 @@ namespace ClientSystem
 
 		private void GameProcess()
 		{
+			Console.WriteLine("Receive\t: GameStart");
 			gameEvent?.Invoke();
 		}
 	}
