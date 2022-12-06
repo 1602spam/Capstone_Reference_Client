@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,6 +33,7 @@ namespace Main.View.Student
             if (ConnectInfo.user != null)
             {
                 ConnectInfo.user.GameEvent += openGame;
+                ConnectInfo.user.ExitEvent += CloseWindow;
                 lblName.Text = lblNameDef + ConnectInfo.user.name;
                 lblID.Text = lblIDDef + ConnectInfo.user.studentID;
                 if (ConnectInfo.user.userList.Keys.Contains(-1))
@@ -47,6 +49,11 @@ namespace Main.View.Student
             Game game = new();
             if(ConnectInfo.user!=null)
                 game.JoinAsClient("127.0.0.1", ConnectInfo.user.studentID.ToString(), ConnectInfo.user.name);
+        }
+        private void CloseWindow()
+        {
+            MessageBox.Show("강제 퇴장 되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            this.Close();
         }
         private void btnChat_Click(object sender, EventArgs e)
         {

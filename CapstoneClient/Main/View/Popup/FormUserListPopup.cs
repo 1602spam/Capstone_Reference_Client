@@ -14,6 +14,9 @@ namespace Main.View.Popup
 {
     public partial class FormUserListPopup : Form
     {
+
+        private int targetID = 0;
+        delegate void RefreshCallback(int x, string y, bool z); //인수 사용 안 함
         public FormUserListPopup()
         {
             InitializeComponent();
@@ -35,23 +38,42 @@ namespace Main.View.Popup
 
         private void refreshListView(int num, string name, bool deleted)
         {
-            if (ConnectInfo.user == null)
-                return;
-
-            listView1.Items.Clear();
-
-            foreach (var item in ConnectInfo.user.userList)
+            if (this.listView1.InvokeRequired)
             {
-                string[] items;
-                string id = item.Key.ToString();
-                if (id == "-1") { id = "교수"; }
-
-                items = new string[] { id, item.Value };
-                ListViewItem lvitem = new(items);
-                listView1.Items.Add(lvitem);
+                RefreshCallback c = new RefreshCallback(refreshListView);
+                this.Invoke(c,0,"test",false);
             }
+            else
+            {
+                if (ConnectInfo.user == null)
+                    return;
 
-            
+                listView1.Items.Clear();
+                /*
+                foreach (var item in ClientContainer.Instance.loginDict)
+                {
+                    string[] items;
+                    string id = item.Key.ToString();
+                    if (id == "-1") { id = "교수"; }
+
+                    items = new string[] { id, item.Value.name };
+
+                    ListViewItem lvitem = new(items);
+                    listView1.Items.Add(lvitem);
+                }*/
+
+                foreach (var item in ConnectInfo.user.userList)
+                {
+                    string[] items;
+                    string id = item.Key.ToString();
+                    if (id == "-1") { id = "교수"; }
+
+                    items = new string[] { id, item.Value };
+
+                    ListViewItem lvitem = new(items);
+                    listView1.Items.Add(lvitem);
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -80,6 +102,27 @@ namespace Main.View.Popup
             lblChatable.ForeColor = Color.Red;
             if (ConnectInfo.server != null)
                 ConnectInfo.server.SetMessageBlock(true);
+        }
+
+        private void btnPrtUserList_Click(object sender, EventArgs e)
+        {
+            ClientContainer.Instance.PrtUsers();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //ClientContainer.Instance.KickUser(targetID);
+            ClientContainer.Instance.RemoveUser(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID], targetID);
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listView1.SelectedItems)
+            {
+                MessageBox.Show(item.Text);
+                int.TryParse(item.Text, out targetID);
+                break;
+            }
         }
     }
 }

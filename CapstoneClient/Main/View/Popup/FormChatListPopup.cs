@@ -37,8 +37,7 @@ namespace Main.View.Popup
 		private void OnMemberReceived(int id, string name, bool delete)
 		{
 			//표시하라치면
-			if (delete && ConnectInfo.user!=null)
-				ConnectInfo.user.userList.Remove(id);
+			//if (delete && ConnectInfo.user!=null)
 			RefreshChatList();
         }
 
