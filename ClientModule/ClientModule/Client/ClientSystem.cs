@@ -15,6 +15,7 @@ namespace ClientSystem
 	public delegate void MessageListen(string nick, string content, int studentID, bool isMe, bool isWhisper);
 	public delegate void ModifyUserListListen(int StudentId, string name, bool delete);
 	public delegate void GameStartListen();
+	public delegate void ExitListen();
 
 	public partial class ClientSystem
 	{
@@ -37,8 +38,8 @@ namespace ClientSystem
 		private event MessageListen? messageEvent;
 		public event MessageListen MessageEvent
 		{
-			add		{ messageEvent += value; }
-			remove	{ messageEvent -= value; }
+			add { messageEvent += value; }
+			remove { messageEvent -= value; }
 		}
 
 		private event ModifyUserListListen? userListEvent;
@@ -55,11 +56,18 @@ namespace ClientSystem
 			remove { gameEvent -= value; }
 		}
 
+		private event GameStartListen? exitEvent;
+		public event GameStartListen ExitEvent
+		{
+			add { gameEvent += value; }
+			remove { gameEvent -= value; }
+		}
+
 		public ClientSystem()
 		{
 			Console.WriteLine("Clinet Start");
 			setAddress();
-			
+
 			server = Server.Instance;
 
 			server.receiveEvent += WakeUp;
@@ -86,6 +94,8 @@ namespace ClientSystem
 		private void Stop()
 		{
 			Console.WriteLine("\t: Stop Signal Generation");
+
+			gameEvent?.Invoke();
 
 			// 수신 이벤트를 해제
 			server.receiveEvent -= WakeUp;
@@ -127,7 +137,7 @@ namespace ClientSystem
 
 		public void Logout()
 		{
-			server.Send(Generater.Generate(new LogoutProtocol.LOGOUT(this.seqNo,studentID)));
+			server.Send(Generater.Generate(new LogoutProtocol.LOGOUT(this.seqNo, studentID)));
 			server.StopReceive();
 		}
 
@@ -153,7 +163,7 @@ namespace ClientSystem
 		}
 
 		// 귓속말
-		public void SendWhisperMessage(int targetID,string content)
+		public void SendWhisperMessage(int targetID, string content)
 		{
 			if (!isLogin)
 				return;
