@@ -51,7 +51,7 @@ namespace Main.View.Popup
                 }
                 else
                 {
-                    items = new string[] { id, item.Key.ToString(), item.Value, "X" };
+                    items = new string[] { id, item.Value, "X" };
                 }
                 ListViewItem lvitem = new(items);
                 listView1.Items.Add(lvitem);

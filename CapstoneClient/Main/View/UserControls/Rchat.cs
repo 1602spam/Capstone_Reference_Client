@@ -29,7 +29,7 @@ namespace Main.View.UserControls
             }
         }
         public MdlMessage ?msg { get; set; }
-
+        public string ?ReceiverName { get; set; } = "";
         public Rchat(int chatPanelSize, string str)
         {
             InitializeComponent();
@@ -56,7 +56,7 @@ namespace Main.View.UserControls
                 {
                     if (ConnectInfo.user != null)
                     {
-                        lblName.Text = "(DM) " + "받는사람이름" + " <= " + ConnectInfo.user.name;
+                        lblName.Text = "(DM) " + ReceiverName + " <= " + ConnectInfo.user.name;
                         lblName.ForeColor = Color.Blue;
                     }
                 }

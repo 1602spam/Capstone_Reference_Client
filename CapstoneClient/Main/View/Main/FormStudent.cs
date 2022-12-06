@@ -45,7 +45,8 @@ namespace Main.View.Student
         private void openGame()
         {
             Game game = new();
-            game.JoinAsClient("127.0.0.1", ConnectInfo.user.studentID.ToString(), ConnectInfo.user.name);
+            if(ConnectInfo.user!=null)
+                game.JoinAsClient("127.0.0.1", ConnectInfo.user.studentID.ToString(), ConnectInfo.user.name);
         }
         private void btnChat_Click(object sender, EventArgs e)
         {

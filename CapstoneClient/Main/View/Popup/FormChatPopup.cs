@@ -50,9 +50,9 @@ namespace Main.View.Popup
 			//Event += AddChat;
 		}
 		
-		private void OnMessageReceived(string name, string content, bool isMe, bool isWhisper)
+		private void OnMessageReceived(string name, string content, int id, bool isMe, bool isWhisper)
 		{
-			MdlMessage msg = new(name, content, isMe, isWhisper);
+			MdlMessage msg = new(name, content, id, isMe, isWhisper);
 			//메시지 추가 이벤트 발생 시에
 			//객체 속성 중 송신자를 비교해서 다른 사람이면 AddLChat(message,onTop), 나 자신이라면 AddRChat(message,onTop)을 호출함
 			if (isMe)
@@ -87,6 +87,13 @@ namespace Main.View.Popup
 			else
 			{
 				Rchat rchat = new Rchat(panMessageWidth, message);
+				if (idLocation != 0)
+				{
+					string? name = "";
+					if(ConnectInfo.user!=null)
+						ConnectInfo.user.userList.TryGetValue(idLocation, out name);
+					rchat.ReceiverName = name;
+                }
 				Rchats.Add(rchat);
 				panMessage.Controls.Add(rchat);
 				if(onTop) {rchat.SendToBack();} else {rchat.BringToFront();}

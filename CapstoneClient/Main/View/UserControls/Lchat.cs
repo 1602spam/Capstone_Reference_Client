@@ -42,7 +42,6 @@ namespace Main.View.UserControls
         {
             InitializeComponent();
             this.ChatPanelSize = chatPanelSize;
-            //this.object = obj;
             this.msg = obj as MdlMessage;
         }
 
@@ -118,17 +117,15 @@ namespace Main.View.UserControls
 
         private void lblName_Click(object sender, EventArgs e)
         {
+            //채팅창이 열려있는지 확인하고 
             var form = Application.OpenForms["FormChatPopup"];
             if (form != null)
             {
                 FormChatPopup? f = form as FormChatPopup;
                 if (f != null)
                 {
-                    if (ConnectInfo.user != null) {
-                        //메시지의 id
-                        int id = -1;
-                        }
-                    //f.SetLocation(id);
+                    if(msg!=null)
+                        f.SetLocation(msg.ID);
                 }
             }
         }
