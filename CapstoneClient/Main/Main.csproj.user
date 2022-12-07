@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="FormRegist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Main\FormProfessor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Main\FormStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Popup\FormChatListItemMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Popup\FormChatListPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Popup\FormChatPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Popup\FormGameInvitation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Popup\FormGamePopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Popup\FormNotePopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Popup\FormRegistPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Popup\FormUserListPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\ChatListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\Lchat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\Rchat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
