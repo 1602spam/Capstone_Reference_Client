@@ -412,6 +412,6 @@ FodyWeavers.xsd
 !DLL/[Rr]elease/*
 !DLL/[Rr]elease/*.dll
 !DLL/[Rr]elease/net6.0/*.dll
-!CapstoneClient/Main/bin/*
+!CapstoneClient/Main/bin/Debug/net6.0-windows/*
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp
