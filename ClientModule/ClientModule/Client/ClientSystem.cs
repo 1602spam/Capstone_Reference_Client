@@ -56,8 +56,8 @@ namespace ClientSystem
 			remove { gameEvent -= value; }
 		}
 
-		private event GameStartListen? exitEvent;
-		public event GameStartListen ExitEvent
+		private event ExitListen? exitEvent;
+		public event ExitListen ExitEvent
 		{
 			add { exitEvent += value; }
 			remove { exitEvent -= value; }
@@ -173,7 +173,7 @@ namespace ClientSystem
 		}
 		public void StartGame()
 		{
-			server.Send(Generater.Generate(new GameStartProtocol.GameStart()));
+			server.Send(Generater.Generate(new GameStartProtocol.GameStart().meanless = 65));
 		}
 	}
 }
