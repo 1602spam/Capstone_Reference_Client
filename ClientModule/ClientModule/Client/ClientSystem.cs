@@ -173,7 +173,9 @@ namespace ClientSystem
 		}
 		public void StartGame()
 		{
-			server.Send(Generater.Generate(new GameStartProtocol.GameStart().meanless = 65));
+			GameStartProtocol.GameStart gs = new GameStartProtocol.GameStart();
+			gs.meanless = 96;
+			server.Send(Generater.Generate(gs));
 		}
 	}
 }
