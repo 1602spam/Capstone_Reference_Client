@@ -14,7 +14,7 @@ namespace Main.View.Popup
 {
     public partial class FormUserListPopup : Form
     {
-
+        private string lblIDDef = "";
         private int targetID = 0;
         delegate void RefreshCallback(int x, string y, bool z); //인수 사용 안 함
         public FormUserListPopup()
@@ -31,6 +31,7 @@ namespace Main.View.Popup
             }
             */
             refreshListView(0,"test",false);
+            lblIDDef = lblID.Text;
 
             if(ConnectInfo.user!=null)
                 ConnectInfo.user.UserListEvent += refreshListView;
@@ -113,16 +114,22 @@ namespace Main.View.Popup
         {
             //ClientContainer.Instance.KickUser(targetID);
             ClientContainer.Instance.RemoveUser(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID], targetID);
+            lblID.Text = lblIDDef;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            targetID = 0;
             foreach (ListViewItem item in listView1.SelectedItems)
             {
-                MessageBox.Show(item.Text);
+                //MessageBox.Show(item.Text);
                 int.TryParse(item.Text, out targetID);
                 break;
             }
+            if (targetID > 0)
+                lblID.Text = lblIDDef + targetID.ToString();
+            else
+                lblID.Text = lblIDDef;
         }
     }
 }
