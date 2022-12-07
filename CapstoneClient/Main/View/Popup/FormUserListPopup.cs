@@ -69,7 +69,7 @@ namespace Main.View.Popup
                     string id = item.Key.ToString();
                     if (id == "-1") { id = "교수"; }
 
-                    items = new string[] { id, item.Value };
+                    items = new string[] { id, item.Value, "X", "X", "O", "O", "O" };
 
                     ListViewItem lvitem = new(items);
                     listView1.Items.Add(lvitem);
@@ -112,8 +112,10 @@ namespace Main.View.Popup
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //ClientContainer.Instance.KickUser(targetID);
-            ClientContainer.Instance.RemoveUser(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID], targetID);
+            if (targetID == 0)
+                return;
+            if(ConnectInfo.user!=null)
+                ClientContainer.Instance.RemoveUser(ClientContainer.Instance.loginDict[ConnectInfo.user.studentID], targetID);
             lblID.Text = lblIDDef;
         }
 

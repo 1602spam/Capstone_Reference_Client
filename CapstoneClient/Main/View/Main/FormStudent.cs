@@ -52,7 +52,7 @@ namespace Main.View.Student
         }
         private void CloseWindow()
         {
-            MessageBox.Show("강제 퇴장 되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //MessageBox.Show("강제 퇴장 되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             this.Close();
         }
         private void btnChat_Click(object sender, EventArgs e)
