@@ -1,0 +1,150 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Main/1.0.0": {
+        "dependencies": {
+          "Canvas_module": "1.0.0.0",
+          "Capstone_Reference_Game": "1.0.0.0",
+          "Capstone_Reference_GameServer": "1.0.0.0",
+          "ClientSystem": "1.0.0.0",
+          "ClientToServer": "1.0.0.0",
+          "NetworkLibrary": "1.0.0.0",
+          "Reference_Game_Module": "1.0.0.0",
+          "ServerSystem": "1.0.0.0"
+        },
+        "runtime": {
+          "Main.dll": {}
+        }
+      },
+      "Canvas_module/1.0.0.0": {
+        "runtime": {
+          "Canvas_module.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Capstone_Reference_Game/1.0.0.0": {
+        "runtime": {
+          "Capstone_Reference_Game.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Capstone_Reference_GameServer/1.0.0.0": {
+        "runtime": {
+          "Capstone_Reference_GameServer.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ClientSystem/1.0.0.0": {
+        "runtime": {
+          "ClientSystem.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ClientToServer/1.0.0.0": {
+        "runtime": {
+          "ClientToServer.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "NetworkLibrary/1.0.0.0": {
+        "runtime": {
+          "NetworkLibrary.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Reference_Game_Module/1.0.0.0": {
+        "runtime": {
+          "Reference_Game_Module.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ServerSystem/1.0.0.0": {
+        "runtime": {
+          "ServerSystem.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ServerToClient/1.0.0.0": {
+        "runtime": {
+          "ServerToClient.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Main/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Canvas_module/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Capstone_Reference_Game/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Capstone_Reference_GameServer/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClientSystem/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClientToServer/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NetworkLibrary/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Reference_Game_Module/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ServerSystem/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ServerToClient/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
