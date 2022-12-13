@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jjh02\\OneDrive\\바탕 화면\\capstone_reference_client\\CapstoneClient\\Main\\Main.csproj": {}
+    "C:\\Users\\YUHAN\\Desktop\\capstone_reference_client\\CapstoneClient\\Main\\Main.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jjh02\\OneDrive\\바탕 화면\\capstone_reference_client\\CapstoneClient\\Main\\Main.csproj": {
+    "C:\\Users\\YUHAN\\Desktop\\capstone_reference_client\\CapstoneClient\\Main\\Main.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jjh02\\OneDrive\\바탕 화면\\capstone_reference_client\\CapstoneClient\\Main\\Main.csproj",
+        "projectUniqueName": "C:\\Users\\YUHAN\\Desktop\\capstone_reference_client\\CapstoneClient\\Main\\Main.csproj",
         "projectName": "Main",
-        "projectPath": "C:\\Users\\jjh02\\OneDrive\\바탕 화면\\capstone_reference_client\\CapstoneClient\\Main\\Main.csproj",
-        "packagesPath": "C:\\Users\\jjh02\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jjh02\\OneDrive\\바탕 화면\\capstone_reference_client\\CapstoneClient\\Main\\obj\\",
+        "projectPath": "C:\\Users\\YUHAN\\Desktop\\capstone_reference_client\\CapstoneClient\\Main\\Main.csproj",
+        "packagesPath": "C:\\Users\\YUHAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\YUHAN\\Desktop\\capstone_reference_client\\CapstoneClient\\Main\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jjh02\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\YUHAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +27,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

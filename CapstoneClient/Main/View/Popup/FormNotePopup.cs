@@ -1,4 +1,5 @@
-﻿using Main.Class;
+﻿using Canvas_module;
+using Main.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,11 @@ namespace Main.View.Popup
         {
             InitializeComponent();
             this.InitializePopup();
+
+            MainView form = new MainView();
+            form.TopLevel = false;
+            panel1.Controls.Add(form);
+            form.Show();
         }
     }
 }
