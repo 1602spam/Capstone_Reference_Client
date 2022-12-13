@@ -58,7 +58,7 @@ namespace Canvas_module
         //저장하기 버튼
         private void button_Save_Click(object sender, EventArgs e)
         {
-            Controller.MainController.Instance.LastUsedColor = Color = label_Color.BackColor;
+            Controller.MainController.Instance.LastUsedColor = Color = Color.FromArgb(tb.Value, label_Color.BackColor.R, label_Color.BackColor.G, label_Color.BackColor.B);
             Controller.MainController.Instance.LastUesdBackgoroundColor = BackGroundColor = label_BackgroundColor.BackColor;
             Controller.MainController.Instance.LastUsedPenWidth = PenWidth = int.Parse(combobox_PenWidth.Text);
 
@@ -108,5 +108,15 @@ namespace Canvas_module
         }
 
         #endregion
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            lblnum.Text = tb.Value.ToString();
+        }
     }
 }

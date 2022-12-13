@@ -32,6 +32,7 @@ namespace Canvas_module.DrawObjects
 
         public DrawObject()
         {
+
         }
 
         #endregion
@@ -123,6 +124,10 @@ namespace Canvas_module.DrawObjects
         /// DrawObject 그리기 함수
         /// </summary>
         /// <param name="g"></param>
+        public virtual void Draw(Graphics g, string text)
+        {
+        }
+
         public virtual void Draw(Graphics g)
         {
         }
@@ -155,10 +160,11 @@ namespace Canvas_module.DrawObjects
 
             using (SolidBrush brush = new SolidBrush(Color.Black))
             {
-                for (int i = 1; i <= HandleCount; i++)
+               for (int i = 1; i <= HandleCount; i++)
                 {
                     g.FillRectangle(brush, GetHandleRectangle(i));
                 }
+                
             }
         }
 
@@ -233,7 +239,6 @@ namespace Canvas_module.DrawObjects
         {
             //DrawObject 를 선택으로 설정
             this.selected = true;
-
 
             //마지막으로 사용된 테두리 색을 입력한다.
             color = Controller.MainController.Instance.LastUsedColor;

@@ -31,7 +31,7 @@ namespace Canvas_module.Controller
         private List<IObserver> listener = new List<IObserver>();
 
         /// <summary>
-        /// 실행취소(Undo) 와 다시실행(Redo)를 관리하는 Command 클래스
+        /// 실행취소(Undo) 와 다시실행(Redo)를 관리하는 Command 클래스LastText
         /// </summary>
         private Command.Command command = new Command.Command();
 
@@ -50,6 +50,10 @@ namespace Canvas_module.Controller
         /// </summary>
         private Color lastUsedBackColor = Color.White;
 
+        /// <summary>
+        /// 최근에 사용한 DrawObject
+        /// </summary>
+        private DrawObjectType lastUsedDraw_obj;
         #endregion
 
         #region 생성자
@@ -154,14 +158,12 @@ namespace Canvas_module.Controller
         public Color LastUesdBackgoroundColor
         {
             get
-            {
-                Console.WriteLine("get"+ lastUsedBackColor);
+            {      
                 return lastUsedBackColor;
             }
 
             set
-            {
-                Console.WriteLine("set"+ lastUsedBackColor);
+            { 
                 lastUsedBackColor = value;
             }
         }
@@ -182,6 +184,11 @@ namespace Canvas_module.Controller
             }
         }
 
+        public DrawObjectType LastUsedDraw_obj
+        {
+            get { return lastUsedDraw_obj; }
+            set { lastUsedDraw_obj = value;  }
+        }
 
         /// <summary>
         /// 실행취소(Undo) 와 다시실행(Redo)
@@ -232,6 +239,9 @@ namespace Canvas_module.Controller
             get;
             set;
         }
+
+        
+        
 
         #endregion
     }

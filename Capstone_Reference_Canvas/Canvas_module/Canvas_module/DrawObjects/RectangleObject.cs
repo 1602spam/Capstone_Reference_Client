@@ -298,7 +298,7 @@ namespace Canvas_module.DrawObjects
         {
             return GetNormalizedRectangle(r.X, r.Y, r.X + r.Width, r.Y + r.Height);
         }
-
+        
         #endregion
 
         #region 속성

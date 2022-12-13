@@ -15,10 +15,13 @@ namespace Canvas_module.Controller
         Ellipse,      //원
         Line,         //줄
         Pencil,       //연필
+        HighLightPen, //형광펜
+        TextBox,
         Select,       //선택
         FileLoad,     //불러오기
         FileSave,     //저장하기
-        New           //새로 만들기
+        New,          //새로 만들기
+        LastTool      //마지막에 사용한 도구
     }
 
     public enum ObserverName
@@ -37,7 +40,8 @@ namespace Canvas_module.Controller
         Ellipse,    //원
         Line,       //줄
         Pencil,     //연필
-        Select      //선택
+        Select,     //선택
+        TextBox     //텍스트 박스    
     };
 
     /// <summary>
@@ -48,6 +52,7 @@ namespace Canvas_module.Controller
         None,            //아무것도 선택되지 않음
         NetSelection,   //영역으로 선택
         Move,           //이동
-        Size            //사이즈 변경
+        Size,           //사이즈 변경
+        InsertText      //텍스트 삽입
     };
 }
