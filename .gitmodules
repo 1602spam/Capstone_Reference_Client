@@ -1,7 +1,7 @@
 [submodule "Capstone_Reference_Network"]
 	path = Capstone_Reference_Network
 	url = https://github.com/poro912/Capstone_Reference_Network.git
-[submodule "Capstone_Reference_Client_UI"]
+[submodule "Capstone_Reference_Server"]
 	path = Capstone_Reference_Client_UI
 	url = https://github.com/ycs-201807062/Capstone_Reference_Client_UI.git
 [submodule "Capstone_Reference_Game"]

@@ -108,7 +108,7 @@ namespace Main.View.Professor
                 if (chat_num - 100 < -75)
                 {
                     chat_num+=2;
-                    pbChat.Location = new Point(139, -100 + chat_num);
+                    pbChat.Location = new Point(108, -75 + chat_num);
                 }
             }
 
@@ -119,7 +119,7 @@ namespace Main.View.Professor
                 if (chat_num - 100 > -100)
                 {
                     chat_num-=2;
-                    pbChat.Location = new Point(139, -100 + chat_num);
+                    pbChat.Location = new Point(108, -75 + chat_num);
                 }
                 else { timer1.Enabled = false; }
             }
@@ -129,13 +129,13 @@ namespace Main.View.Professor
                 if ((chat_num - 100 < -50) && check == 0)//아래로
                 {
                     chat_num +=3;
-                    pbChat.Location = new Point(139, -100 + chat_num);
+                    pbChat.Location = new Point(108, -75 + chat_num);
                     if((chat_num - 100) >= -50) { check = 1; }
                 }
                 else if ((chat_num - 100 > -490) && check == 1)//위로
                 {
                     chat_num -=10;
-                    pbChat.Location = new Point(139, -100 + chat_num);
+                    pbChat.Location = new Point(108, -75 + chat_num);
                 }
                 else
                 {
@@ -163,7 +163,7 @@ namespace Main.View.Professor
                 if (quiz_num - 151 < -126)
                 {
                     quiz_num+=2;
-                    pbQuiz.Location = new Point(448, -151 + quiz_num);
+                    pbQuiz.Location = new Point(348, -113 + quiz_num);
                 }
             }
 
@@ -174,7 +174,7 @@ namespace Main.View.Professor
                 if (quiz_num - 151 > -151)
                 {
                     quiz_num-=2;
-                    pbQuiz.Location = new Point(448, -151 + quiz_num);
+                    pbQuiz.Location = new Point(348, -113 + quiz_num);
                 }
                 else { timer2.Enabled = false; }
             }
@@ -184,13 +184,13 @@ namespace Main.View.Professor
                 if ((quiz_num - 151 < -91) && check == 0)//아래로
                 {
                     quiz_num += 3;
-                    pbQuiz.Location = new Point(448, -151 + quiz_num);
+                    pbQuiz.Location = new Point(348, -113 + quiz_num);
                     if ((quiz_num - 151) >= -91) { check = 1; }
                 }
                 else if ((quiz_num - 151 > -490) && check == 1)//위로
                 {
                     quiz_num -= 10;
-                    pbQuiz.Location = new Point(448, -151 + quiz_num);
+                    pbQuiz.Location = new Point(348, -113 + quiz_num);
                 }
                 else
                 {
@@ -272,13 +272,13 @@ namespace Main.View.Professor
             //채팅 원위치
             if (chat_move ==0)
             {
-                pbChat.Location = new Point(139, -100);             
+                pbChat.Location = new Point(108, -75);             
             }
             //퀴즈 원위치
             if ( quiz_move ==0)
             {
                 
-                pbQuiz.Location = new Point(448, -151);
+                pbQuiz.Location = new Point(348, -113);
             }
         }
 
