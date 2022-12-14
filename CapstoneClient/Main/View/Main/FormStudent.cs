@@ -54,7 +54,7 @@ namespace Main.View.Student
 		{
 			Game game = new();
 			if(ConnectInfo.user!=null)
-				game.JoinAsClient("127.0.0.1", ConnectInfo.user.studentID.ToString(), ConnectInfo.user.name);
+				game.JoinAsClient(ConnectInfo.IP, ConnectInfo.user.studentID.ToString(), ConnectInfo.user.name);
 		}
 		private void CloseWindow()
 		{
