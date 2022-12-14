@@ -66,7 +66,6 @@ namespace ClientSystem
 		public ClientSystem()
 		{
 			Console.WriteLine("Clinet Start");
-			setAddress();
 
 			server = Server.Instance;
 

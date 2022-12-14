@@ -34,13 +34,13 @@
             this.lblClassName = new System.Windows.Forms.Label();
             this.lblIP = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbQuiz = new System.Windows.Forms.PictureBox();
             this.pbChat = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQuiz)).BeginInit();
@@ -100,6 +100,16 @@
             this.panel1.Size = new System.Drawing.Size(614, 314);
             this.panel1.TabIndex = 5;
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(537, 268);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 25);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "제어";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -163,16 +173,6 @@
             // 
             this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(537, 268);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 25);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "제어";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormProfessor
             // 

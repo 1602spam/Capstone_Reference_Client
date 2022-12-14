@@ -46,7 +46,7 @@
             this.ClientSize = new System.Drawing.Size(1024, 600);
             this.Controls.Add(this.panMain);
             this.Name = "FormGamePopup";
-            this.Text = "FormGamePopup";
+            this.Text = "게임 설정";
             this.Load += new System.EventHandler(this.FormGamePopup_Load);
             this.ResumeLayout(false);
 

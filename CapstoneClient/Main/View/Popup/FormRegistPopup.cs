@@ -160,8 +160,9 @@ namespace Main.View.Popup
             if (!int.TryParse(tbClass.Text, out i))
                 return false;
             
-            ClientSystem.ClientSystem.setAddress(tbIP.Text);
             ConnectInfo.IP = tbIP.Text;
+
+            ClientSystem.ClientSystem.setAddress(tbIP.Text);
             ConnectInfo.user = new ClientSystem.ClientSystem();
             Task.Delay(50).Wait();
             

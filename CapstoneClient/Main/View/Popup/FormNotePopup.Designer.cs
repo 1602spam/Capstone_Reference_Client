@@ -46,7 +46,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Name = "FormNotePopup";
-            this.Text = "FormNotePopup";
+            this.Text = "필기노트";
             this.ResumeLayout(false);
 
         }

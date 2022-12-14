@@ -26,6 +26,7 @@ namespace Main.Class
 
         public static void InitializeMain(this Form f)
         {
+            f.Text = "StudyWithMe";
             f.MaximizeBox = false;
             f.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
