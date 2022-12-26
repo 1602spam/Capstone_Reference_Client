@@ -139,12 +139,12 @@ namespace Main.View.Popup
 				}
 			}
 
-			//채팅창 초기화
-			rtbChat.Text = String.Empty;
 			//채팅창 포커스
 			rtbChat.Focus();
 			//메시지 패널 맨 아래를 표시하도록 함
 			panMessage.AutoScrollPosition = new Point(0, 9999999);
+			//채팅창 초기화
+			rtbChat.Text = String.Empty;
 		}
 
 		private void btnChatList_Click(object sender, EventArgs e)
@@ -203,6 +203,20 @@ namespace Main.View.Popup
 		private void lblLocationToAll_Click(object sender, EventArgs e)
 		{
 			SetLocation(0);
+		}
+
+		private void rtbChat_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void rtbChat_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.KeyData == (Keys.Enter))
+			{
+				SendChat();
+				rtbChat.Text = String.Empty;
+			}
 		}
 	}
 }

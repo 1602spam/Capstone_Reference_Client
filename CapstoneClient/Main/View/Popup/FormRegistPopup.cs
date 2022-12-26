@@ -40,6 +40,8 @@ namespace Main.View.Popup
                 lblClass.Text = "학번";
                 lblName.Text = "학생명";
             }
+            // 포커스를 이름에 두기
+            this.ActiveControl = tbName;
         }
 
         private void OnConnected()
@@ -169,6 +171,15 @@ namespace Main.View.Popup
             ConnectInfo.user.Login(i, tbName.Text, "nick");
             btnConnect.Enabled = true;
             return true;
+        }
+
+        private void FormRegistPopup_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 엔터가 눌렸다면
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnConnect_Click(sender, e);
+			}
         }
     }
 }
